@@ -21,8 +21,8 @@
 
 
 ### Clone Git Repository
-**S'il vous plaît rafraichissez le projet**
-**Please Refresh Build**
+* S'il vous plaît rafraichissez le projet
+* Please Refresh Build
 
 
 ### Supplémentaires
