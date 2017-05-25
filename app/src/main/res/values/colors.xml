@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<color name="primary">#293949</color>
+	<color name="primary_dark">#243240</color>
+	<color name="accent">#F19BA2</color>
+	<color name="accent_dark">#CB747B</color>
+	<color name="primary_s">#70A8A0</color>
+	<color name="primary_dark_s">#578E86</color>
+	
+	<color name="status_bar_light">#20000000</color>
+	<color name="status_bar_dark">#20FFFFFF</color>
+	
+	<color name="widow_background_light">#E8E8E8</color>
+	<color name="widow_background_dark">#424242</color>
+	
+	<color name="white">#FFFFFF</color>
+	<color name="black">#212121</color>
+	
+	<color name="semi_white">#87FFFFFF</color>
+	<color name="semi_black">#87000000</color>
+	
+	<color name="intro_color_a">#20000000</color>
+	<color name="intro_color_b">#FFFAD3</color>
+	<color name="intro_color_c">#FFFFEF</color>
+	<color name="intro_color_a_dark">#FAFAFA</color>
+	<color name="intro_color_b_dark">#DCCAA8</color>
+	<color name="intro_color_c_dark">#CCCCBF</color>
+	<color name="intro_color_btn_state_of">#40000000</color>
+	<color name="intro_color_btn_state_pressed">#70000000</color>
+	
+	<color name="translucent_background">#99323232</color>
+	<color name="translucent_white">#30FFFFFF</color>
+	
+</resources>

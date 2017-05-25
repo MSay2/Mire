@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<com.msay2.mire.widget.DoubleTapImageView
+		android:id="@+id/id_image"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerCrop"/>
+
+	<ProgressBar
+		android:id="@+id/id_progress"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:visibility="gone"
+		style="?android:attr/progressBarStyle"/>
+
+	<ImageView
+		android:background="@drawable/circle_white"
+		android:layout_height="56dp"
+		android:layout_width="56dp"
+		android:layout_alignParentRight="true"
+		android:layout_marginTop="96dp"
+		android:src="@drawable/ic_check_accent_24dp"
+		android:id="@+id/id_apply"
+		android:visibility="gone"
+		android:elevation="4dp"
+		android:scaleType="centerInside"/>
+
+	<ImageView
+		android:id="@+id/status_bar"
+		android:background="#20000000"
+		android:layout_height="24dp"
+		android:layout_width="match_parent"/>
+
+</RelativeLayout>
+

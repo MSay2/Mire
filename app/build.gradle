@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android 
+{
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig 
+	{
+        applicationId "com.msay2.mire"
+        minSdkVersion 21
+        targetSdkVersion 24
+        versionCode 3
+        versionName "3.0"
+    }
+    buildTypes 
+	{
+        release
+		{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies
+{
+	compile project(':lib_transition')
+	compile project(':helpers')
+	compile project(':lib')
+	
+	compile 'com.android.support:cardview-v7:+'
+	compile 'com.android.support:design:+'
+	compile 'com.android.support:recyclerview-v7:+'
+	compile 'com.android.support:palette-v7:+'
+	compile 'com.android.support:appcompat-v7:+'
+	compile 'com.android.support:support-v4:+'
+	
+	compile 'com.github.bumptech.glide:glide:+'
+	compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+	compile 'org.sufficientlysecure:html-textview:3.2'
+	
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}

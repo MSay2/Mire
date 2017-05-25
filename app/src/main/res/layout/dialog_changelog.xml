@@ -1,0 +1,39 @@
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="@string/dialog_changelog_title"
+		android:id="@+id/id_title"
+		android:fontFamily="sans-serif-medium"
+		style="@style/MSay2.Theme.TitleDialog"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="@string/app_name"
+		android:layout_below="@id/id_title"
+		android:paddingRight="24dp"
+		android:paddingLeft="24dp"
+		android:paddingBottom="4dp"
+		android:paddingTop="20dp"
+		android:id="@+id/id_version_name"
+		android:layout_marginBottom="16dp"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		android:textColor="@color/black"/>
+
+	<ListView
+		android:id="@+id/id_changelog_list"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_below="@+id/id_version_name"
+		android:clipToPadding="false"
+		android:dividerHeight="0dp"
+		android:divider="@android:color/transparent"
+		android:listSelector="@android:color/transparent"/>
+
+</RelativeLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.msay2.mire.widget.BottomSheet
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/id_root"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="@dimen/bottom_sheet_width"
+		android:orientation="vertical"
+		android:background="@color/white"
+		android:elevation="6dp"
+		android:id="@+id/id_content">
+
+		<LinearLayout
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?android:attr/actionBarSize"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            android:background="@color/white"
+            android:stateListAnimator="@animator/active_raise">
+
+            <ImageView
+                android:id="@+id/id_close"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_gravity="center"
+                android:padding="12dp"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_action_down_24dp"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/id_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="start|center_vertical"
+                android:paddingEnd="16dp"
+                android:text="@string/bottom_sheet_lib_title"
+                style="@style/Widget.MSay2.DialogTitle"/>
+
+        </LinearLayout>
+		
+		<android.support.v7.widget.RecyclerView
+			android:id="@+id/ma_recyclerView"
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:paddingBottom="8dp"
+			android:clipToPadding="false"/>
+
+	</LinearLayout>
+	
+</com.msay2.mire.widget.BottomSheet>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<dimen name="menu_item_height_padding">0dp</dimen>
+	<dimen name="menu_item_height">52dp</dimen>
+	
+	<dimen name="bottom_sheet_width">@dimen/match_parent</dimen>
+
+	<item name="match_parent" format="integer" type="dimen">-1</item>
+	
+</resources>

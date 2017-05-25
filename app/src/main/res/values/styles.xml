@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="@style/MSay2.Theme"></style>
+	
+	<style name="MSay2.Theme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+		<item name="colorPrimary">@color/primary</item>
+		<item name="colorPrimaryDark">@color/primary_dark</item>
+		<item name="colorAccent">@color/accent</item>
+		<item name="cardBackground">@color/white</item>
+	</style>
+	
+	<style name="ThemeIntro" parent="@style/Theme.AppCompat.Light.NoActionBar">
+		<item name="colorPrimary">@color/primary</item>
+		<item name="colorPrimaryDark">@color/primary_dark</item>
+		<item name="colorAccent">@color/accent</item>
+		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
+	</style>
+	
+	<style name="MSay2.Theme.Translucent">
+        <item name="android:windowBackground">@color/translucent_background</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+	
+	<style name="MSay2.Theme.Translucent.Activity">
+		<item name="colorPrimary">@color/primary</item>
+		<item name="colorPrimaryDark">@color/primary_dark</item>
+		<item name="colorAccent">@color/accent</item>
+		<item name="android:navigationBarColor">@color/primary</item>
+        <item name="android:colorControlActivated">?android:attr/colorAccent</item>
+		<item name="android:windowAllowReturnTransitionOverlap">false</item>
+	</style>
+	
+	<style name="MSay2.Theme.Translucent.Activity.WallpaperTransition">
+		<item name="android:windowEnterTransition">@transition/wallpaper_info_enter</item>
+		<item name="android:windowReturnTransition">@transition/wallpeper_info_return</item>
+	</style>
+	
+	<style name="MSay2.Theme.Translucent.Activity.ContactTransition">
+		<item name="android:windowEnterTransition">@transition/contact_enter</item>
+		<item name="android:windowReturnTransition">@transition/contact_return</item>
+	</style>
+	
+	<style name="MSay2.Theme.Translucent.Activity.BottomSheetTransition">
+		<item name="android:windowEnterTransition">@transition/bottom_sheet_enter</item>
+		<item name="android:windowReturnTransition">@transition/bottom_sheet_return</item>
+	</style>
+	
+	<style name="MSay2.Theme.TitleDialog">
+		<item name="android:paddingLeft">24dp</item>
+		<item name="android:paddingRight">24dp</item>
+		<item name="android:paddingTop">24dp</item>
+		<item name="android:paddingBottom">0dp</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:textSize">20sp</item>
+	</style>
+	
+	<style name="MSay2.Theme.ContentDialog">
+		<item name="android:paddingLeft">24dp</item>
+		<item name="android:paddingRight">24dp</item>
+		<item name="android:paddingTop">20dp</item>
+		<item name="android:paddingBottom">24dp</item>
+	</style>
+	
+	<style name="SelectableItemBackgroundBorderless">
+		<item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+		<item name="android:theme">@style/RippleColorTheme</item>
+	</style>
+	
+	<style name="RippleColorTheme">
+		<item name="colorControlHighlight">@color/translucent_white</item>
+	</style>
+	
+	<style name="Widget.MSay2" parent="android:Widget"/>
+		
+	<style name="Widget.MSay2.DialogTitle">
+        <item name="android:textAppearance">@style/TextAppearance.DialogTitle</item>
+        <item name="lineHeightHint">28sp</item>
+    </style>
+	
+	<style name="TextAppearance.DialogTitle" parent="@android:style/TextAppearance.Material.Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+		
+</resources>

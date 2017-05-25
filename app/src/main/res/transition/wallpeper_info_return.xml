@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:transitionOrdering="together"
+    android:interpolator="@android:interpolator/linear_out_slow_in">
+
+	<slide
+        android:slideEdge="right"
+        android:duration="400">
+        <targets>
+			<target android:targetId="@android:id/navigationBarBackground"/>
+			<target android:targetId="@android:id/statusBarBackground"/>
+			<target android:targetId="@+id/id_parent_content"/>
+        </targets>
+    </slide>
+
+</transitionSet>

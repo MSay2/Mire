@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:id="@+id/content_transition">
+
+	<RelativeLayout
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent">
+
+		<FrameLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:id="@+id/id_parent_window"
+			android:layout_toLeftOf="@+id/id_parent_content"
+			android:elevation="13dp"/>
+
+		<RelativeLayout
+			android:id="@+id/id_parent_content"
+			android:layout_height="fill_parent"
+			android:layout_width="240dp"
+			android:background="#FAFAFA"
+			android:layout_gravity="right"
+			android:layout_alignParentRight="true"
+			android:elevation="12dp">
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/id_content_wallpaper">
+
+				<ImageView
+					android:layout_height="216dp"
+					android:layout_width="match_parent"
+					android:id="@+id/id_wallpaper"
+					android:scaleType="centerCrop"
+					android:background="#20000000"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:padding="16dp"
+				android:layout_below="@id/id_content_wallpaper"
+				android:id="@+id/id_content_info">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="Test title"
+					android:layout_marginBottom="16dp"
+					android:textSize="14sp"
+					android:textColor="#87000000"
+					android:id="@+id/id_title"
+					android:ellipsize="end"
+					android:singleLine="true"/>
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="Test auteur"
+					android:layout_marginBottom="16dp"
+					android:textColor="#87000000"
+					android:textSize="14sp"
+					android:id="@+id/id_auteur"
+					android:ellipsize="end"
+					android:singleLine="true"/>
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="Test location"
+					android:textSize="14sp"
+					android:textColor="#87000000"
+					android:id="@+id/id_location"
+					android:ellipsize="end"
+					android:maxLines="2"/>
+
+			</LinearLayout>
+
+			<View
+				android:background="#12000000"
+				android:layout_height="1dp"
+				android:layout_width="match_parent"
+				android:layout_marginBottom="8dp"
+				android:layout_below="@id/id_content_info"
+				android:id="@+id/seperate_view_1"/>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:layout_below="@id/seperate_view_1"
+				android:id="@+id/id_content_options">
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:padding="16dp"
+					android:gravity="center_vertical"
+					android:id="@+id/id_apply"
+					android:background="?android:attr/selectableItemBackground">
+
+					<ImageView
+						android:layout_height="24dp"
+						android:layout_width="24dp"
+						android:layout_marginRight="32dp"
+						android:src="@drawable/ic_check_circle_semi_black_24dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/apply_wallpaper"
+						android:textSize="14sp"
+						android:textColor="@color/semi_black"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:padding="16dp"
+					android:gravity="center_vertical"
+					android:id="@+id/id_save"
+					android:background="?android:attr/selectableItemBackground">
+
+					<ImageView
+						android:layout_height="24dp"
+						android:layout_width="24dp"
+						android:layout_marginRight="32dp"
+						android:src="@drawable/ic_save_semi_black_24dp"/>
+
+					<TextView
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:text="@string/apply_save"
+						android:textSize="14sp"
+						android:textColor="@color/semi_black"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<View
+				android:background="#12000000"
+				android:layout_height="1dp"
+				android:layout_width="match_parent"
+				android:layout_marginTop="8dp"
+				android:id="@+id/seperate_view_2"
+				android:layout_below="@id/id_content_options"/>
+
+		</RelativeLayout>
+
+	</RelativeLayout>
+
+	<ImageView
+		android:layout_height="24dp"
+		android:layout_width="match_parent"
+		android:background="#20000000"/>
+
+</RelativeLayout>
+

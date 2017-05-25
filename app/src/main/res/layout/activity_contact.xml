@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:id="@+id/id_root"
+	android:background="#F5F5F5"
+	android:elevation="8dp">
+	
+	<RelativeLayout
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent"
+		android:background="#F5F5F5">
+		
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:layout_below="@+id/ma_toolbar">
+
+			<RelativeLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:padding="16dp"
+				android:gravity="center_vertical">
+				
+				<fr.yoann.dev.preferences.widget.CircularImageView
+					android:id="@+id/id_avatar"
+					android:layout_height="56dp"
+					android:layout_width="56dp"
+					android:layout_marginRight="16dp"
+					android:padding="4dp"
+					android:src="@drawable/ic_dev_cartoon"
+					android:layout_centerVertical="true"/>
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:text="@string/dev_name"
+					android:textSize="14sp"
+					android:fontFamily="sans-serif-medium"
+					android:textColor="#212121"
+					android:layout_toRightOf="@id/id_avatar"
+					android:id="@+id/id_name"
+					android:layout_centerVertical="true"/>
+
+				<ImageView
+					android:id="@+id/id_more"
+					android:layout_height="28dp"
+					android:layout_width="28dp"
+					android:paddingLeft="2dp"
+					android:paddingRight="2dp"
+					android:layout_centerVertical="true"
+					android:layout_alignParentRight="true"
+					android:background="?attr/selectableItemBackgroundBorderless"
+					android:src="@drawable/ic_more_vert_semi_black_24dp"
+					android:visibility="gone"/>
+
+			</RelativeLayout>
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical">
+
+				<ScrollView
+					android:layout_height="fill_parent"
+					android:layout_width="match_parent"
+					android:fillViewport="true"
+					android:scrollbars="vertical">
+
+					<EditText
+						android:id="@+id/id_recipient"
+						android:layout_height="fill_parent"
+						android:layout_width="fill_parent"
+						android:ems="10"
+						android:hint="@string/mail_your_message"
+						android:background="#F5F5F5"
+						android:gravity="top"
+						android:padding="16dp"
+						android:textSize="14sp"
+						android:textColor="@color/semi_black"
+						android:scrollbars="vertical"
+						android:imeOptions="flagNoExtractUi"
+						android:capitalize="sentences"
+						android:inputType="textCapSentences|textMultiLine"/>
+
+				</ScrollView>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<android.support.v7.widget.Toolbar
+			android:id="@+id/ma_toolbar"
+			android:layout_height="56dp"
+			android:layout_width="match_parent"
+			android:background="#00000000"
+			android:elevation="0dp"
+			android:minHeight="?attr/actionBarSize"
+			android:layout_marginTop="24dp">
+
+			<android.support.v7.widget.AppCompatTextView
+				android:id="@+id/toolbar_title"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:gravity="center_vertical"
+				android:text=" "
+				android:singleLine="true"
+				android:ellipsize="end"
+				android:fontFamily="sans-serif-medium"
+				android:textColor="@color/semi_black"
+				android:textSize="18sp"/>
+
+		</android.support.v7.widget.Toolbar>
+
+		<RelativeLayout
+			android:id="@+id/id_dismiss_more_fonction"
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:visibility="gone">
+
+		</RelativeLayout>
+
+		<LinearLayout
+			android:id="@+id/id_more_fonction"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:orientation="vertical"
+			android:background="@drawable/background_border_white"
+			android:elevation="2dp"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="16dp"
+			android:layout_marginTop="86dp"
+			android:visibility="gone">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:text="@string/mail_clear"
+				android:padding="16dp"
+				android:id="@+id/id_clear"
+				android:background="?attr/selectableItemBackground"
+				android:textSize="14sp"
+				android:textColor="#212121"
+				android:fontFamily="sans-serif-medium"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:text="@string/mail_balise"
+				android:padding="16dp"
+				android:id="@+id/id_balise"
+				android:background="?attr/selectableItemBackground"
+				android:textSize="14sp"
+				android:textColor="#212121"
+				android:fontFamily="sans-serif-medium"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:text="@string/mail_send"
+				android:padding="16dp"
+				android:id="@+id/id_send"
+				android:background="?attr/selectableItemBackground"
+				android:textSize="14sp"
+				android:textColor="#212121"
+				android:fontFamily="sans-serif-medium"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/id_balise_fonction"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:orientation="vertical"
+			android:background="@drawable/background_border_white"
+			android:elevation="2dp"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="16dp"
+			android:layout_marginTop="86dp"
+			android:visibility="gone">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:text="@string/mail_question_m"
+				android:padding="16dp"
+				android:id="@+id/id_question"
+				android:background="?attr/selectableItemBackground"
+				android:textSize="14sp"
+				android:textColor="#212121"
+				android:fontFamily="sans-serif-medium"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:text="@string/mail_suggestion_m"
+				android:padding="16dp"
+				android:id="@+id/id_suggestion"
+				android:background="?attr/selectableItemBackground"
+				android:textSize="14sp"
+				android:textColor="#212121"
+				android:fontFamily="sans-serif-medium"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent"
+				android:text="@string/mail_bug_m"
+				android:padding="16dp"
+				android:id="@+id/id_bogue"
+				android:background="?attr/selectableItemBackground"
+				android:textSize="14sp"
+				android:textColor="#212121"
+				android:fontFamily="sans-serif-medium"/>
+
+		</LinearLayout>
+		
+	</RelativeLayout>
+	
+	<ImageView
+		android:id="@+id/id_status_bar"
+		android:layout_height="24dp"
+		android:layout_width="match_parent"
+		android:background="?attr/colorPrimaryDark"/>
+
+</RelativeLayout>
+

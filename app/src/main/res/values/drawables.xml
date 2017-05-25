@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<drawable name="header">@drawable/header_home</drawable>
+	<drawable name="header_s">@drawable/header_settings</drawable>
+	
+</resources>

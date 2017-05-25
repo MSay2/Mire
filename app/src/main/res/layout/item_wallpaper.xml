@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:id="@+id/id_open_image"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="vertical">
+		
+		<com.msay2.mire.widget.SquareImageView
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:id="@+id/id_image"
+			android:scaleType="centerCrop"/>
+
+		<LinearLayout
+			android:layout_height="68dp"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:id="@+id/id_container">
+
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:paddingLeft="16dp"
+				android:paddingRight="16dp"
+				android:gravity="center_vertical">
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="Text"
+					android:ellipsize="end"
+					android:singleLine="true"
+					android:textSize="16sp"
+					android:gravity="center_vertical"
+					android:id="@+id/id_title"/>
+
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:text="Text"
+					android:ellipsize="end"
+					android:singleLine="true"
+					android:textSize="12sp"
+					android:gravity="center_vertical"
+					android:id="@+id/id_text"/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+		
+	</LinearLayout>
+
+</LinearLayout>
+

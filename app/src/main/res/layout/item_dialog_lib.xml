@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fr.yoann.dev.preferences.widget.ForegroundRelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	android:gravity="center_vertical"
+	android:paddingTop="16dp"
+	android:paddingBottom="16dp"
+	android:background="@color/white"
+    android:foreground="?android:selectableItemBackground"
+	android:clipToPadding="false"
+	android:stateListAnimator="@animator/raise">
+
+	<fr.yoann.dev.preferences.widget.CircularImageView
+		android:id="@+id/id_avatar"
+		android:layout_height="56dp"
+		android:layout_width="56dp"
+		android:layout_marginRight="32dp"
+		android:layout_marginLeft="16dp"
+		android:padding="4dp"
+		android:src="@drawable/ic_dev_cartoon"
+		android:layout_centerVertical="true"/>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:layout_marginRight="16dp"
+		android:layout_toRightOf="@id/id_avatar"
+		android:layout_centerVertical="true">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:text="Meclot Yoann (MSay2)"
+			android:textSize="16sp"
+			android:textColor="@color/semi_black"
+			android:id="@+id/id_name_dev"
+			android:ellipsize="end"
+			android:maxLines="2"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:text="Helpers"
+			android:textSize="14sp"
+			android:textColor="#54000000"
+			android:id="@+id/id_name_lib"
+			android:ellipsize="end"
+			android:maxLines="2"/>
+
+	</LinearLayout>
+
+</fr.yoann.dev.preferences.widget.ForegroundRelativeLayout>

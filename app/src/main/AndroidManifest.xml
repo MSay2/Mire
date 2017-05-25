@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.msay2.mire">
+	
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.SET_WALLPAPER_HINTS"/>
+	<uses-permission android:name="android.permission.SET_WALLPAPER"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+	<uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+	
+    <application
+        android:allowBackup="true"
+		android:name=".applications.MireApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+		
+		<activity
+			android:name=".MainActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"> <!-- Do not Change this line !! -->
+			
+			<intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+		</activity>
+		
+        <activity
+            android:name=".ActivityIntro"
+            android:label="@string/app_name"
+			android:theme="@style/ThemeIntro"
+			android:screenOrientation="portrait"/> <!-- Do not Change this line !! -->
+		
+		<activity
+			android:name=".ActivitySetWallpapers"
+			android:label="@string/app_name"
+			android:theme="@style/MSay2.Theme.Translucent"
+			android:screenOrientation="portrait"/> <!-- Do not Change this line !! -->
+		
+		<activity
+			android:name=".ActivityWallpaperInfo"
+			android:label="@string/app_name"
+			android:theme="@style/MSay2.Theme.Translucent.Activity.WallpaperTransition"
+			android:screenOrientation="portrait"/> <!-- Do not Change this line !! -->
+		
+		<activity
+			android:name=".ActivityContact"
+			android:label="@string/app_name"
+			android:theme="@style/MSay2.Theme.Translucent.Activity.ContactTransition"
+			android:parentActivityName=".MainActivity"
+			android:windowSoftInputMode="adjustPan"
+			android:screenOrientation="portrait"/> <!-- Do not Change this line !! -->
+		
+		<activity
+			android:name=".BottomSheetLib"
+			android:label="@string/app_name"
+			android:theme="@style/MSay2.Theme.Translucent.Activity.BottomSheetTransition"
+			android:screenOrientation="portrait"/> <!-- Do not Change this line !! -->
+		
+    </application>
+
+</manifest>
