@@ -32,4 +32,7 @@
 	<color name="translucent_background">#99323232</color>
 	<color name="translucent_white">#30FFFFFF</color>
 	
+	<color name="immersive_status_bar">#99FFFFFF</color>
+    <color name="light_immersive_status_bar">@color/immersive_status_bar</color>
+	
 </resources>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/root_layout"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<FrameLayout
+		android:id="@+id/background_transition"
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:background="#F5F5F5"/>
+
+	<RelativeLayout
+		android:layout_height="340dp"
+		android:layout_width="match_parent"
+		android:id="@+id/id_container_background"
+		android:background="#F5F5F5">
+
+		<RelativeLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:orientation="vertical">
+
+			<fr.yoann.dev.preferences.widget.CircularImageView
+				android:layout_height="112dp"
+				android:layout_width="112dp"
+				android:id="@+id/id_avatar"
+				android:src="@mipmap/ic_launcher"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="64dp"
+				android:padding="4dp"
+				android:transitionName="transition_dev"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:text="Meclot Yoann"
+				android:textSize="16sp"
+				android:textColor="@color/semi_black"
+				android:fontFamily="sans-serif-smallcaps"
+				android:layout_gravity="bottom"
+				android:layout_alignParentBottom="true"
+				android:layout_marginBottom="24dp"
+				android:layout_centerHorizontal="true"
+				android:id="@+id/id_name_dev"
+				android:textStyle="bold"/>
+
+			<fr.yoann.dev.preferences.widget.MSay2Button
+				android:id="@+id/id_view_git"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:minHeight="36dp"
+				android:layout_alignParentBottom="true"
+				android:layout_marginBottom="64dp"
+				android:layout_centerHorizontal="true"
+				android:paddingLeft="12dp"
+				android:paddingRight="12dp"
+				android:foreground="?android:attr/selectableItemBackground"
+				android:background="@drawable/background_button"
+				android:stateListAnimator="@animator/touch_button_raise"
+				android:theme="@style/RippleColorTheme">
+
+				<ImageView
+					android:id="@+id/id_icon"
+					android:layout_height="24dp"
+					android:layout_width="24dp"
+					android:src="@drawable/ic_github_logo"
+					android:layout_centerVertical="true"/>
+
+				<TextView
+					android:id="@+id/id_text"
+					android:layout_toRightOf="@id/id_icon"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:text="GITHUB"
+					android:layout_marginLeft="8dp"
+					android:layout_centerVertical="true"
+					android:textSize="14sp"
+					android:textColor="@color/white"
+					android:fontFamily="sans-serif-medium"/>
+
+			</fr.yoann.dev.preferences.widget.MSay2Button>
+
+		</RelativeLayout>
+
+	</RelativeLayout>
+
+	<LinearLayout
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent"
+		android:orientation="vertical"
+		android:background="@color/white"
+		android:id="@+id/id_container_text"
+		android:layout_below="@+id/id_container_background"
+		android:padding="16dp">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:text="Text"
+			android:textSize="16sp"
+			android:textColor="#54000000"
+			android:id="@+id/id_description_lib"/>
+
+	</LinearLayout>
+
+</RelativeLayout>
+

@@ -21,7 +21,8 @@
 		android:layout_marginLeft="16dp"
 		android:padding="4dp"
 		android:src="@drawable/ic_dev_cartoon"
-		android:layout_centerVertical="true"/>
+		android:layout_centerVertical="true"
+		android:transitionName="transition_dev"/>
 
 	<LinearLayout
 		android:layout_height="wrap_content"

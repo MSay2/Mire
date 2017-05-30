@@ -5,4 +5,11 @@
     <string name="hello_world">Hello world!</string>
 	<string name="dev_name">Meclot Yoann</string>
 	
+	<string name="description_lib_meclot_yoann">"An easy-to-use tool to facilitate development"</string>
+	<string name="description_lib_daniel_zeller">"A library that gives depth to Views"</string>
+	<string name="description_lib_takahirom">"Simple tool which help you to implement activity and fragment transition for pre-Lollipop devices"</string>
+	<string name="description_lib_bumptech">"An image loading and caching library for Android focused on smooth scrolling"</string>
+	<string name="description_lib_sergeytarasevich">"Powerful and flexible library for loading, caching and displaying images on Android"</string>
+	<string name="description_lib_sufficientlysecure">"TextView to display simple HTML content"</string>
+	
 </resources>

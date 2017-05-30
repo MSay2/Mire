@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	
 	<style name="ThemeIntro" parent="@style/Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/primary</item>
 		<item name="colorPrimaryDark">@color/primary_dark</item>
@@ -7,4 +8,17 @@
 		<item name="android:windowLightStatusBar">true</item>
 		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
 	</style>
+	
+	<style name="MSay2.Theme.Translucent.Activity.DetailsDevsTransition">
+		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/light_immersive_status_bar</item>
+        <item name="android:navigationBarColor">@color/immersive_status_bar</item>
+        <item name="android:windowLightStatusBar">true</item>
+		<item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/details_devs_shared_enter</item>
+		<item name="android:windowEnterTransition">@transition/details_devs_enter</item>
+		<item name="android:windowReturnTransition">@transition/details_devs_return</item>
+	</style>
+	
 </resources>

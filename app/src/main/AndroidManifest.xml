@@ -64,6 +64,18 @@
 			android:theme="@style/MSay2.Theme.Translucent.Activity.BottomSheetTransition"
 			android:screenOrientation="portrait"/> <!-- Do not Change this line !! -->
 		
+		<activity
+			android:name="ActivityDetailsDevs"
+			android:label="@string/app_name"
+			android:theme="@style/MSay2.Theme.Translucent.Activity.DetailsDevsTransition"
+			android:screenOrientation="portrait"/> <!-- Do not Change this line !! -->
+			
+		<activity
+			android:name=".ActivityTest1"/>
+		
+		<activity
+			android:name=".ActivityTest2"/>
+			
     </application>
 
 </manifest>

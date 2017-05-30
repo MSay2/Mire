@@ -86,4 +86,11 @@
 	
 	<string name="pager_done">"Prêt !"</string>
 	
+	<string name="description_lib_meclot_yoann">"Un outil simple d'utilisation pour faciliter le développement"</string>
+	<string name="description_lib_daniel_zeller">"Une bibliothèque qui donne une profondeur aux vues"</string>
+	<string name="description_lib_takahirom">"Un outil simple qui vous aide à implémenter une transition d'activité et de fragment pour les appareils pré-Lollipop"</string>
+	<string name="description_lib_bumptech">"Une bibliothèque de chargement et de mise en cache d'image pour Android se concentre sur un défilement plus doux"</string>
+	<string name="description_lib_sergeytarasevich">"Une bibliothèque puissante et flexible pour le chargement de mise en cache et d'affichage d'images sur Android"</string>
+	<string name="description_lib_sufficientlysecure">"Une bibliothèques pour TextView, afficher du contenu HTML"</string>
+	
 </resources>

@@ -62,7 +62,7 @@ public class DialogFragmentChangelog extends DialogFragment
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
 		    .setView(view)
-		    .setPositiveButton(((MainActivity)getActivity()).getStringSrc(R.string.button_text_yes), new DialogInterface.OnClickListener()
+		    .setPositiveButton(((MainActivity)getActivity()).getStringSrc(R.string.button_text_done), new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface view, int position)

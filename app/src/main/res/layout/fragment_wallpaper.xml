@@ -41,10 +41,10 @@
 			android:layout_height="56dp"
 			android:src="@mipmap/ic_launcher"
 			android:layout_alignParentBottom="true"
-			android:background="?android:attr/selectableItemBackgroundBorderless"
 			android:scaleType="centerInside"
 			android:paddingLeft="4dp"
-			android:paddingRight="4dp"/>
+			android:paddingRight="4dp"
+			style="@style/SelectableItemBackgroundBorderless"/>
 
 		<TextView
 			android:id="@+id/title"
