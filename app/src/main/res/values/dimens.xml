@@ -5,7 +5,9 @@
 	<dimen name="menu_item_height">52dp</dimen>
 	
 	<dimen name="bottom_sheet_width">@dimen/match_parent</dimen>
-
+	
 	<item name="match_parent" format="integer" type="dimen">-1</item>
+	
+	<dimen name="dialog_corners">2dp</dimen>
 	
 </resources>

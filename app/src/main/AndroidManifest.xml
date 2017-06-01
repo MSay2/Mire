@@ -71,10 +71,14 @@
 			android:screenOrientation="portrait"/> <!-- Do not Change this line !! -->
 			
 		<activity
-			android:name=".ActivityTest1"/>
+			android:name=".ActivityDialogWallpaperChoiceOptions"
+			android:label="@string/app_name"
+			android:theme="@style/MSay2.Theme.Translucent.DialogOptions.Transition"
+			android:screenOrientation="portrait"/> <!-- Do not Change this line !! -->
 		
 		<activity
-			android:name=".ActivityTest2"/>
+			android:name=".ActivityTest2"
+			android:theme="@style/MSay2.Theme.Translucent"/>
 			
     </application>
 

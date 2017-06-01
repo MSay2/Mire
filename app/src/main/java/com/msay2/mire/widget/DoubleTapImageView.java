@@ -40,8 +40,7 @@ public class DoubleTapImageView extends ImageView
         @Override
         public boolean onDoubleTap(MotionEvent e) 
 		{
-			ActivitySetWallpapers.gettWallpaper((ActivitySetWallpapers)context);
-			
+			// TODO : This is for the double tap event, implented your method
             return true;
         }
     }

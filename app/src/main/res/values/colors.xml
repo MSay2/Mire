@@ -35,4 +35,6 @@
 	<color name="immersive_status_bar">#99FFFFFF</color>
     <color name="light_immersive_status_bar">@color/immersive_status_bar</color>
 	
+	<color name="primary_dark_choice_options">#FF33292D</color>
+	
 </resources>

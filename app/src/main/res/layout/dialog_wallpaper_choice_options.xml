@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/root_window"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:gravity="center">
+
+	<LinearLayout
+		android:id="@+id/id_container_transition"
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:layout_margin="24dp"
+		android:elevation="24dp"
+		android:background="@drawable/background_dialog"
+		android:transitionName="transition_dialog"
+		android:gravity="center"
+		android:padding="24dp">
+
+		<ImageView
+			android:background="?android:attr/selectableItemBackgroundBorderless"
+			android:layout_height="72dp"
+			android:layout_width="72dp"
+			android:layout_marginRight="10dp"
+			android:src="@drawable/ic_check_circle_accent_24dp"
+			android:scaleType="centerInside"
+			android:id="@+id/id_apply"/>
+
+		<ImageView
+			android:background="?android:attr/selectableItemBackgroundBorderless"
+			android:layout_height="72dp"
+			android:layout_width="72dp"
+			android:layout_marginLeft="10dp"
+			android:src="@drawable/ic_save_accent_24dp"
+			android:scaleType="centerInside"
+			android:id="@+id/id_save"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+

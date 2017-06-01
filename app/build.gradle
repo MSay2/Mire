@@ -10,8 +10,8 @@ android
         applicationId "com.msay2.mire"
         minSdkVersion 21
         targetSdkVersion 24
-        versionCode 4
-        versionName "4.0"
+        versionCode 5
+        versionName "5.0"
     }
     buildTypes 
 	{

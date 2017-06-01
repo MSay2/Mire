@@ -10,6 +10,7 @@ import fr.yoann.dev.preferences.utils.AnimUtils;
 import com.msay2.mire.helpers.WallpaperHelper;
 import com.msay2.mire.utils.ImageConfig;
 import com.msay2.mire.widget.DoubleTapImageView;
+import com.msay2.mire.transition.CircularRevealTransformEnter;
 
 import com.kogitune.activitytransition.ActivityTransition;
 import com.kogitune.activitytransition.ExitActivityTransition;
@@ -26,7 +27,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 
+import android.content.Intent;
 import android.transition.Transition;
+import android.util.Pair;
 import android.graphics.Color;
 import android.graphics.Bitmap;
 import android.view.View;
@@ -51,7 +54,7 @@ public class ActivitySetWallpapers extends AppCompatActivity
 	private ExitActivityTransition exitTransition;
 	private Transition.TransitionListener enterTransitionListener;
 	private ImageView apply;
-	private Animation anim;
+	private Animation anim, _anim;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -82,6 +85,7 @@ public class ActivitySetWallpapers extends AppCompatActivity
 		
 		mColor = Preferences.getAttributeColor(this, R.attr.colorAccent);
 		anim = AnimationUtils.loadAnimation(this, R.anim.slide_left_from_right);
+		_anim = AnimationUtils.loadAnimation(this, R.anim.slide_right_from_left);
 		
 		exitTransition = ActivityTransition.with(this.getIntent())
 		    .to(this, wallpaper, "walls")
@@ -101,11 +105,6 @@ public class ActivitySetWallpapers extends AppCompatActivity
 
         super.onSaveInstanceState(outState);
     }
-	
-	public static void gettWallpaper(ActivitySetWallpapers activity)
-	{
-		WallpaperHelper.downloadWallpaper(activity, mColor, image, title, text);
-	}
 	
 	private void setEnter()
 	{
@@ -201,7 +200,18 @@ public class ActivitySetWallpapers extends AppCompatActivity
 		@Override
 		public void onClick(View view)
 		{
-			applyWallpaper(image);
+			Intent intent = new Intent(ActivitySetWallpapers.this, ActivityDialogWallpaperChoiceOptions.class);
+			intent.putExtra(URL, image);
+			intent.putExtra(NAME, title);
+			intent.putExtra(TEXT, text);
+			
+			CircularRevealTransformEnter.addExtras(intent, R.drawable.ic_more_vert_accent_24dp);
+			
+			Pair<View, String> pair = (Pair<View, String>)Pair.create((View)findViewById(R.id.id_apply), "transition_dialog");
+			
+			ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(ActivitySetWallpapers.this, pair);
+			
+			startActivity(intent, options.toBundle());
 		}
 	};
 	
@@ -210,15 +220,10 @@ public class ActivitySetWallpapers extends AppCompatActivity
 		@Override
 		public boolean onLongClick(View view)
 		{
-			Preferences.rapidToast(ActivitySetWallpapers.this, getStringSrc(R.string.apply_wallpaper));
+			Preferences.rapidToast(ActivitySetWallpapers.this, getStringSrc(R.string.apply_options));
 			return true;
 		}
 	};
-	
-	private void applyWallpaper(String url)
-	{
-		WallpaperHelper.applyWallpaper(ActivitySetWallpapers.this, url);
-	}
 	
 	private String getStringSrc(int id)
 	{
@@ -230,7 +235,9 @@ public class ActivitySetWallpapers extends AppCompatActivity
 	@Override
 	public void onBackPressed()
 	{
-		AnimUtils._hideScale(ActivitySetWallpapers.this, apply, listenerAnim);
+		_anim.setAnimationListener(listenerAnim);
+		apply.startAnimation(_anim);
+		apply.setVisibility(View.GONE);
 	}
 	
 	public Animation.AnimationListener listenerAnim = new Animation.AnimationListener()

@@ -24,11 +24,12 @@
 		android:layout_width="56dp"
 		android:layout_alignParentRight="true"
 		android:layout_marginTop="96dp"
-		android:src="@drawable/ic_check_accent_24dp"
+		android:src="@drawable/ic_more_vert_accent_24dp"
 		android:id="@+id/id_apply"
 		android:visibility="gone"
 		android:elevation="4dp"
-		android:scaleType="centerInside"/>
+		android:scaleType="centerInside"
+		android:transitionName="transition_dialog"/>
 
 	<ImageView
 		android:id="@+id/status_bar"

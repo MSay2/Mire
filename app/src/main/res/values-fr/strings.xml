@@ -81,6 +81,7 @@
 	<string name="mail_suggestion_m">"SUGGESTION"</string>
 	<string name="mail_bug_m">"BOGUES"</string>
 	
+	<string name="apply_options">"Options"</string>
 	<string name="apply_wallpaper">"Appliquer"</string>
 	<string name="apply_save">"Sauvegarder"</string>
 	

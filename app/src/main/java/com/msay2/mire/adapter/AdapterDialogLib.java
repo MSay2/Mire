@@ -52,7 +52,7 @@ public class AdapterDialogLib extends RecyclerView.Adapter<AdapterDialogLib.View
 		
 		final String[] URL_LIB = 
 		{
-			"https://github.com/msay2",
+			"https://github.com/msay2/Mire/tree/master/helpers",
 			"https://github.com/danielzeller/Depth-LIB-Android-",
 			"https://github.com/takahirom/PreLollipopTransition",
 			"https://github.com/bumptech/glide",

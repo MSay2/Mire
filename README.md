@@ -19,6 +19,7 @@
 <img src="screenshots/mire_04.png" width="25%">
 <img src="screenshots/mire_05.png" width="25%">
 <img src="screenshots/mire_06.png" width="25%">
+<img src="screenshots/mire_07.png" width="25%">
 
 
 ### Clone Git Repository
@@ -37,10 +38,10 @@ Ce projet utilise les librairies suivantes:
 
 
 # Mire
-par **Meclot Yoann**
+par **Meclot Yoann** (MSay2)
 
  
- ### License
+ # License
 
 
 ```
