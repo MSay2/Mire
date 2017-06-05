@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	
+	<!--
+		Changelog support html formatting
+		
+		* <b> for Bold
+		* <i> for Italic
+		* <u> for Underline
+		
+		Your line is => <item><![CDATA[My name is <b>Yoann</b>]]></item>
+	-->
 
 	<string-array name="changelog">
-		<item>"Améliorations apportées"</item>
+		<item>"La palette de couleurs a était améliorée"</item>
+		<item>"Ajout d'un dossier respective pour les mises à jours"</item>
+		<item><![CDATA[Mire est <b>OpenSource</b>]]></item>
 	</string-array>
 
 </resources>

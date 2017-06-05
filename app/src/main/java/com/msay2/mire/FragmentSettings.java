@@ -73,10 +73,13 @@ public class FragmentSettings extends Fragment implements MenuAnimation
 	private ProgressDialog progressDialog;
 	private Preferences pref;
 	private Boolean isConnected = false;
+	private String storage = Preferences.getExternalStorage();
 	
 	public static final int TRANSFORM_DURATION = 900;
 	public static final int REQUEST_WRITE_STORAGE = 128;
 	public static final String TAG = FragmentSettings.class.getSimpleName();
+	public static final String folder_mire = "/Mire";
+	public static final String folder_update = "/Mise à jour";
 	
 	public FragmentSettings()
 	{ }
@@ -328,7 +331,20 @@ public class FragmentSettings extends Fragment implements MenuAnimation
 	
 	private void obtainsWiFi(Boolean status)
 	{
-		getVersion();
+		File newFolder = new File(storage + folder_mire);
+		newFolder.mkdir();
+		
+		setNewApkDirectory();
+	}
+	
+	private void setNewApkDirectory()
+	{
+		File newFolder = new File(storage + folder_mire + folder_update);
+		newFolder.mkdir();
+		if (newFolder != null)
+		{
+			getVersion();
+		}
 	}
 	
 	private void getVersion()
@@ -527,7 +543,7 @@ public class FragmentSettings extends Fragment implements MenuAnimation
 				Log.d("ANDRO_ASYNC", "Lenght of file: " + lenghtOfFile);
 
 				InputStream input = new BufferedInputStream(url.openStream());
-				OutputStream output = new FileOutputStream("/sdcard/myapp.apk");
+				OutputStream output = new FileOutputStream("/sdcard" + folder_mire + folder_update + "/mire.apk");
 
 				byte data[] = new byte[1024];
 
@@ -539,7 +555,6 @@ public class FragmentSettings extends Fragment implements MenuAnimation
 					publishProgress("" + (int)((total*100) / lenghtOfFile));
 					output.write(data, 0, count);
 				}
-
 				output.flush();
 				output.close();
 				input.close();
@@ -562,7 +577,7 @@ public class FragmentSettings extends Fragment implements MenuAnimation
 			progressDialog.dismiss();
 
 			Intent intent = new Intent(Intent.ACTION_VIEW);
-			File file = new File("/mnt/sdcard/myapp.apk");
+			File file = new File("/mnt/sdcard" + folder_mire + folder_update + "/mire.apk");
 			
 			intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
 			startActivity(intent);

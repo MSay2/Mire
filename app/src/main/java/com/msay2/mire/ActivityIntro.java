@@ -73,7 +73,6 @@ public class ActivityIntro extends AppCompatActivity
 		adapter.add("tab a", new FragmentIntroA());
 		adapter.add("tab 2", new FragmentIntroB());
 		adapter.add("tab 3", new FragmentIntroC());
-		adapter.add("tab 4", new FragmentIntroD());
 		
 		viewPager.setAdapter(adapter);
 		viewPager.setBackgroundColor(getResources().getColor(R.color.primary));

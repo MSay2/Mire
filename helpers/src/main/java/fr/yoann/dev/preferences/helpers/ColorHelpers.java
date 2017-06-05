@@ -1,7 +1,10 @@
 package fr.yoann.dev.preferences.helpers;
 
+import fr.yoann.dev.R;
+
 import android.support.annotation.ColorInt;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 
@@ -33,4 +36,18 @@ public class ColorHelpers
        
 		return Color.HSVToColor(hsv);
     }
+	
+	public static int getBodyTextColor(Context context, @ColorInt int color) 
+	{
+        double darkness = 1-(0.299*Color.red(color) + 0.587*Color.green(color) + 0.114*Color.blue(color))/255;
+
+		return (darkness < 0.35) ? context.getResources().getColor(R.color.semi_black) : context.getResources().getColor(R.color.semi_white);
+	}
+	
+	public static int getTitleTextColor(Context context, @ColorInt int color)
+	{
+		double darkness = 1-(0.299*Color.red(color) + 0.587*Color.green(color) + 0.114*Color.blue(color))/255;
+
+		return (darkness < 0.35) ? context.getResources().getColor(R.color.black) : context.getResources().getColor(R.color.white);
+	}
 }

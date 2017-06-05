@@ -135,8 +135,8 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
     public void setFinalStateViewPager(final Activity activity, final ViewPager viewPager, final ActivityIntro.IntroPagerAdapter adapter, final View view)
 	{
         this.viewPager = viewPager;
-		final Integer[] primary = {getResources().getColor(R.color.intro_color_a), getResources().getColor(R.color.intro_color_b), getResources().getColor(R.color.intro_color_c), getResources().getColor(R.color.intro_color_a)};
-		final Integer[] primaryDark = {getResources().getColor(R.color.intro_color_a_dark), getResources().getColor(R.color.intro_color_b_dark), getResources().getColor(R.color.intro_color_c_dark), getResources().getColor(R.color.intro_color_a_dark)};
+		final Integer[] primary = {getResources().getColor(R.color.intro_color_a), getResources().getColor(R.color.intro_color_b), getResources().getColor(R.color.intro_color_c)};
+		final Integer[] primaryDark = {getResources().getColor(R.color.intro_color_a_dark), getResources().getColor(R.color.intro_color_b_dark), getResources().getColor(R.color.intro_color_c_dark)};
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
 		{
 			@Override
@@ -182,10 +182,6 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
 					view.setVisibility(View.GONE);
 				}
 				if (position == 2)
-				{
-					view.setVisibility(View.GONE);
-				}
-				if (position == 3)
 				{
 					view.setVisibility(View.VISIBLE);
 				}

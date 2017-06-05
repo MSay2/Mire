@@ -12,8 +12,8 @@ import android.content.Context;
 
 public class Preferences
 {
-	public static int VERSION_CODE = 5;
-	public static String VERSION_NAME = "5.0";
+	public static int VERSION_CODE = 61;
+	public static String VERSION_NAME = "6.1";
 	
 	public static PreferencesHelper getPreferences(@NonNull Context context) 
 	{

@@ -11,6 +11,7 @@ import com.msay2.mire.helpers.WallpaperHelper;
 import com.msay2.mire.utils.ImageConfig;
 import com.msay2.mire.widget.DoubleTapImageView;
 import com.msay2.mire.transition.CircularRevealTransformEnter;
+import com.msay2.mire.utils.MirePaletteUtils;
 
 import com.kogitune.activitytransition.ActivityTransition;
 import com.kogitune.activitytransition.ExitActivityTransition;
@@ -32,6 +33,7 @@ import android.transition.Transition;
 import android.util.Pair;
 import android.graphics.Color;
 import android.graphics.Bitmap;
+import android.graphics.PorterDuff;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation;
@@ -39,6 +41,9 @@ import android.widget.ImageView;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.graphics.drawable.*;
+import android.support.v4.content.*;
+import android.graphics.*;
 
 public class ActivitySetWallpapers extends AppCompatActivity
 {
@@ -156,8 +161,7 @@ public class ActivitySetWallpapers extends AppCompatActivity
 			{
 				super.onLoadingFailed(imageUri, view, failReason);
 
-				int text = Preferences.getAttributeColor(ActivitySetWallpapers.this, mColor);
-				OnWallpaperLoaded(text);
+				OnWallpaperLoaded();
 				
 				Preferences.longToast(ActivitySetWallpapers.this, getStringSrc(R.string.toast_apply_wallpaper_error_loading));
 			}
@@ -174,13 +178,7 @@ public class ActivitySetWallpapers extends AppCompatActivity
 						@Override
 						public void onGenerated(Palette palette)
 						{
-							int accent = Preferences.getAttributeColor(ActivitySetWallpapers.this, R.attr.colorAccent);
-							int color = palette.getVibrantColor(accent);
-
-							mColor = color;
-
-							int text = Preferences.getAttributeColor(ActivitySetWallpapers.this, color);
-							OnWallpaperLoaded(text);
+							OnWallpaperLoaded();
 						}
 					});
 				}
@@ -188,7 +186,7 @@ public class ActivitySetWallpapers extends AppCompatActivity
 		});
 	}
 	
-	private void OnWallpaperLoaded(@ColorInt int textColor)
+	private void OnWallpaperLoaded()
 	{
         progress.setVisibility(View.GONE);
 		apply.startAnimation(anim);

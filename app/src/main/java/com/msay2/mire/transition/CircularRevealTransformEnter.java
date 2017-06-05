@@ -91,8 +91,8 @@ public class CircularRevealTransformEnter extends Transition
 			return null;
 		}
 		
-		final Rect startBounds = (Rect) startValues.values.get(REVEAL_NAME);
-        final Rect endBounds = (Rect) endValues.values.get(REVEAL_NAME);
+		final Rect startBounds = (Rect)startValues.values.get(REVEAL_NAME);
+        final Rect endBounds = (Rect)endValues.values.get(REVEAL_NAME);
 		
 		final boolean fromFab = endBounds.width() > startBounds.width();
 		final View view = endValues.view;

@@ -6,6 +6,10 @@ import com.msay2.mire.widget.SeizeNeufImageView;
 import com.msay2.mire.widget.SquareImageView;
 import com.msay2.mire.ActivitySetWallpapers;
 import com.msay2.mire.ActivityWallpaperInfo;
+import com.msay2.mire.glide.WallpaperGlideRequest;
+import com.msay2.mire.glide.MireColorTarget;
+
+import fr.yoann.dev.preferences.helpers.ColorHelpers;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -20,10 +24,13 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -32,8 +39,6 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.LinearLayout;
-import android.app.*;
-import android.util.*;
 
 public class AdapterWallpaper extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
@@ -61,66 +66,43 @@ public class AdapterWallpaper extends RecyclerView.Adapter<RecyclerView.ViewHold
 	{
 		ItemDataWallpaper item = item_data.get(position);
 		final ViewHolder vH = (ViewHolder)holder;
-
-		Glide.with(context)
-			.load(item.getImageUrl())
-			.asBitmap()
-			.into(new BitmapImageViewTarget(vH.image)
+		
+		WallpaperGlideRequest.Builder.from(Glide.with(context), item.getImageUrl())
+		     .generatePalette(context)
+		     .build()
+			 .into(new MireColorTarget(vH.image) 
 			{
 				@Override
-				public void onResourceReady(Bitmap bitmap, GlideAnimation anim)
+				public void onLoadCleared(Drawable placeholder) 
 				{
-					super.onResourceReady(bitmap, anim);
+					super.onLoadCleared(placeholder);
+					setColorDetails(vH, getDefaultFooterColor());
+				}
 
-					Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener()
-					{
-						@Override
-						public void onGenerated(Palette palette)
-						{
-							Palette.Swatch vibrant = palette.getVibrantSwatch();
-							if (vibrant != null)
-							{
-								vH.layout_container.setBackgroundColor(vibrant.getRgb());
-								vH.title.setTextColor(vibrant.getBodyTextColor());
-								vH.text.setTextColor(vibrant.getTitleTextColor());
-							}
-						}
-					});
+				@Override
+				public void onColorReady(int color) 
+				{
+					setColorDetails(vH, color);
 				}
 			});
-
+			
 		vH.title.setText(item.getTitle());
 		vH.text.setText(item.getText());
-		
-		if (position == 0)
+	}
+	
+	private void setColorDetails(ViewHolder vH, final int color)
+	{
+		if (vH.layout_container != null)
 		{
-			vH.layout_container.setBackgroundColor(Color.parseColor("#365363"));
-			vH.title.setTextColor(Color.parseColor("#FFFFFF"));
-			vH.text.setTextColor(context.getResources().getColor(R.color.semi_white));
-		}
-		if (position == 1)
-		{
-			vH.layout_container.setBackgroundColor(Color.parseColor("#FFFAD3"));
-			vH.title.setTextColor(Color.parseColor("#212121"));
-			vH.text.setTextColor(context.getResources().getColor(R.color.semi_black));
-		}
-		if (position == 2)
-		{
-			vH.layout_container.setBackgroundColor(Color.parseColor("#FFCA7F"));
-			vH.title.setTextColor(Color.parseColor("#212121"));
-			vH.text.setTextColor(context.getResources().getColor(R.color.semi_black));
-		}
-		if (position == 3)
-		{
-			vH.layout_container.setBackgroundColor(Color.parseColor("#FFA87F"));
-			vH.title.setTextColor(Color.parseColor("#212121"));
-			vH.text.setTextColor(context.getResources().getColor(R.color.semi_black));
-		}
-		if (position == 5)
-		{
-			vH.layout_container.setBackgroundColor(Color.parseColor("#FFA4AB"));
-			vH.title.setTextColor(Color.parseColor("#212121"));
-			vH.text.setTextColor(context.getResources().getColor(R.color.semi_black));
+			vH.layout_container.setBackgroundColor(color);
+			if (vH.title != null)
+			{
+				vH.title.setTextColor(ColorHelpers.getTitleTextColor(context, color));
+			}
+			if (vH.text != null)
+			{
+				vH.text.setTextColor(ColorHelpers.getBodyTextColor(context, color));
+			}
 		}
 	}
 	
