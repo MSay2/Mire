@@ -168,6 +168,17 @@ public class Preferences
 		activity.getWindow().setStatusBarColor(color);
 		activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 	}
+	
+	/*
+	 Implented this line in {@Styles} for use this method
+	 and completely the view
+	 
+	 ** <item name="android:systemBarBackground">true</item> **
+	*/
+	public static void makeViewSystemBarBackground(View target)
+	{
+		target.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+	}
 	// end set Full Screen
 	
 	public static String getExternalStorage()

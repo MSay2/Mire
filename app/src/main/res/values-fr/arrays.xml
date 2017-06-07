@@ -2,18 +2,18 @@
 <resources>
 	
 	<!--
-		Changelog support html formatting
+		Le journal des modifications supporte le 
+		formatage HTML
 		
-		* <b> for Bold
-		* <i> for Italic
-		* <u> for Underline
+		* <b> pour Bold (Gras)
+		* <i> pour Italic (Italique)
+		* <u> pour Underlines (Souligne)
 		
-		Your line is => <item><![CDATA[My name is <b>Yoann</b>]]></item>
+		Votre ligne => <item><![CDATA[Mon nom est <b>Yoann</b>]]></item>
 	-->
 
 	<string-array name="changelog">
-		<item>"La palette de couleurs a était améliorée"</item>
-		<item>"Ajout d'un dossier respective pour les mises à jours"</item>
+		<item><![CDATA[Ajout de la traduction <b>Anglaise</b>]]></item>
 		<item><![CDATA[Mire est <b>OpenSource</b>]]></item>
 	</string-array>
 

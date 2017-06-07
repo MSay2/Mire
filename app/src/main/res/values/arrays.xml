@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!--
+		Changelog support html formatting
+		
+		* <b> for Bold
+		* <i> for Italic
+		* <u> for Underline
+		
+		Your line is => <item><![CDATA[My name is <b>Yoann</b>]]></item>
+	-->
+
+	<string-array name="changelog">
+		<item><![CDATA[Added the <b>English</b> translation]]></item>
+		<item><![CDATA[Mire is <b>OpenSource</b>]]></item>
+	</string-array>
+
+</resources>

@@ -7,11 +7,10 @@
 
 	<string name="fragment_home_text_home">"Une application où les fonds d'écrans au matériel de conception plat se retrouves, des couleurs clairs, un désigne simple, épuré et agréable à regarder"</string>
 	
-	<string name="fragment_intro_text_a">"Bienvenue sur Mire, un pack de fonds d'écrans au matériel de conception plat"</string>
-	<string name="fragment_intro_text_b">"Une application où les fonds d'écrans au matériel de conception plat se retrouves, des couleurs clairs, un désigne simple, épuré et agréable à regarder"</string>
-	<string name="fragment_intro_text_c">"Appuyez sur l'une des cartes pour voir l'image en pleine écran"</string>
-	<string name="fragment_intro_text_d">"Image en pleine écran ! Double tap pour enregistrer !"</string>
-	<string name="fragment_intro_text_title">"Pleine écran"</string>
+	<string name="fragment_intro_text_a">"Bienvenue sur Mire, une application où les fonds d'écrans au matériel de conception plat se retrouves, des couleurs clairs, un désigne simple, épuré et agréable à regarder"</string>
+	<string name="fragment_intro_text_b">"Tout les fonds d'écrans de Mire sont en Haute Définition, vous pourrez donc profiter de superbes fonds d'écrans de bonne qualité"</string>
+	<string name="fragment_intro_text_c">par Meclot Yoann (MSay2)</string>
+	<string name="fragment_intro_text_c_title"><![CDATA[<u>Open-Source</u>]]></string>
 	
 	<string name="fragment_settings_contact_title">"Contacter le Support"</string>
 	<string name="fragment_settings_contact_prompt">"Contactez le support pour des rapports de bogues"</string>
@@ -25,9 +24,9 @@
 	<string name="toast_save_wallpaper_failed">Échoué</string>
 	<string name="toast_no_wallpaper_app">"Aucune application de Galerie d'images est installée !"</string>
 	<string name="toast_apply_wallpaper">"Application en cours…"</string>
-	<string name="toast_apply_wallpaper_succed">"Appliquée avec succé !"</string>
+	<string name="toast_apply_wallpaper_succed">"Appliquée avec succès !"</string>
 	<string name="toast_apply_wallpaper_failed">"Impossible de définir l'image comme fond d'écran !"</string>
-	<string name="toast_apply_wallpaper_canceled">Opération échoué !</string>
+	<string name="toast_apply_wallpaper_canceled">"Opération échoué !"</string>
 	<string name="toast_apply_wallpaper_error_loading">"Erreur, impossible de charger les fonds d'écrans"</string>
 	<string name="toast_permission_close_app">"Fermez l'application pour que les modifications prennent effet"</string>
 	<string name="toast_wallpaper_error">"Erreur, un problème est survenu !"</string>
@@ -54,7 +53,7 @@
 	
 	<string name="bottom_sheet_lib_title">"Librairies implémentées"</string>
 	
-	<string name="snackbar_content_text_app">"Appuyez de nouveaux pour Quitter"</string>
+	<string name="snackbar_content_text_app">"Appuyez de nouveau pour Quitter"</string>
 	<string name="snackbar_button_text_app">"Annuler"</string>
 	
 	<string name="request_permissions_title">"Important"</string>

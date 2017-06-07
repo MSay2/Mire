@@ -364,7 +364,7 @@ public class FragmentSettings extends Fragment implements MenuAnimation
 				HttpURLConnection urlConnection;
 				try
 				{
-					URL url = new URL("https://raw.githubusercontent.com/msay2/Mire_wallpaper_json/master/wallpaper/script/update.json");
+					URL url = new URL(getActivity().getResources().getString(R.string.link_update_json_file));
 					urlConnection = (HttpURLConnection) url.openConnection();
 					
 					int statusCode = urlConnection.getResponseCode();

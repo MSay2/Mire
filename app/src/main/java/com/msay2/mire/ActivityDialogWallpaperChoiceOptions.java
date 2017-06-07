@@ -68,6 +68,8 @@ public class ActivityDialogWallpaperChoiceOptions extends AppCompatActivity impl
 		container.setOnClickListener(this);
 		apply.setOnClickListener(this);
 		save.setOnClickListener(this);
+		apply.setOnLongClickListener(this);
+		save.setOnLongClickListener(this);
 	}
 	
 	@Override

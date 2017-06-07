@@ -22,7 +22,7 @@ public abstract class MireColorTarget extends BitmapPaletteTarget
 	{
         super.onLoadFailed(e, errorDrawable);
       
-		onColorReady(getDefaultFooterColor());
+		onColorReady(getDefaultColor());
     }
 
     @Override
@@ -30,10 +30,10 @@ public abstract class MireColorTarget extends BitmapPaletteTarget
 	{
         super.onResourceReady(resource, glideAnimation);
        
-		onColorReady(MirePaletteUtils.getColor(resource.getPalette(), getDefaultFooterColor()));
+		onColorReady(MirePaletteUtils.getColor(resource.getPalette(), getDefaultColor()));
     }
 
-    protected int getDefaultFooterColor() 
+    protected int getDefaultColor() 
 	{
         return R.color.primary;
     }

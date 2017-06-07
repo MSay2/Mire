@@ -10,8 +10,8 @@ android
         applicationId "com.msay2.mire"
         minSdkVersion 21
         targetSdkVersion 24
-        versionCode 61
-        versionName "6.1"
+        versionCode 70
+        versionName "7.0"
 		vectorDrawables.useSupportLibrary = true
     }
     buildTypes 

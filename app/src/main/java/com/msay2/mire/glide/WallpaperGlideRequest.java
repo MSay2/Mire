@@ -7,12 +7,13 @@ import android.support.annotation.NonNull;
 
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.BitmapRequestBuilder;
+import com.bumptech.glide.DrawableTypeRequest;
 
 import com.msay2.mire.R;
 import com.msay2.mire.item_data.ItemDataWallpaper;
 import com.msay2.mire.glide.palette.BitmapPaletteWrapper;
 import com.msay2.mire.glide.palette.BitmapPaletteTranscoder;
-import com.bumptech.glide.*;
+
 
 public class WallpaperGlideRequest
 {
@@ -88,12 +89,5 @@ public class WallpaperGlideRequest
 	public static DrawableTypeRequest createBaseRequest(RequestManager requestManager, String wallpaper)
 	{
         return requestManager.load(wallpaper);
-    }
-	
-	public final String filePath;
-
-    public WallpaperGlideRequest(String filePath)
-	{
-        this.filePath = filePath;
     }
 }

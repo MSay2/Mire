@@ -76,7 +76,7 @@ public class AdapterWallpaper extends RecyclerView.Adapter<RecyclerView.ViewHold
 				public void onLoadCleared(Drawable placeholder) 
 				{
 					super.onLoadCleared(placeholder);
-					setColorDetails(vH, getDefaultFooterColor());
+					setColorDetails(vH, getDefaultColor());
 				}
 
 				@Override

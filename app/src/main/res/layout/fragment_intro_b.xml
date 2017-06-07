@@ -1,70 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_height="fill_parent"
-	android:layout_width="fill_parent"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
 	android:orientation="vertical"
-	android:paddingBottom="64dp">
+	android:background="#FAFAFA">
 
-	<TextView
-		android:id="@+id/id_title"
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:text="@string/fragment_name_home"
-		android:paddingLeft="16dp"
-		android:paddingRight="16dp"
-		android:layout_marginTop="24dp"
-		android:gravity="center"
-		android:textSize="17sp"
-		android:textColor="#212121"
-		android:fontFamily="sans-serif-medium"/>
-
-	<TextView
-		android:id="@+id/id_message"
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:text="@string/fragment_intro_text_b"
-		android:gravity="center"
-		android:padding="16dp"
-		android:textSize="14sp"
-		android:textColor="@color/semi_black"
-		android:fontFamily="sans-serif-medium"
-		android:layout_below="@id/id_title"/>
-
-	<RelativeLayout
-		android:layout_width="match_parent"
+	<ScrollView
 		android:layout_height="match_parent"
-		android:clipChildren="false"
-		android:layout_below="@id/id_title"
-		android:gravity="center"
-		android:paddingTop="98dp"
-		android:clipToPadding="false">
+		android:layout_width="match_parent"
+		android:fillViewport="true">
 
-		<ImageView
-			android:id="@+id/primer_aa"
-			android:layout_width="140dp"
-			android:layout_height="200dp"
-			android:layout_marginTop="40dp"
-			android:layout_marginStart="8dp"
-			android:src="@drawable/primer_1"/>
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:orientation="vertical">
 
-		<ImageView
-			android:id="@+id/primer_ab"
-			android:layout_width="148dp"
-			android:layout_height="214dp"
-			android:layout_marginTop="20dp"
-			android:layout_gravity="center"
-			android:src="@drawable/primer_1"
-			android:layout_marginStart="4dp"/>
+			<com.msay2.mire.widget.SquareImageView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:src="@drawable/header_i"/>
 
-		<ImageView
-			android:id="@+id/primer_ac"
-			android:layout_width="156dp"
-			android:layout_height="226dp"
-			android:layout_gravity="center"
-			android:src="@drawable/primer_1"/>
+			<LinearLayout
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:padding="16dp">
 
-	</RelativeLayout>
+				<TextView
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:text="@string/fragment_intro_text_b"
+					android:textSize="14sp"
+					android:textColor="#87000000"
+					android:gravity="center"
+					android:layout_marginTop="48dp"/>
 
-</RelativeLayout>
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</LinearLayout>
 

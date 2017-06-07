@@ -9,13 +9,6 @@
 		<item name="cardBackground">@color/white</item>
 	</style>
 	
-	<style name="ThemeIntro" parent="@style/Theme.AppCompat.Light.NoActionBar">
-		<item name="colorPrimary">@color/primary</item>
-		<item name="colorPrimaryDark">@color/primary_dark</item>
-		<item name="colorAccent">@color/accent</item>
-		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
-	</style>
-	
 	<style name="MSay2.Theme.Translucent">
         <item name="android:windowBackground">@color/translucent_background</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
@@ -25,6 +18,13 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
+	
+	<style name="MSay2.Theme.Translucent.Introduction">
+		<item name="colorPrimary">@color/accent</item>
+		<item name="colorAccent">@color/accent</item>
+		<item name="android:statusBarColor">@color/light_immersive_status_bar</item>
+		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
+	</style>
 	
 	<style name="MSay2.Theme.Translucent.Activity">
 		<item name="colorPrimary">@color/primary</item>

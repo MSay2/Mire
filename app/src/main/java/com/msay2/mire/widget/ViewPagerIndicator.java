@@ -22,7 +22,6 @@ import android.view.animation.Interpolator;
 import java.util.Arrays;
 
 import com.msay2.mire.R;
-import com.msay2.mire.ActivityIntro;
 import fr.yoann.dev.preferences.utils.AnimUtils;
 
 public class ViewPagerIndicator extends View implements View.OnAttachStateChangeListener
@@ -132,27 +131,14 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
         addOnAttachStateChangeListener(this);
     }
 
-    public void setFinalStateViewPager(final Activity activity, final ViewPager viewPager, final ActivityIntro.IntroPagerAdapter adapter, final View view)
+    public void setFinalStateViewPager(Activity activity, ViewPager viewPager)
 	{
         this.viewPager = viewPager;
-		final Integer[] primary = {getResources().getColor(R.color.intro_color_a), getResources().getColor(R.color.intro_color_b), getResources().getColor(R.color.intro_color_c)};
-		final Integer[] primaryDark = {getResources().getColor(R.color.intro_color_a_dark), getResources().getColor(R.color.intro_color_b_dark), getResources().getColor(R.color.intro_color_c_dark)};
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
 		{
 			@Override
 			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
 			{
-				if (position < (adapter.getCount() - 1) && position < (primary.length - 1) && position < (primaryDark.length - 1))
-				{
-					viewPager.setBackgroundColor((Integer)new ArgbEvaluator().evaluate(positionOffset, primary[position], primary[position + 1]));
-					activity.getWindow().setStatusBarColor((Integer)new ArgbEvaluator().evaluate(positionOffset, primaryDark[position], primaryDark[position + 1]));
-				}
-				else 
-				{
-					viewPager.setBackgroundColor(primary[primary.length - 1]);
-					activity.getWindow().setStatusBarColor(primaryDark[primaryDark.length - 1]);
-				}
-				
 				if (isAttachedToWindow)
 				{
 					float fraction = positionOffset;
@@ -173,19 +159,6 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
 			@Override
 			public void onPageSelected(int position) 
 			{
-				if (position == 0)
-				{
-					view.setVisibility(View.GONE);
-				}
-				if (position == 1)
-				{
-					view.setVisibility(View.GONE);
-				}
-				if (position == 2)
-				{
-					view.setVisibility(View.VISIBLE);
-				}
-				
 				if (isAttachedToWindow)
 				{
 					setSelectedPage(position);

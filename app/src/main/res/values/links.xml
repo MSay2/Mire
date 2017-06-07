@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="link_update_json_file">https://raw.githubusercontent.com/msay2/Mire_wallpaper_json/master/wallpaper/script/update_us.json</string>
+
+</resources>

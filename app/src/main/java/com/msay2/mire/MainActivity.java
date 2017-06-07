@@ -63,11 +63,11 @@ public class MainActivity extends AppCompatActivity
             getFragmentManager().beginTransaction().add(R.id.fragment_container, currentFragment).commit();
         }
 		
-		Boolean setup_intro = getSharedPreferences("SHOW_INTRO", Context.MODE_PRIVATE).getBoolean("show_introduction", true);
+		Boolean setup_intro = getSharedPreferences("RE_INTRO", Context.MODE_PRIVATE).getBoolean("re_introduction", true);
 		if(setup_intro)
 		{
 			setupIntroduction();
-			getSharedPreferences("SHOW_INTRO", Context.MODE_PRIVATE).edit().putBoolean("show_introduction", false).commit();
+			getSharedPreferences("RE_INTRO", Context.MODE_PRIVATE).edit().putBoolean("re_introduction", false).commit();
 		}
 		
 		fm = getFragmentManager();
@@ -76,9 +76,6 @@ public class MainActivity extends AppCompatActivity
 		{
 			DialogFragmentChangelog.showChangelog(fm);
 		}
-		
-		//String contextext = getResources().getString(R.string.snackbar_content_text_app);
-		//String buttontext = getResources().getString(R.string.snackbar_button_text_app);
 		
 		setupMenu();
 		SetupSnackBarHelper.setupSnackBar(this, getStringSrc(R.string.snackbar_content_text_app), getStringSrc(R.string.snackbar_button_text_app), snackbar_clicklistener);

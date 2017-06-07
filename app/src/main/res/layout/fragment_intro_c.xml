@@ -1,64 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_height="fill_parent"
-	android:layout_width="fill_parent"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
 	android:orientation="vertical"
-	android:paddingBottom="64dp">
+	android:background="#FAFAFA">
 
-	<TextView
-		android:id="@+id/id_title_1"
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:text="@string/fragment_name_wallpaper"
-		android:paddingLeft="16dp"
-		android:paddingRight="16dp"
-		android:layout_marginTop="24dp"
-		android:gravity="center"
-		android:textSize="17sp"
-		android:textColor="#212121"
-		android:fontFamily="sans-serif-medium"/>
-
-	<TextView
-		android:id="@+id/id_message_1"
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:text="@string/fragment_intro_text_c"
-		android:gravity="center"
-		android:padding="16dp"
-		android:textSize="14sp"
-		android:textColor="@color/semi_black"
-		android:fontFamily="sans-serif-medium"/>
-
-	<RelativeLayout
-		android:layout_width="match_parent"
+	<ScrollView
 		android:layout_height="match_parent"
-		android:id="@+id/scene1"
-		android:gravity="center">
+		android:layout_width="match_parent"
+		android:fillViewport="true">
 
-		<ImageView
-			android:id="@+id/primer_ba"
-			android:layout_width="139dp"
-			android:layout_height="200dp"
-			android:src="@drawable/primer_b3"/>
+		<RelativeLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent">
 
-		<ImageView
-			android:id="@+id/primer_bb"
-			android:layout_width="139dp"
-			android:layout_height="200dp"
-			android:layout_gravity="center"
-			android:layout_marginTop="2dp"
-			android:src="@drawable/primer_b2"/>
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:text="@string/fragment_intro_text_c"
+				android:layout_alignParentBottom="true"
+				android:paddingBottom="40dp"
+				android:paddingRight="16dp"
+				android:paddingLeft="16dp"
+				android:paddingTop="16dp"
+				android:textSize="13sp"
+				android:gravity="center"/>
 
-		<ImageView
-			android:id="@+id/primer_bc"
-			android:layout_width="139dp"
-			android:layout_height="200dp"
-			android:layout_gravity="center"
-			android:layout_marginTop="4dp"
-			android:src="@drawable/primer_b1"/>
+			<TextView
+				android:id="@+id/id_open_source"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:text="Open-Source"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="180dp"
+				android:textSize="45dp"
+				android:textColor="@drawable/text_color_link"/>
 
-	</RelativeLayout>
+		</RelativeLayout>
+
+	</ScrollView>
 
 </LinearLayout>
 

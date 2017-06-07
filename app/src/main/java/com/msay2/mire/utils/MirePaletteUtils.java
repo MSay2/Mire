@@ -43,7 +43,7 @@ public class MirePaletteUtils
     }
 	
 	@ColorInt
-    public static int getColor(@Nullable Palette palette, int fallback)
+    public static int getColor(@Nullable Palette palette, int defaultColor)
 	{
         if (palette != null) 
 		{
@@ -76,6 +76,6 @@ public class MirePaletteUtils
                 return Collections.max(palette.getSwatches(), SwatchComparator.getInstance()).getRgb();
             }
         }
-        return fallback;
+        return defaultColor;
     }
 }

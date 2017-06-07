@@ -3,5 +3,6 @@
 	
 	<drawable name="header">@drawable/header_home</drawable>
 	<drawable name="header_s">@drawable/header_settings</drawable>
+	<drawable name="header_i">@drawable/header_intro</drawable>
 	
 </resources>

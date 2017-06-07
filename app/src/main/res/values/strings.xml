@@ -5,6 +5,91 @@
     <string name="hello_world">Hello world!</string>
 	<string name="dev_name">Meclot Yoann</string>
 	
+	<string name="fragment_name_home">"Menu"</string>
+	<string name="fragment_name_wallpaper">"Wallpapers"</string>
+	<string name="fragment_name_settings">"Settings"</string>
+
+	<string name="fragment_home_text_home">"An application where the wallpapers to the flat design material are find, light colors, a simple design, sleek and pleasant to look at"</string>
+
+	<string name="fragment_intro_text_a">"Welcome on Mire, an application where the wallpapers to the flat design material are find, light colors, a simple design, sleek and pleasant to look at"</string>
+	<string name="fragment_intro_text_b">"All of Mire's wallpapers are in High Definition, so you can enjoy superb wallpapers of good quality"</string>
+	<string name="fragment_intro_text_c">by Meclot Yoann (MSay2)</string>
+	<string name="fragment_intro_text_c_title"><![CDATA[<u>Open-Source</u>]]></string>
+
+	<string name="fragment_settings_contact_title">"Contact Support"</string>
+	<string name="fragment_settings_contact_prompt">"Contact the support for bug reports"</string>
+	<string name="fragment_settings_lib_title">"Implemented libraries"</string>
+	<string name="fragment_settings_lib_prompt">"Press to consult the libraries implemented"</string>
+	<string name="fragment_settings_intro_title">"Introduction"</string>
+	<string name="fragment_settings_intro_prompt">"Press for review the introduction"</string>
+	<string name="fragment_settings_update_title">"Mire v%1$s"</string>
+	<string name="fragment_settings_update_prompt">"Check if an update is available"</string>
+
+	<string name="toast_save_wallpaper_failed">Failed</string>
+	<string name="toast_no_wallpaper_app">No Gallery app is installed</string>
+	<string name="toast_apply_wallpaper">"Application in progress…"</string>
+	<string name="toast_apply_wallpaper_succed">"Successfully applied !"</string>
+	<string name="toast_apply_wallpaper_failed">"Can not set image as wallpaper!"</string>
+	<string name="toast_apply_wallpaper_canceled">"Operation failed!"</string>
+	<string name="toast_apply_wallpaper_error_loading">"Error, impossible to the load wallpapers"</string>
+	<string name="toast_permission_close_app">"Close the application for the changes to take effect"</string>
+	<string name="toast_wallpaper_error">"Error, a problem has occurred!"</string>
+	<string name="toast_mail_choose_plarforme">"Choose your sending platform"</string>
+	<string name="toast_mail_send_failed">"Error, impossible send your mail"</string>
+
+	<string name="wallpaper_info_title"><![CDATA["<b>Title :  </b>]]></string>
+	<string name="wallpaper_info_auteur"><![CDATA["<b>Author :  </b>]]></string>
+	<string name="wallpaper_info_location"><![CDATA["<b>Location :  </b>]]></string>
+
+	<string name="download_wallpaper_prompt">"Save in progress…"</string>
+
+	<string name="updater_available_title">"New update available"</string>
+	<string name="updater_available_description">"The update %1$s is available.\n\nYou can benefit from the following features: "</string>
+	<string name="updater_not_available_title">"No updates available !"</string>
+	<string name="updater_not_available_description">"You have the latest available version of %1$s"</string>
+	<string name="updater_btn_download">Download</string>
+	<string name="updater_btn_back">Back</string>
+	<string name="updater_btn_ok">Ok</string>
+	<string name="updater_downloading">Download in progress…</string>
+
+	<string name="no_wifi_access">"Warning !"</string>
+	<string name="no_wifi_access_prompt">"Your WiFi connection is disabled, Please activate your WiFi connection to continue the operation !"</string>
+
+	<string name="bottom_sheet_lib_title">"Implemented libraries"</string>
+
+	<string name="snackbar_content_text_app">"Press again to Exit"</string>
+	<string name="snackbar_button_text_app">"Cancel"</string>
+
+	<string name="request_permissions_title">"Important"</string>
+	<string name="request_permissions_prompt">"Mire needs your permission to modify your internal memory of your device, Do you want to give Mire the permissions required to function properly ? \n\nThese permissions will allow you to be able to download the wallpapers and update Mire "</string>
+	<string name="reshow_request_permissions_title">"Important"</string>
+	<string name="reshow_request_permissions_prompt">"You have previously denied the permissions that Mire needs to run. \n\nWould you like to give Mire the permissions required to function properly ?"</string>
+
+	<string name="dialog_changelog_title">Changelog</string>
+
+	<string name="button_text_yes">"Yes"</string>
+	<string name="button_text_no">"No"</string>
+	<string name="button_text_done">"Ok"</string>
+	<string name="button_text_back">"Cancel"</string>
+
+	<string name="mail_default">By default</string>
+	<string name="mail_suggestion">"Suggestions"</string>
+	<string name="mail_bug">"Bugs"</string>
+	<string name="mail_question">"Questions"</string>
+	<string name="mail_your_message">"What is your message ?"</string>
+	<string name="mail_balise">"TAGS"</string>
+	<string name="mail_clear">"TO ERASE"</string>
+	<string name="mail_send">"SEND"</string>
+	<string name="mail_question_m">"QUESTIONS"</string>
+	<string name="mail_suggestion_m">"SUGGESTION"</string>
+	<string name="mail_bug_m">"BUGS"</string>
+
+	<string name="apply_options">"Options"</string>
+	<string name="apply_wallpaper">"Apply"</string>
+	<string name="apply_save">"Save"</string>
+
+	<string name="pager_done">"Ready !"</string>
+
 	<string name="description_lib_meclot_yoann">"An easy-to-use tool to facilitate development"</string>
 	<string name="description_lib_daniel_zeller">"A library that gives depth to Views"</string>
 	<string name="description_lib_takahirom">"Simple tool which help you to implement activity and fragment transition for pre-Lollipop devices"</string>

@@ -10,4 +10,6 @@
 	
 	<dimen name="dialog_corners">2dp</dimen>
 	
+	<dimen name="page_margin">16dp</dimen>
+	
 </resources>

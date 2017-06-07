@@ -2,6 +2,7 @@
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/root_layout"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 
@@ -9,7 +10,6 @@
 		android:id="@+id/ma_viewPager"
 		android:layout_height="match_parent"
 		android:layout_width="match_parent"
-		android:background="#000000"
 		android:overScrollMode="never"/>
 
 	<com.msay2.mire.widget.ViewPagerIndicator
@@ -22,32 +22,4 @@
 		app:pageIndicatorColor="#80333333"
 		app:currentPageIndicatorColor="#87000000"/>
 
-	<RelativeLayout
-		android:id="@+id/id_bar_button"
-		android:layout_height="56dp"
-		android:layout_width="match_parent"
-		android:layout_alignParentBottom="true"
-		android:layout_alignParentRight="true"
-		android:background="@android:color/transparent"
-		android:elevation="2dp"
-		android:visibility="gone">
-
-		<TextView
-			android:layout_height="56dp"
-			android:layout_width="64dp"
-			android:text="@string/pager_done"
-			android:gravity="center"
-			android:paddingLeft="8dp"
-			android:paddingRight="8dp"
-			android:textSize="16sp"
-			android:textColor="#87000000"
-			android:background="?android:attr/selectableItemBackgroundBorderless"
-			android:id="@+id/id_start"
-			android:layout_alignParentRight="true"
-			android:layout_marginRight="16dp"
-			android:fontFamily="sans-serif-medium"/>
-
-	</RelativeLayout>
-
 </RelativeLayout>
-
