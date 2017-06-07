@@ -16,6 +16,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ActivityOptionsCompat;
 
+import java.io.File;
+
 import android.net.Uri;
 import android.text.Spanned;
 import android.content.Context;
@@ -25,6 +27,7 @@ import android.view.WindowManager;
 import android.view.Window;
 import android.view.View;
 import android.widget.Toast;
+import android.graphics.Typeface;
 
 public class Preferences
 {
@@ -38,11 +41,33 @@ public class Preferences
 	// end set Preferences helperd
 	
 	//set SDK method
-	public static final int SDK_INT = Build.VERSION.SDK_INT;
-
-	public static final int M = Build.VERSION_CODES.M;
-	public static final int L = Build.VERSION_CODES.LOLLIPOP;
+	public static final Boolean SDK_INT_N = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
+	public static final Boolean SDK_INT_M = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+	public static final Boolean SDK_INT_L = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+	public static final Boolean SDK_INT_K = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 	// end set SDK method
+	
+	// get SDK method
+	public static boolean isNougat()
+	{
+		return SDK_INT_N;
+	}
+	
+	public static boolean isMarshmallow()
+	{
+		return SDK_INT_M;
+	}
+	
+	public static boolean isLollipop()
+	{
+		return SDK_INT_L;
+	}
+	
+	public static boolean isKitKat()
+	{
+		return SDK_INT_K;
+	}
+	// end get SDK method
 	
 	// set Attrs Color
 	@ColorInt
@@ -90,31 +115,37 @@ public class Preferences
 		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 		activity.startActivity(intent);
 	}
+	
+	public static void intentUri(Context context, String url)
+	{
+		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+		context.startActivity(intent);
+	}
 	// end set intent basic
 	
 	// set FragmentTransaction
 	public void setFragmentTransaction(int id, android.support.v4.app.Fragment fr)
 	{
-		FragmentTransaction requestFragment = this.fragmentManager.beginTransaction();
+		FragmentTransaction requestFragment = fragmentManager.beginTransaction();
 		requestFragment.replace(id, fr);
 		requestFragment.commit();
 	}
 	// end set FragmentTransaction
 	
 	// set intent simple activityOptions
-	public static void start(Activity context, Class<?> contextClass)
+	public static void start(Activity activity, Class<?> activityClass)
 	{
-		context.startActivity(new Intent(context, contextClass), ActivityOptionsCompat.makeSceneTransitionAnimation(context).toBundle());
+		activity.startActivity(new Intent(activity, activityClass), ActivityOptionsCompat.makeSceneTransitionAnimation(activity).toBundle());
 	}
 	
-	public static void start(FragmentActivity context, Class<?> contextClass)
+	public static void start(FragmentActivity fragmentActivity, Class<?> activityClass)
 	{
-		context.startActivity(new Intent(context, contextClass), ActivityOptionsCompat.makeSceneTransitionAnimation(context).toBundle());
+		fragmentActivity.startActivity(new Intent(fragmentActivity, activityClass), ActivityOptionsCompat.makeSceneTransitionAnimation(fragmentActivity).toBundle());
 	}
 	
-	public static void start(Context context, Class<?> contextClass)
+	public static void start(Context context, Class<?> activityClass)
 	{
-		context.startActivity(new Intent(context, contextClass), ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context).toBundle());
+		context.startActivity(new Intent(context, activityClass), ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context).toBundle());
 	}
 	// end set intent simple activityOptions
 	
@@ -132,6 +163,20 @@ public class Preferences
 		winParams.flags |= bits;
 		win.setAttributes(winParams);
 	}
+	
+	public static void showStatusBar(Activity activity)
+	{
+		WindowManager.LayoutParams winParams;
+		Window win;
+		int bits;
+
+		win = activity.getWindow();
+		winParams = win.getAttributes();
+        bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+
+		winParams.flags &= ~bits;
+		win.setAttributes(winParams);
+	}
 	// end set Hide Status Bar
 	
 	// set Toast
@@ -145,14 +190,9 @@ public class Preferences
 		Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
 	}
 	
-	public static void longToast(Context context, Spanned htmlText)
+	public static void timeTost(Context context, String text, int duration)
 	{
-		Toast.makeText(context, htmlText, Toast.LENGTH_LONG).show();
-	}
-
-	public static void rapidToast(Context context, Spanned htmlText)
-	{
-		Toast.makeText(context, htmlText, Toast.LENGTH_SHORT).show();
+		Toast.makeText(context, text, duration).show();
 	}
 	// end setToast
 	
@@ -173,16 +213,43 @@ public class Preferences
 	 Implented this line in {@Styles} for use this method
 	 and completely the view
 	 
-	 ** <item name="android:systemBarBackground">true</item> **
+	 ** <item name="android:windowDrawSystemBarBackground">true</item> **
 	*/
-	public static void makeViewSystemBarBackground(View target)
+	public static void makeViewDrawSystemBarBackground(View target)
 	{
 		target.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
 	}
 	// end set Full Screen
 	
+	// set External directory
 	public static String getExternalStorage()
 	{
 		return Environment.getExternalStorageDirectory().toString();
 	}
+	// end set External directory
+	
+	// set New file in your storage
+	public static void newFile(String nameNewFile)
+	{
+		File file = new File(getExternalStorage() + nameNewFile);
+		file.mkdir();
+	}
+	// end set New file in your storage
+	
+	// set Typeface - create typface from assets
+	public static void createTypefaceFromAssets(Context context, String ttfAssets)
+	{
+		Typeface.createFromAsset(context.getAssets(), ttfAssets);
+	}
+	
+	public static void createTypefaceFromAssets(Activity activity, String ttfAssets)
+	{
+		Typeface.createFromAsset(activity.getAssets(), ttfAssets);
+	}
+	
+	public static void createTypefaceFromAssets(FragmentActivity fragmentActivity, String ttfAssets)
+	{
+		Typeface.createFromAsset(fragmentActivity.getAssets(), ttfAssets);
+	}
+	// end set Typeface - create typface from assets
 }

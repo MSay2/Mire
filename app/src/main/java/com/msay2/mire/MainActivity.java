@@ -211,24 +211,21 @@ public class MainActivity extends AppCompatActivity
                 } 
 				else if (menuIndex == 1 && !(currentFragment instanceof FragmentWallpaper))
 				{
-					if(Preferences.SDK_INT >= Preferences.M)
+					if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) 
 					{
-						if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) 
+						if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) 
 						{
-							if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) 
-							{
-								requestPermissions();
-							} 
+							requestPermissions();
+						} 
 
-							else
-							{
-								setDialogPermission();
-							}
-						}
 						else
 						{
-							setStateWiFi(menuIndex, color);
+							setDialogPermission();
 						}
+					}
+					else
+					{
+						setStateWiFi(menuIndex, color);
 					}
                 }
 				else if (menuIndex == 2 && !(currentFragment instanceof FragmentSettings))

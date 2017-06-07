@@ -1,6 +1,6 @@
 # Mire
 
- <img src="screenshots/mire_02.png" width="300" align="right" hspace="20">
+ <img src="screenshots/mire_01.png" width="300" align="right" hspace="20">
 
 ### FR-US
 * Ceci est le projet de Mire

@@ -88,7 +88,6 @@ public class AnimUtils
             fab.show();
             return;
         }
-
         fab.animate().cancel();
         fab.setScaleX(0f);
         fab.setScaleY(0f);
@@ -107,7 +106,6 @@ public class AnimUtils
             fab.hide();
             return;
         }
-
         fab.animate().cancel();
         fab.setScaleX(1f);
         fab.setScaleY(1f);

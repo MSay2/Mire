@@ -12,7 +12,7 @@
 		android:layout_width="match_parent"
 		android:overScrollMode="never"/>
 
-	<com.msay2.mire.widget.ViewPagerIndicator
+	<fr.yoann.dev.preferences.widget.ViewPagerIndicator
 		android:id="@+id/ma_indicator"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"

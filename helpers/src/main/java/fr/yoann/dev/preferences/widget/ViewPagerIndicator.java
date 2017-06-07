@@ -1,4 +1,7 @@
-package com.msay2.mire.widget;
+package fr.yoann.dev.preferences.widget;
+
+import fr.yoann.dev.R;
+import fr.yoann.dev.preferences.utils.AnimUtils;
 
 import android.app.Activity;
 import android.animation.Animator;
@@ -21,16 +24,13 @@ import android.view.animation.Interpolator;
 
 import java.util.Arrays;
 
-import com.msay2.mire.R;
-import fr.yoann.dev.preferences.utils.AnimUtils;
-
 public class ViewPagerIndicator extends View implements View.OnAttachStateChangeListener
 {
-    private static final int DEFAULT_DOT_SIZE = 8;                      // dp
-    private static final int DEFAULT_GAP = 12;                          // dp
-    private static final int DEFAULT_ANIM_DURATION = 400;               // ms
-    private static final int DEFAULT_UNSELECTED_COLOUR = 0x80ffffff;    // 50% white
-    private static final int DEFAULT_SELECTED_COLOUR = 0xffffffff;      // 100% white
+    private static final int DEFAULT_DOT_SIZE = 8; // dp
+    private static final int DEFAULT_GAP = 12; // dp
+    private static final int DEFAULT_ANIM_DURATION = 400; // ms
+    private static final int DEFAULT_UNSELECTED_COLOUR = 0x80ffffff; // 50% white
+    private static final int DEFAULT_SELECTED_COLOUR = 0xffffffff; // 100% white
 
     private static final float INVALID_FRACTION = -1f;
     private static final float MINIMAL_REVEAL = 0.00001f;
@@ -106,11 +106,11 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
         dotDiameter = a.getDimensionPixelSize(R.styleable.InkPageIndicator_dotDiameter, DEFAULT_DOT_SIZE * density);
         dotRadius = dotDiameter / 2;
         halfDotRadius = dotRadius / 2;
-        
+
 		gap = a.getDimensionPixelSize(R.styleable.InkPageIndicator_dotGap, DEFAULT_GAP * density);
         animDuration = (long)a.getInteger(R.styleable.InkPageIndicator_animationDuration, DEFAULT_ANIM_DURATION);
         animHalfDuration = animDuration / 2;
-        
+
 		unselectedColour = a.getColor(R.styleable.InkPageIndicator_pageIndicatorColor, DEFAULT_UNSELECTED_COLOUR);
         selectedColour = a.getColor(R.styleable.InkPageIndicator_currentPageIndicatorColor, DEFAULT_SELECTED_COLOUR);
 
@@ -135,53 +135,53 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
 	{
         this.viewPager = viewPager;
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
-		{
-			@Override
-			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
 			{
-				if (isAttachedToWindow)
+				@Override
+				public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
 				{
-					float fraction = positionOffset;
-					int currentPosition = pageChanging ? previousPage : currentPage;
-					int leftDotPosition = position;
-					if (currentPosition != position) 
+					if (isAttachedToWindow)
 					{
-						fraction = 1f - positionOffset;
-						if (fraction == 1f)
+						float fraction = positionOffset;
+						int currentPosition = pageChanging ? previousPage : currentPage;
+						int leftDotPosition = position;
+						if (currentPosition != position) 
 						{
-							leftDotPosition = Math.min(currentPosition, position);
+							fraction = 1f - positionOffset;
+							if (fraction == 1f)
+							{
+								leftDotPosition = Math.min(currentPosition, position);
+							}
 						}
+						setJoiningFraction(leftDotPosition, fraction);
 					}
-					setJoiningFraction(leftDotPosition, fraction);
 				}
-			}
 
-			@Override
-			public void onPageSelected(int position) 
-			{
-				if (isAttachedToWindow)
+				@Override
+				public void onPageSelected(int position) 
 				{
-					setSelectedPage(position);
-				} 
-				else 
-				{
-					setCurrentPageImmediate();
+					if (isAttachedToWindow)
+					{
+						setSelectedPage(position);
+					} 
+					else 
+					{
+						setCurrentPageImmediate();
+					}
 				}
-			}
 
-			@Override
-			public void onPageScrollStateChanged(int state) 
-			{ }
-		});
+				@Override
+				public void onPageScrollStateChanged(int state) 
+				{ }
+			});
 		setPageCount(viewPager.getAdapter().getCount());
         viewPager.getAdapter().registerDataSetObserver(new DataSetObserver()
-		{
-			@Override
-			public void onChanged()
 			{
-				setPageCount(ViewPagerIndicator.this.viewPager.getAdapter().getCount());
-			}
-		});
+				@Override
+				public void onChanged()
+				{
+					setPageCount(ViewPagerIndicator.this.viewPager.getAdapter().getCount());
+				}
+			});
         setCurrentPageImmediate();
     }
 
@@ -225,7 +225,7 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
 		{
             currentPage = 0;
         }
-		
+
         if (dotCenterX != null) 
 		{
             selectedDotX = dotCenterX[currentPage];
@@ -235,10 +235,10 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
     private void resetState()
 	{
         joiningFractions = new float[pageCount - 1];
-        
+
 		Arrays.fill(joiningFractions, 0f);
         dotRevealFractions = new float[pageCount];
-        
+
 		Arrays.fill(dotRevealFractions, 0f);
         retreatingJoinX1 = INVALID_FRACTION;
         retreatingJoinX2 = INVALID_FRACTION;
@@ -336,7 +336,7 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
         }
         canvas.drawPath(combinedUnselectedPath, unselectedPaint);
     }
-	
+
     private Path getUnselectedPath(int page, float centerX, float nextCenterX, float joiningFraction, float dotRevealFraction)
 	{
         unselectedDotPath.rewind();
@@ -384,7 +384,7 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
             controlX2 = endX1;
             controlY2 = endY1 - halfDotRadius;
             unselectedDotRightPath.cubicTo(controlX1, controlY1, controlX2, controlY2, endX1, endY1);
-										   
+
             endX2 = nextCenterX;
             endY2 = dotBottomY;
             controlX1 = endX1;
@@ -454,7 +454,7 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
         unselectedDotPath.rewind();
         rectF.set(retreatingJoinX1, dotTopY, retreatingJoinX2, dotBottomY);
         unselectedDotPath.addRoundRect(rectF, dotRadius, dotRadius, Path.Direction.CW);
-        
+
 		return unselectedDotPath;
     }
 
@@ -472,7 +472,7 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
         pageChanging = true;
         previousPage = currentPage;
         currentPage = now;
-		
+
         final int steps = Math.abs(now - previousPage);
         if (steps > 1)
 		{
@@ -500,42 +500,42 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
         ValueAnimator moveSelected = ValueAnimator.ofFloat(selectedDotX, moveTo);
         retreatAnimation = new PendingRetreatAnimator(was, now, steps, now > was ? new RightwardStartPredicate(moveTo - ((moveTo - selectedDotX) * 0.25f)) : new LeftwardStartPredicate(moveTo + ((selectedDotX - moveTo) * 0.25f)));
         retreatAnimation.addListener(new AnimatorListenerAdapter()
-		{
-			@Override
-			public void onAnimationEnd(Animator animation)
 			{
-				resetState();
-				pageChanging = false;
-			}
-		});
+				@Override
+				public void onAnimationEnd(Animator animation)
+				{
+					resetState();
+					pageChanging = false;
+				}
+			});
         moveSelected.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() 
-		{
-			@Override
-			public void onAnimationUpdate(ValueAnimator valueAnimator) 
 			{
-				selectedDotX = (Float) valueAnimator.getAnimatedValue();
-				retreatAnimation.startIfNecessary(selectedDotX);
-				postInvalidateOnAnimation();
-			}
-		});
+				@Override
+				public void onAnimationUpdate(ValueAnimator valueAnimator) 
+				{
+					selectedDotX = (Float) valueAnimator.getAnimatedValue();
+					retreatAnimation.startIfNecessary(selectedDotX);
+					postInvalidateOnAnimation();
+				}
+			});
         moveSelected.addListener(new AnimatorListenerAdapter() 
-		{
-			@Override
-			public void onAnimationStart(Animator animation) 
 			{
-				selectedDotInPosition = false;
-			}
+				@Override
+				public void onAnimationStart(Animator animation) 
+				{
+					selectedDotInPosition = false;
+				}
 
-			@Override
-			public void onAnimationEnd(Animator animation)
-			{
-				selectedDotInPosition = true;
-			}
-		});
+				@Override
+				public void onAnimationEnd(Animator animation)
+				{
+					selectedDotInPosition = true;
+				}
+			});
         moveSelected.setStartDelay(selectedDotInPosition ? animDuration / 4l : 0l);
         moveSelected.setDuration(animDuration * 3l / 4l);
         moveSelected.setInterpolator(interpolator);
-        
+
 		return moveSelected;
     }
 
@@ -580,7 +580,7 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
         public PendingStartAnimator(StartPredicate predicate) 
 		{
             super();
-			
+
             this.predicate = predicate;
             hasStarted = false;
         }
@@ -600,7 +600,7 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
         public PendingRetreatAnimator(int was, int now, int steps, StartPredicate predicate)
 		{
             super(predicate);
-			
+
             setDuration(animHalfDuration);
             setInterpolator(interpolator);
 
@@ -610,7 +610,7 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
             final float finalX2 = now > was ? dotCenterX[now] + dotRadius : dotCenterX[now] + dotRadius;
 
             revealAnimations = new PendingRevealAnimator[steps];
-			
+
             final int[] dotsToHide = new int[steps];
             if (initialX1 != finalX1)
 			{
@@ -621,18 +621,18 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
                     dotsToHide[i] = was + i;
                 }
                 addUpdateListener(new AnimatorUpdateListener()
-				{
-					@Override
-					public void onAnimationUpdate(ValueAnimator valueAnimator)
 					{
-						retreatingJoinX1 = (Float) valueAnimator.getAnimatedValue();
-						postInvalidateOnAnimation();
-						for (PendingRevealAnimator pendingReveal : revealAnimations)
+						@Override
+						public void onAnimationUpdate(ValueAnimator valueAnimator)
 						{
-							pendingReveal.startIfNecessary(retreatingJoinX1);
+							retreatingJoinX1 = (Float) valueAnimator.getAnimatedValue();
+							postInvalidateOnAnimation();
+							for (PendingRevealAnimator pendingReveal : revealAnimations)
+							{
+								pendingReveal.startIfNecessary(retreatingJoinX1);
+							}
 						}
-					}
-				});
+					});
             }
 			else
 			{
@@ -643,43 +643,43 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
                     dotsToHide[i] = was - i;
                 }
                 addUpdateListener(new AnimatorUpdateListener()
-				{
-					@Override
-					public void onAnimationUpdate(ValueAnimator valueAnimator) 
 					{
-						retreatingJoinX2 = (Float) valueAnimator.getAnimatedValue();
-						postInvalidateOnAnimation();
-						for (PendingRevealAnimator pendingReveal : revealAnimations) 
+						@Override
+						public void onAnimationUpdate(ValueAnimator valueAnimator) 
 						{
-							pendingReveal.startIfNecessary(retreatingJoinX2);
+							retreatingJoinX2 = (Float) valueAnimator.getAnimatedValue();
+							postInvalidateOnAnimation();
+							for (PendingRevealAnimator pendingReveal : revealAnimations) 
+							{
+								pendingReveal.startIfNecessary(retreatingJoinX2);
+							}
 						}
-					}
-				});
+					});
             }
 
             addListener(new AnimatorListenerAdapter()
-			{
-				@Override
-				public void onAnimationStart(Animator animation) 
 				{
-					cancelJoiningAnimations();
-					clearJoiningFractions();
-					for (int dot : dotsToHide) 
+					@Override
+					public void onAnimationStart(Animator animation) 
 					{
-						setDotRevealFraction(dot, MINIMAL_REVEAL);
+						cancelJoiningAnimations();
+						clearJoiningFractions();
+						for (int dot : dotsToHide) 
+						{
+							setDotRevealFraction(dot, MINIMAL_REVEAL);
+						}
+						retreatingJoinX1 = initialX1;
+						retreatingJoinX2 = initialX2;
+						postInvalidateOnAnimation();
 					}
-					retreatingJoinX1 = initialX1;
-					retreatingJoinX2 = initialX2;
-					postInvalidateOnAnimation();
-				}
-				@Override
-				public void onAnimationEnd(Animator animation) 
-				{
-					retreatingJoinX1 = INVALID_FRACTION;
-					retreatingJoinX2 = INVALID_FRACTION;
-					postInvalidateOnAnimation();
-				}
-			});
+					@Override
+					public void onAnimationEnd(Animator animation) 
+					{
+						retreatingJoinX1 = INVALID_FRACTION;
+						retreatingJoinX2 = INVALID_FRACTION;
+						postInvalidateOnAnimation();
+					}
+				});
         }
     }
 
@@ -690,29 +690,29 @@ public class ViewPagerIndicator extends View implements View.OnAttachStateChange
         public PendingRevealAnimator(int dot, StartPredicate predicate)
 		{
             super(predicate);
-           
+
 			setFloatValues(MINIMAL_REVEAL, 1f);
-            
+
 			this.dot = dot;
             setDuration(animHalfDuration);
             setInterpolator(interpolator);
             addUpdateListener(new AnimatorUpdateListener() 
-			{
-				@Override
-				public void onAnimationUpdate(ValueAnimator valueAnimator) 
 				{
-					setDotRevealFraction(PendingRevealAnimator.this.dot, (Float)valueAnimator.getAnimatedValue());
-				}
-			});
+					@Override
+					public void onAnimationUpdate(ValueAnimator valueAnimator) 
+					{
+						setDotRevealFraction(PendingRevealAnimator.this.dot, (Float)valueAnimator.getAnimatedValue());
+					}
+				});
             addListener(new AnimatorListenerAdapter() 
-			{
-				@Override
-				public void onAnimationEnd(Animator animation)
 				{
-					setDotRevealFraction(PendingRevealAnimator.this.dot, 0f);
-					postInvalidateOnAnimation();
-				}
-			});
+					@Override
+					public void onAnimationEnd(Animator animation)
+					{
+						setDotRevealFraction(PendingRevealAnimator.this.dot, 0f);
+						postInvalidateOnAnimation();
+					}
+				});
         }
     }
 

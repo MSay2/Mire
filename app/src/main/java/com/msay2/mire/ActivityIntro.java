@@ -3,11 +3,10 @@ package com.msay2.mire;
 import android.app.*;
 import android.os.*;
 
-import com.msay2.mire.widget.ViewPagerIndicator;
-
 import fr.yoann.dev.preferences.Preferences;
 import fr.yoann.dev.preferences.utils.AnimUtils;
 import fr.yoann.dev.preferences.helpers.ColorHelpers;
+import fr.yoann.dev.preferences.widget.ViewPagerIndicator;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -56,7 +55,7 @@ public class ActivityIntro extends AppCompatActivity
 		setContentView(R.layout.activity_intro);
 		
 		root_layout = (RelativeLayout)findViewById(R.id.root_layout);
-		Preferences.makeViewSystemBarBackground(root_layout);
+		Preferences.makeViewDrawSystemBarBackground(root_layout);
 		
 		pager = (ViewPager)findViewById(R.id.ma_viewPager);
 		adapterPager = new IntroPagerAdapter(getSupportFragmentManager());
