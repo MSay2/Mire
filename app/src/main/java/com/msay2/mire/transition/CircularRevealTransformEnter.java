@@ -6,6 +6,9 @@ package com.msay2.mire.transition;
 
 import fr.yoann.dev.preferences.utils.AnimUtils;
 
+import com.msay2.mire.R;
+import com.msay2.mire.helpers.DrawableHelper;
+
 import android.animation.Animator;
 import android.animation.TimeInterpolator;
 import android.animation.ObjectAnimator;
@@ -117,7 +120,7 @@ public class CircularRevealTransformEnter extends Transition
             view.setTranslationY(translationY);
         }
 		
-		final Drawable fabIcon = ContextCompat.getDrawable(sceneRoot.getContext(), icon).mutate();
+		final Drawable fabIcon = DrawableHelper.getDrawable(sceneRoot.getContext(), R.drawable.ic_more_vert_accent_24dp);
         final int iconLeft = (dialogBounds.width() - fabIcon.getIntrinsicWidth()) / 2;
         final int iconTop = (dialogBounds.height() - fabIcon.getIntrinsicHeight()) / 2;
        

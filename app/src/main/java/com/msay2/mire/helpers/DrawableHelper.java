@@ -14,6 +14,25 @@ import android.support.v7.widget.AppCompatDrawableManager;
 public class DrawableHelper
 {
 	@Nullable
+	public static Drawable getDrawable(@NonNull Context context, @DrawableRes int res)
+	{
+		Drawable drawable = AppCompatDrawableManager.get().getDrawable(context, res);
+		
+		return drawable.mutate();
+	}
+	
+	@Nullable
+	@ColorInt
+	public static int getDrawableInt(@NonNull Context context, @DrawableRes int res, @ColorInt int color)
+	{
+		Drawable drawable = AppCompatDrawableManager.get().getDrawable(context, res);
+		drawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+		drawable.mutate();
+		
+		return color;
+	}
+	
+	@Nullable
     public static Drawable getTintedDrawable(@NonNull Context context, @DrawableRes int res, @ColorInt int color)
 	{
         try 

@@ -13,8 +13,7 @@
 	-->
 
 	<string-array name="changelog">
-		<item><![CDATA[Ajout de la traduction <b>Anglaise</b>]]></item>
-		<item><![CDATA[Mire est <b>OpenSource</b>]]></item>
+		<item>Améliorations apportées</item>
 	</string-array>
 
 </resources>

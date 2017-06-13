@@ -8,10 +8,11 @@ import fr.yoann.dev.preferences.helpers.ColorHelpers;
 import fr.yoann.dev.preferences.utils.AnimUtils;
 
 import com.msay2.mire.helpers.WallpaperHelper;
+import com.msay2.mire.helpers.DrawableHelper;
 import com.msay2.mire.utils.ImageConfig;
+import com.msay2.mire.utils.MirePaletteUtils;
 import com.msay2.mire.widget.DoubleTapImageView;
 import com.msay2.mire.transition.CircularRevealTransformEnter;
-import com.msay2.mire.utils.MirePaletteUtils;
 
 import com.kogitune.activitytransition.ActivityTransition;
 import com.kogitune.activitytransition.ExitActivityTransition;
@@ -41,15 +42,13 @@ import android.widget.ImageView;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.graphics.drawable.*;
-import android.support.v4.content.*;
-import android.graphics.*;
 
 public class ActivitySetWallpapers extends AppCompatActivity
 {
 	private static final String URL = "id_img";
     private static final String NAME = "id_title";
 	private static final String TEXT = "id_text";
+	private static final String COLOR = "colorPalette";
 	
 	private static String image, title, text;
 	private static int mColor;
@@ -97,7 +96,6 @@ public class ActivitySetWallpapers extends AppCompatActivity
 		    .duration(300)
 		    .start(savedInstanceState);
 		
-		apply.setOnClickListener(applyClick);
 		apply.setOnLongClickListener(applyLongClick);
 	}
 	
@@ -160,8 +158,6 @@ public class ActivitySetWallpapers extends AppCompatActivity
 			public void onLoadingFailed(String imageUri, View view, FailReason failReason) 
 			{
 				super.onLoadingFailed(imageUri, view, failReason);
-
-				OnWallpaperLoaded();
 				
 				Preferences.longToast(ActivitySetWallpapers.this, getStringSrc(R.string.toast_apply_wallpaper_error_loading));
 			}
@@ -178,7 +174,7 @@ public class ActivitySetWallpapers extends AppCompatActivity
 						@Override
 						public void onGenerated(Palette palette)
 						{
-							OnWallpaperLoaded();
+							OnWallpaperLoaded(palette);
 						}
 					});
 				}
@@ -186,32 +182,38 @@ public class ActivitySetWallpapers extends AppCompatActivity
 		});
 	}
 	
-	private void OnWallpaperLoaded()
+	private void OnWallpaperLoaded(final Palette palette)
 	{
         progress.setVisibility(View.GONE);
 		apply.startAnimation(anim);
 		apply.setVisibility(View.VISIBLE);
-    }
-	
-	public View.OnClickListener applyClick = new View.OnClickListener()
-	{
-		@Override
-		public void onClick(View view)
+		
+		apply.setImageDrawable(DrawableHelper.getTintedDrawable(ActivitySetWallpapers.this, R.drawable.ic_more_vert_accent_24dp, MirePaletteUtils.getColor(palette, Preferences.getAttributeColor(ActivitySetWallpapers.this, R.attr.colorAccent))));
+		apply.setOnClickListener(new View.OnClickListener()
 		{
-			Intent intent = new Intent(ActivitySetWallpapers.this, ActivityDialogWallpaperChoiceOptions.class);
-			intent.putExtra(URL, image);
-			intent.putExtra(NAME, title);
-			intent.putExtra(TEXT, text);
-			
-			CircularRevealTransformEnter.addExtras(intent, R.drawable.ic_more_vert_accent_24dp);
-			
-			Pair<View, String> pair = (Pair<View, String>)Pair.create((View)findViewById(R.id.id_apply), "transition_dialog");
-			
-			ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(ActivitySetWallpapers.this, pair);
-			
-			startActivity(intent, options.toBundle());
-		}
-	};
+			@Override
+			public void onClick(View view)
+			{
+				final int defaultColor = Preferences.getAttributeColor(ActivitySetWallpapers.this, R.attr.colorAccent);
+				final int colorInt = MirePaletteUtils.getColor(palette, defaultColor);
+				
+				Intent intent = new Intent(ActivitySetWallpapers.this, ActivityDialogWallpaperChoiceOptions.class);
+				intent.putExtra(URL, image);
+				intent.putExtra(NAME, title);
+				intent.putExtra(TEXT, text);
+				intent.putExtra(COLOR, colorInt);
+
+				int src = DrawableHelper.getDrawableInt(ActivitySetWallpapers.this, R.drawable.ic_more_vert_accent_24dp, MirePaletteUtils.getColor(palette, Preferences.getAttributeColor(ActivitySetWallpapers.this, R.attr.colorAccent))); // Does not Work :'(
+				CircularRevealTransformEnter.addExtras(intent, src);
+				
+				Pair<View, String> pair = (Pair<View, String>)Pair.create((View)findViewById(R.id.id_apply), "transition_dialog");
+
+				ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(ActivitySetWallpapers.this, pair);
+
+				startActivity(intent, options.toBundle());
+			}
+		});
+    }
 	
 	public View.OnLongClickListener applyLongClick = new View.OnLongClickListener()
 	{
