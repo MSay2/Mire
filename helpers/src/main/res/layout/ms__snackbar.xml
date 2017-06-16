@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/ms__dismiss"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/ms__text"
+			style="@style/SnackBar.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/ms__button"
+			style="@style/SnackBar.Action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:focusable="true"
+			android:fontFamily="sans-serif-medium"
+			android:background="?android:attr/selectableItemBackgroundBorderless"/>
+
+    </LinearLayout>
+
+</merge>

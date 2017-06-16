@@ -4,7 +4,9 @@ import android.os.Build;
 import android.os.Environment;
 import android.app.Activity;
 
+import fr.yoann.dev.R;
 import fr.yoann.dev.preferences.helpers.PreferencesHelpers;
+import fr.yoann.dev.preferences.widget.SnackBar;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.ColorInt;
@@ -252,4 +254,30 @@ public class Preferences
 		Typeface.createFromAsset(fragmentActivity.getAssets(), ttfAssets);
 	}
 	// end set Typeface - create typface from assets
+	
+	// set SnackBar theme
+	// LIGHT
+	public void snackBarLight(Activity activity, int message, int messageButton, View.OnClickListener onClick)
+	{
+		new SnackBar(activity)
+		    .setColorBackground(R.color.background_light)
+		    .setMessage(message)
+		    .setMessageButton(messageButton)
+		    .setMessageColorSrc(R.color.text_color_dark)
+		    .setMessageButtonColorSrc(R.color.button_text_light)
+		    .setButtonListener(onClick);
+	}
+	
+	// DARK
+	public void snackBarDark(Activity activity, int message, int messageButton, View.OnClickListener onClick)
+	{
+		new SnackBar(activity)
+		    .setColorBackground(R.color.background_dark)
+		    .setMessage(message)
+		    .setMessageButton(messageButton)
+		    .setMessageColorSrc(R.color.text_color_light)
+		    .setMessageButtonColorSrc(R.color.button_text_dark)
+		    .setButtonListener(onClick);
+	}
+	// end set SnackBar theme
 }

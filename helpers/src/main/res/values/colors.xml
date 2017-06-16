@@ -6,4 +6,13 @@
 	<color name="semi_black">#87000000</color>
 	<color name="semi_white">#87FFFFFF</color>
 	
+	<color name="background_dark">#FF323232</color>
+	<color name="background_light">#FFFFFFFF</color>
+	
+	<color name="text_color_light">@color/white</color>
+	<color name="text_color_dark">@color/semi_black</color>
+	
+	<color name="button_text_light">#009688</color>
+	<color name="button_text_dark">#4DB6AC</color>
+	
 </resources>
