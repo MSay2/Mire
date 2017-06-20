@@ -1,12 +1,14 @@
 package fr.yoann.dev.preferences.utils;
 
 import fr.yoann.dev.R;
+import fr.yoann.dev.preferences.enum.SnackBarTypePosition;
 
 import android.os.*;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.AnimRes;
 
 import android.animation.Animator;
 import android.animation.TimeInterpolator;
@@ -121,6 +123,18 @@ public class AnimUtils
 		
 		view.startAnimation(scale);
 		view.setVisibility(View.GONE);
+	}
+	
+	@AnimRes
+	public static int getAnimationEnter(SnackBarTypePosition snackbarPosition)
+	{
+		return snackbarPosition == SnackBarTypePosition.TOP ? R.anim.slide_exit : R.anim.slide_enter;
+	}
+
+	@AnimRes
+	public static int getAnimationExit(SnackBarTypePosition snackbarPosition) 
+	{
+		return snackbarPosition == SnackBarTypePosition.TOP ? R.anim.slide_enter : R.anim.slide_exit;
 	}
 	
 	public static abstract class IntProperty<T> extends Property<T, Integer> 

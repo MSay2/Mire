@@ -2,7 +2,7 @@ package fr.yoann.dev.preferences.enum;
 
 public enum SnackBarTypeSize
 {
-	MULTI_LINE(48, 80, 2),
+	SIZE_LINE(48, 48, 1),
 	SIZE_ELEVATION_NORMAL(6);
 
     private int minHeight;

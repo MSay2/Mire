@@ -30,6 +30,7 @@ import android.view.Window;
 import android.view.View;
 import android.widget.Toast;
 import android.graphics.Typeface;
+import android.graphics.Color;
 
 public class Preferences
 {
@@ -257,27 +258,35 @@ public class Preferences
 	
 	// set SnackBar theme
 	// LIGHT
-	public void snackBarLight(Activity activity, int message, int messageButton, View.OnClickListener onClick)
+	public static void snackBarLight(Activity activity, int message, int messageButton, View.OnClickListener onClick, long duration)
 	{
-		new SnackBar(activity)
-		    .setColorBackground(R.color.background_light)
+		SnackBar.with(activity)
+		    .setColorBackground(Color.parseColor("#FFFFFFFF"))
 		    .setMessage(message)
 		    .setMessageButton(messageButton)
 		    .setMessageColorSrc(R.color.text_color_dark)
 		    .setMessageButtonColorSrc(R.color.button_text_light)
-		    .setButtonListener(onClick);
+		    .setButtonListener(onClick)
+		//  .show(activity, duration)
+		//  .show(activity, SnackBar.LENGTH_LONG)
+		//  .show(activity, SnackBar.LENGTH_SHORT)
+		    .show(activity); // LENGTH_SHORT is by default
 	}
 	
 	// DARK
-	public void snackBarDark(Activity activity, int message, int messageButton, View.OnClickListener onClick)
+	public static void snackBarDark(Activity activity, int message, int messageButton, View.OnClickListener onClick, long duration)
 	{
-		new SnackBar(activity)
-		    .setColorBackground(R.color.background_dark)
+		SnackBar.with(activity)
+		    .setColorBackground(Color.parseColor("#FF323232"))
 		    .setMessage(message)
 		    .setMessageButton(messageButton)
 		    .setMessageColorSrc(R.color.text_color_light)
 		    .setMessageButtonColorSrc(R.color.button_text_dark)
-		    .setButtonListener(onClick);
+		    .setButtonListener(onClick)
+		//  .show(activity, duration)
+		//  .show(activity, SnackBar.LENGTH_LONG)
+		//  .show(activity, SnackBar.LENGTH_SHORT)
+		    .show(activity); // LENGTH_SHORT is by default
 	}
 	// end set SnackBar theme
 }
