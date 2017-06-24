@@ -15,4 +15,15 @@
         <attr name="currentPageIndicatorColor" format="color"/>
     </declare-styleable>
 	
+	<declare-styleable name="ButtonIcon">
+		<attr name="android:src"/>
+		<attr name="android:text"/>
+		<attr name="android:textColor"/>
+		<attr name="android:textSize"/>
+		<attr name="isTypeface" format="boolean"/>
+		<attr name="android:typeface"/>
+		<attr name="android:background"/>
+		<attr name="android:foreground"/>
+	</declare-styleable>
+	
 </resources>

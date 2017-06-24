@@ -48,41 +48,20 @@
 				android:id="@+id/id_name_dev"
 				android:textStyle="bold"/>
 
-			<fr.yoann.dev.preferences.widget.MSay2Button
+			<fr.yoann.dev.preferences.widget.ButtonIcon
 				android:id="@+id/id_view_git"
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
-				android:minHeight="36dp"
+				android:src="@drawable/ic_github_logo"
+				android:text="Github"
+				android:textColor="@color/white"
+				app:isTypeface="false"
+				android:background="?android:attr/colorAccent"
+				android:foreground="?android:attr/selectableItemBackground"
+				android:theme="@style/RippleColorTheme"
 				android:layout_alignParentBottom="true"
 				android:layout_marginBottom="64dp"
-				android:layout_centerHorizontal="true"
-				android:paddingLeft="12dp"
-				android:paddingRight="12dp"
-				android:foreground="?android:attr/selectableItemBackground"
-				android:background="@drawable/background_button"
-				android:stateListAnimator="@animator/touch_button_raise"
-				android:theme="@style/RippleColorTheme">
-
-				<ImageView
-					android:id="@+id/id_icon"
-					android:layout_height="24dp"
-					android:layout_width="24dp"
-					android:src="@drawable/ic_github_logo"
-					android:layout_centerVertical="true"/>
-
-				<TextView
-					android:id="@+id/id_text"
-					android:layout_toRightOf="@id/id_icon"
-					android:layout_height="wrap_content"
-					android:layout_width="wrap_content"
-					android:text="GITHUB"
-					android:layout_marginLeft="8dp"
-					android:layout_centerVertical="true"
-					android:textSize="14sp"
-					android:textColor="@color/white"
-					android:fontFamily="sans-serif-medium"/>
-
-			</fr.yoann.dev.preferences.widget.MSay2Button>
+				android:layout_centerHorizontal="true"/>
 
 		</RelativeLayout>
 

@@ -4,7 +4,7 @@ import android.os.*;
 import android.app.*;
 
 import fr.yoann.dev.preferences.Preferences;
-import fr.yoann.dev.preferences.widget.MSay2Button;
+import fr.yoann.dev.preferences.widget.ButtonIcon;
 
 import com.msay2.mire.helpers.CircleTransformHelper;
 
@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Button;
 
 public class ActivityDetailsDevs extends AppCompatActivity
 {
@@ -30,7 +29,7 @@ public class ActivityDetailsDevs extends AppCompatActivity
 	private String name, image, url_lib, description_lib;
 	private ImageView imageDev;
 	private TextView nameDev, descriptionLib;
-	private MSay2Button buttonLib;
+	private ButtonIcon buttonLib;
 	private LinearLayout content_text;
 	private CircleTransformHelper circleTransform;
 	private RelativeLayout root_layout;
@@ -62,7 +61,7 @@ public class ActivityDetailsDevs extends AppCompatActivity
 		
 		root_layout = (RelativeLayout)findViewById(R.id.root_layout);
 		imageDev = (ImageView)findViewById(R.id.id_avatar);
-		buttonLib = (MSay2Button)findViewById(R.id.id_view_git);
+		buttonLib = (ButtonIcon)findViewById(R.id.id_view_git);
 		nameDev = (TextView)findViewById(R.id.id_name_dev);
 		descriptionLib = (TextView)findViewById(R.id.id_description_lib);
 		content_text = (LinearLayout)findViewById(R.id.id_container_text);

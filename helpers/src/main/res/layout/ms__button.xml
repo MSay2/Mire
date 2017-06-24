@@ -1,0 +1,26 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/ms__content"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	style="@style/ButtonIcon.Content">
+
+	<ImageView
+		android:id="@+id/ms__button_icon"
+		android:layout_height="24dp"
+		android:layout_width="24dp"
+		android:src="@drawable/ic_github_logo"
+		android:layout_gravity="center_vertical"
+		style="@style/ButtonIcon.Icon"/>
+
+	<TextView
+		android:id="@+id/ms__button_text"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Github !"
+		android:layout_gravity="center_vertical"
+		android:fontFamily="sans-serif-medium"
+		style="@style/ButtonIcon.Text"/>
+
+</LinearLayout>

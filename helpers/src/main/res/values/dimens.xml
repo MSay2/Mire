@@ -8,4 +8,13 @@
 	<dimen name="text_size_message">14sp</dimen>
 	<dimen name="text_size_button">14sp</dimen>
 	
+	<dimen name="corner_radius_button">2dp</dimen>
+	<dimen name="elevation_state_default">2dp</dimen>
+	<dimen name="elevation_state_pressed">6dp</dimen>
+	<dimen name="min_height_button">37dp</dimen> <!-- the real button is 36dp -->
+	<dimen name="min_width_button">64dp</dimen>
+	<dimen name="padding_left_button">12dp</dimen>
+	<dimen name="padding_right_button">12dp</dimen>
+	<dimen name="margin_icon">8dp</dimen>
+	
 </resources>

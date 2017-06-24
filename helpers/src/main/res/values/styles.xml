@@ -2,6 +2,7 @@
 <resources>
 	
 	<style name="SnackBar"/>
+	<style name="ButtonIcon"/>
 		
 	<style name="SnackBar.Text">
         <item name="android:paddingBottom">@dimen/padding_top_and_bottom</item>
@@ -22,5 +23,22 @@
         <item name="android:textColor">@color/button_text_dark</item>
 		<item name="android:textSize">@dimen/text_size_button</item>
     </style>
+	
+	<style name="ButtonIcon.Content">
+		<item name="android:minHeight">@dimen/min_height_button</item>
+		<item name="android:minWidth">@dimen/min_width_button</item>
+		<item name="android:paddingRight">@dimen/padding_right_button</item>
+		<item name="android:paddingLeft">@dimen/padding_left_button</item>
+	</style>
+	
+	<style name="ButtonIcon.Icon">
+		<item name="android:layout_marginRight">@dimen/margin_icon</item>
+	</style>
+	
+	<style name="ButtonIcon.Text">
+		<item name="android:textSize">@dimen/text_size_button</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:textAllCaps">true</item>
+	</style>
 	
 </resources>
