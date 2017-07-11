@@ -2,11 +2,13 @@
 <resources>
 	
 	<dimen name="max_width_snackbar">480dp</dimen>
-	<dimen name="padding_top_and_bottom">14sp</dimen>
-	<dimen name="padding_left_and_right">24sp</dimen>
-	<dimen name="padding_left_and_right_button">16dp</dimen>
+	<dimen name="padding_top_and_bottom">14dp</dimen>
+	<dimen name="padding_left_and_right">24dp</dimen>
+	<dimen name="padding_left_and_right_button">8dp</dimen>
 	<dimen name="text_size_message">14sp</dimen>
 	<dimen name="text_size_button">14sp</dimen>
+	<dimen name="min_height_button_snackbar">36dp</dimen>
+	<dimen name="min_width_button_snackbar">64dp</dimen>
 	
 	<dimen name="corner_radius_button">2dp</dimen>
 	<dimen name="elevation_state_default">2dp</dimen>

@@ -4,50 +4,61 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.view.ViewOutlineProvider;
-import android.widget.RelativeLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.View;
-import android.view.LayoutInflater;
 
 import fr.yoann.dev.R;
 
-public class MSay2Button extends RelativeLayout 
+public class ForegroundTextView extends TextView
 {
+	private Drawable foreground;
 	
-    private Drawable foreground;
-	
-    public MSay2Button(Context context, AttributeSet attrs) 
+	public ForegroundTextView(Context context)
 	{
-        super(context, attrs);
+		super(context);
 		
-        TypedArray typed = context.obtainStyledAttributes(attrs, R.styleable.ForegroundView);
+		this.setBackground(context.getResources().getDrawable(R.drawable.button_action));
+		this.setOutlineProvider(ViewOutlineProvider.BOUNDS);
+	}
+	
+	public ForegroundTextView(Context context, AttributeSet attrs)
+	{
+		super(context, attrs);
+		
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ForegroundView);
 
-        final Drawable d = typed.getDrawable(R.styleable.ForegroundView_android_foreground);
+        final Drawable d = a.getDrawable(R.styleable.ForegroundView_android_foreground);
         if (d != null) 
 		{
             setForeground(d);
         }
 		
-        typed.recycle();
-        setOutlineProvider(ViewOutlineProvider.BOUNDS);
-    }
+        a.recycle();
+		this.setBackground(context.getResources().getDrawable(R.drawable.button_action));
+        this.setOutlineProvider(ViewOutlineProvider.BOUNDS);
+	}
 	
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) 
+	public ForegroundTextView(Context context, AttributeSet attrs, int defStyle)
+	{
+		super(context, attrs, defStyle);
+		
+		this.setBackground(context.getResources().getDrawable(R.drawable.button_action));
+		this.setOutlineProvider(ViewOutlineProvider.BOUNDS);
+	}
+	
+	@Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh)
 	{
         super.onSizeChanged(w, h, oldw, oldh);
-        if (foreground != null) 
+        if (foreground != null)
 		{
             foreground.setBounds(0, 0, w, h);
         }
     }
 
     @Override
-    public boolean hasOverlappingRendering() 
+    public boolean hasOverlappingRendering()
 	{
         return false;
     }
@@ -62,14 +73,14 @@ public class MSay2Button extends RelativeLayout
     public void jumpDrawablesToCurrentState() 
 	{
         super.jumpDrawablesToCurrentState();
-        if (foreground != null)
+        if (foreground != null) 
 		{
 			foreground.jumpToCurrentState();
 		}
     }
 
     @Override
-    protected void drawableStateChanged() 
+    protected void drawableStateChanged()
 	{
         super.drawableStateChanged();
         if (foreground != null && foreground.isStateful())
@@ -87,23 +98,24 @@ public class MSay2Button extends RelativeLayout
 	{
         if (foreground != drawable)
 		{
-            if (foreground != null)
+            if (foreground != null) 
 			{
                 foreground.setCallback(null);
                 unscheduleDrawable(foreground);
             }
 
             foreground = drawable;
-            if (foreground != null)
+
+            if (foreground != null) 
 			{
-                foreground.setBounds(getLeft(), getTop(), getRight(), getBottom());
+                foreground.setBounds(0, 0, getWidth(), getHeight());
                 setWillNotDraw(false);
                 foreground.setCallback(this);
-                if (foreground.isStateful())
+                if (foreground.isStateful()) 
 				{
                     foreground.setState(getDrawableState());
                 }
-            }
+            } 
 			else 
 			{
                 setWillNotDraw(true);
@@ -113,7 +125,7 @@ public class MSay2Button extends RelativeLayout
     }
 
     @Override
-    public void draw(Canvas canvas)
+    public void draw(Canvas canvas) 
 	{
         super.draw(canvas);
         if (foreground != null) 
@@ -126,7 +138,7 @@ public class MSay2Button extends RelativeLayout
     public void drawableHotspotChanged(float x, float y) 
 	{
         super.drawableHotspotChanged(x, y);
-        if (foreground != null)
+        if (foreground != null) 
 		{
             foreground.setHotspot(x, y);
         }

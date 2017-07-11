@@ -16,6 +16,7 @@ import android.util.FloatProperty;
 import android.util.Property;
 import android.util.ArrayMap;
 import android.view.View;
+import android.view.Gravity;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -128,13 +129,13 @@ public class AnimUtils
 	@AnimRes
 	public static int getAnimationEnter(SnackBarTypePosition snackbarPosition)
 	{
-		return snackbarPosition == SnackBarTypePosition.TOP ? R.anim.slide_exit : R.anim.slide_enter;
+		return snackbarPosition == SnackBarTypePosition.TOP ? R.anim.slide_enter : R.anim.slide_exit;
 	}
 
 	@AnimRes
 	public static int getAnimationExit(SnackBarTypePosition snackbarPosition) 
 	{
-		return snackbarPosition == SnackBarTypePosition.TOP ? R.anim.slide_enter : R.anim.slide_exit;
+		return snackbarPosition == SnackBarTypePosition.TOP ? R.anim.slide_exit : R.anim.slide_enter;
 	}
 	
 	public static abstract class IntProperty<T> extends Property<T, Integer> 

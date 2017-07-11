@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	
-	<style name="SnackBar"/>
+	<style name="SnackBar" parent="@style/Theme.AppCompat.Light"/>
 	<style name="ButtonIcon"/>
 		
 	<style name="SnackBar.Text">
@@ -14,15 +14,21 @@
     </style>
 	
 	<style name="SnackBar.Action">
-		<item name="android:paddingBottom">@dimen/padding_top_and_bottom</item>
         <item name="android:paddingLeft">@dimen/padding_left_and_right_button</item>
-        <item name="android:paddingTop">@dimen/padding_top_and_bottom</item>
         <item name="android:paddingRight">@dimen/padding_left_and_right_button</item>
         <item name="android:textSize">@dimen/text_size_message</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/button_text_dark</item>
 		<item name="android:textSize">@dimen/text_size_button</item>
+		<item name="android:minHeight">@dimen/min_height_button_snackbar</item>
+		<item name="android:minWidth">@dimen/min_width_button_snackbar</item>
+		<item name="android:foreground">?attr/selectableItemBackground</item>
+		<item name="android:theme">@style/RippleTheme</item>
     </style>
+	
+	<style name="RippleTheme">
+		<item name="colorControlHighlight">@color/highlight_white</item>
+	</style>
 	
 	<style name="ButtonIcon.Content">
 		<item name="android:minHeight">@dimen/min_height_button</item>

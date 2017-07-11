@@ -15,4 +15,7 @@
 	<color name="button_text_light">#009688</color>
 	<color name="button_text_dark">#4DB6AC</color>
 	
+	<color name="highlight_white">#55FFFFFF</color>
+	<color name="transparent">#00000000</color>
+	
 </resources>

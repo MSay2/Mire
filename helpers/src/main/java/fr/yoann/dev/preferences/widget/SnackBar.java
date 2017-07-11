@@ -7,12 +7,14 @@ import fr.yoann.dev.preferences.listener.AnimListener;
 import fr.yoann.dev.preferences.enum.SnackBarTypePosition;
 import fr.yoann.dev.preferences.enum.SnackBarTypeSize;
 import fr.yoann.dev.preferences.layout.SnackBarLayout;
+import fr.yoann.dev.preferences.widget.ForegroundTextView;
 
 import android.app.Activity;
 import android.os.Build;
 import android.os.Handler;
 import android.content.Context;
 import android.text.TextUtils;
+import android.text.Layout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
@@ -33,16 +35,19 @@ import android.support.annotation.AnimRes;
 
 public class SnackBar extends SnackBarLayout
 {
+	private Activity act;
 	private SnackBarTypeSize typeOfSnackBar = SnackBarTypeSize.SIZE_LINE;
 	private SnackBarTypeSize typeOfElevation = SnackBarTypeSize.SIZE_ELEVATION_NORMAL;
-	private TextView snackBarText;
-	private TextView snackBarButton;
-	private CharSequence mText;
-	private CharSequence mButtonText;
-	private int mColor;
-	private int mTextColorMessage;
-	private int mTextColorButton;
-	private View.OnClickListener mOnClick;
+	
+	private static TextView snackBarText;
+	private static ForegroundTextView snackBarButton;
+	private static CharSequence mText;
+	private static CharSequence mButtonText;
+	private static int mColor;
+	private static int mTextColorMessage;
+	private static int mTextColorButton;
+	private static View.OnClickListener mOnClick;
+	private static SnackBar snackBar;
 	
 	public static final long LENGTH_SHORT = 1500;
 	public static final long LENGTH_LONG = 3000;
@@ -50,80 +55,82 @@ public class SnackBar extends SnackBarLayout
 	private SnackBar(Context context)
 	{
 		super(context);
+		act = (Activity)context;
 	}
 	
-	public static SnackBar with(Context context)
-	{
-		return new SnackBar(context);
-	}
-	
-	public SnackBar setColorBackground(int color)
+	public static SnackBar setColorBackground(int color)
 	{
 		mColor = color;
-		return this;
+		
+		return snackBar;
 	}
 
-	public SnackBar setColorBackgroundSrc(@ColorRes int resId)
+	public static SnackBar setColorBackground(Context context, @ColorRes int resId)
 	{
-		return setColorBackground(getContext().getColor(resId));
+		return setColorBackground(context.getColor(resId));
 	}
 	
-	public SnackBar setMessage(CharSequence text)
+	public static SnackBar setMessage(CharSequence text, SnackBar sn)
 	{
 		mText = text;
+		snackBar = sn;
 		if (snackBarText != null)
 		{
 			snackBarText.setText(mText);
 		}
-		return this;
+		return sn;
 	}
 
-	public SnackBar setMessage(@StringRes int resId) 
+	public static SnackBar setMessage(Context context, @StringRes int resId, SnackBar sn)
 	{
-		return setMessage(getContext().getText(resId));
+		return setMessage(context.getString(resId), sn);
 	}
 	
-	public SnackBar setMessageColor(int color)
+	public static SnackBar setMessageColor(int color)
 	{
 		mTextColorMessage = color;
-		return this;
+		
+		return snackBar;
 	}
 	
-	public SnackBar setMessageColorSrc(int resId)
+	public static SnackBar setMessageColor(Context context, @ColorRes int resId)
 	{
-		return setMessageColor(getContext().getColor(resId));
+		return setMessageColor(context.getColor(resId));
 	}
 	
-	public SnackBar setMessageButton(CharSequence buttonText)
+	public static SnackBar setMessageButton(CharSequence buttonText, SnackBar sn)
 	{
 		mButtonText = buttonText;
+		snackBar = sn;
 		if (snackBarButton != null)
 		{
 			snackBarButton.setText(mButtonText);
 		}
-		return this;
+		return sn;
 	}
 
-	public SnackBar setMessageButton(@StringRes int resId)
+	public static SnackBar setMessageButton(Context context, @StringRes int resId, SnackBar sn)
 	{
-		return setMessageButton(getContext().getString(resId));
+		return setMessageButton(context.getString(resId), sn);
 	}
 	
-	public SnackBar setMessageButtonColor(int color)
+	public static SnackBar setMessageButtonColor(int color)
 	{
 		mTextColorButton = color;
-		return this;
+		
+		return snackBar;
 	}
 	
-	public SnackBar setMessageButtonColorSrc(@ColorRes int resId)
+	public static SnackBar setMessageButtonColor(Context context, @ColorRes int resId)
 	{
-		return setMessageButtonColor(getContext().getColor(resId));
+		return setMessageButtonColor(context.getColor(resId));
 	}
 
-	public SnackBar setButtonListener(View.OnClickListener onClick)
+	public static SnackBar setButtonListener(View.OnClickListener onClick)
 	{
 		mOnClick = onClick;
-		return this;
+		
+		return snackBar;
 	}
 	
 	private Runnable dismissRunnable = new Runnable() 
@@ -170,46 +177,64 @@ public class SnackBar extends SnackBarLayout
 		}
 	}
 	
-	private MarginLayoutParams initView(Context context, Activity activity, ViewGroup parent)
+	private MarginLayoutParams initView(ViewGroup parent)
 	{
-		SnackBarLayout layout = (SnackBarLayout)LayoutInflater.from(context).inflate(R.layout.ms__snackbar, this, true);
+		final SnackBarLayout layout = (SnackBarLayout)LayoutInflater.from(getContext()).inflate(R.layout.ms__snackbar, this, true);
 		layout.setOrientation(LinearLayout.VERTICAL);
 
+		act = (Activity)getContext();
 		Resources res = getResources();
-		float density = res.getDisplayMetrics().density;
+		final float density = res.getDisplayMetrics().density;
 		
 		View content = layout.findViewById(R.id.ms__dismiss);
 
 		MarginLayoutParams params;
 
 		layout.setMinimumHeight(setDimensionPixels(typeOfSnackBar.getMinHeight(), density));
-		layout.setMaxHeight(setDimensionPixels(typeOfSnackBar.getMaxHeight(), density));
-		layout.setMaxWidth(getResources().getDimensionPixelSize(R.dimen.max_width_snackbar));
 		layout.setBackgroundColor(mColor);
 		if (Preferences.isLollipop())
 		{
 			layout.setElevation(setDimensionPixels(typeOfElevation.getSizeElevation(), density));
 		}
 
-		params = createStateMarginLayout(parent, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT, SnackBarTypePosition.BOTTOM);
+		params = createStateMarginLayout(parent, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT, SnackBarTypePosition.BOTTOM);
 
 		snackBarText = (TextView)content.findViewById(R.id.ms__text);
 		if (!TextUtils.isEmpty(mText))
 		{
 			snackBarText.setText(mText);
 			snackBarText.setTextColor(mTextColorMessage);
+			post(new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					Layout layouts = snackBarText.getLayout();  
+					final boolean isMultiLine = layouts.getLineCount() > 1;
+
+					if (isMultiLine)
+					{
+						layout.setMaxHeight(setDimensionPixels(64, density));
+					}
+					else
+					{
+						layout.setMaxHeight(setDimensionPixels(48, density));
+					}
+				}
+			});
 		}
 		else
 		{
 			snackBarText.setText("Hello !");
 		}
 
-		snackBarButton = (TextView)content.findViewById(R.id.ms__button);
+		snackBarButton = (ForegroundTextView)content.findViewById(R.id.ms__button);
 		if (!TextUtils.isEmpty(mButtonText))
 		{
 			snackBarButton.setText(mButtonText);
 			snackBarButton.setOnClickListener(mOnClick);
 			snackBarButton.setTextColor(mTextColorButton);
+			snackBarButton.setBackground(res.getDrawable(R.drawable.button_action));
 		}
 		else
 		{
@@ -223,31 +248,153 @@ public class SnackBar extends SnackBarLayout
 		return (int)(dp * densityMectrics + 0.5f);
 	}
 	
-	public SnackBar show(Activity activity)
+	public SnackBar show()
 	{
-		ViewGroup root = (ViewGroup)activity.findViewById(android.R.id.content);
+		act = (Activity)getContext();
 		
-		initView(activity, activity, root);
-		MarginLayoutParams params = initView(activity, activity, root);
+		ViewGroup root = (ViewGroup)act.findViewById(android.R.id.content);
 		
-		showAnimation(activity, params, root);
+		initView(root);
+		MarginLayoutParams params = initView(root);
+		
+		showAnimation(params, root);
 
 		return this;
 	}
 	
-	public SnackBar show(Activity activity, long duration)
+	public SnackBar show(long duration)
 	{
-		ViewGroup root = (ViewGroup)activity.findViewById(android.R.id.content);
+		act = (Activity)getContext();
+		
+		ViewGroup root = (ViewGroup)act.findViewById(android.R.id.content);
 
-		initView(activity, activity, root);
-		MarginLayoutParams params = initView(activity, activity, root);
+		initView(root);
+		MarginLayoutParams params = initView(root);
 
-		showAnimation(activity, params, root, duration);
+		showAnimation(params, root, duration);
 
 		return this;
 	}
 	
-	private void showAnimation(Activity activity, MarginLayoutParams params, ViewGroup parent)
+	public static SnackBar make(Context context, CharSequence text)
+	{
+		snackBar = new SnackBar(context);
+		
+		mText = text;
+		setColorBackground(Color.parseColor("#FF323232"));
+		setMessage(mText, snackBar);
+		setMessageColor(context.getResources().getColor(R.color.white));
+		
+		return snackBar;
+	}
+	
+	public static SnackBar makeText(Context context, @StringRes int resString)
+	{
+		snackBar = new SnackBar(context);
+
+		setColorBackground(Color.parseColor("#FF323232"));
+		setMessage(context, resString, snackBar);
+		setMessageColor(context.getResources().getColor(R.color.white));
+
+		return snackBar;
+	}
+	
+	public static SnackBar makeText(Context context, String text)
+	{
+		snackBar = new SnackBar(context);
+
+		setColorBackground(Color.parseColor("#FF323232"));
+		setMessage(text, snackBar);
+		setMessageColor(context.getResources().getColor(R.color.white));
+
+		return snackBar;
+	}
+	
+	public static SnackBar makeTextColor(Context context, @StringRes int resString, @ColorRes int resColor)
+	{
+		snackBar = new SnackBar(context);
+		
+		setColorBackground(Color.parseColor("#FF323232"));
+		setMessage(context, resString, snackBar);
+		setMessageColor(context, resColor);
+		
+		return snackBar;
+	}
+	
+	public static SnackBar makeTextColor(Context context, String text, int color)
+	{
+		snackBar = new SnackBar(context);
+
+		setColorBackground(Color.parseColor("#FF323232"));
+		setMessage(text, snackBar);
+		setMessageColor(color);
+
+		return snackBar;
+	}
+	
+	public SnackBar setAction(CharSequence text, View.OnClickListener onClick)
+	{
+		snackBar = new SnackBar(getContext());
+		
+		mButtonText = text;
+		mOnClick = onClick;
+		setColorBackground(Color.parseColor("#FF323232"));
+		setMessageButton(mButtonText, snackBar);
+		setMessageButtonColor(Preferences.getAttributeColor(getContext(), android.R.attr.colorAccent));
+		setButtonListener(mOnClick);
+		
+		return snackBar;
+	}
+	
+	public SnackBar setAction(@StringRes int resString, View.OnClickListener onClick)
+	{
+		snackBar = new SnackBar(getContext());
+		
+		setColorBackground(Color.parseColor("#FF323232"));
+		setMessageButton(getContext(), resString, snackBar);
+		setMessageButtonColor(Preferences.getAttributeColor(getContext(), android.R.attr.colorAccent));
+		setButtonListener(onClick);
+		
+		return snackBar;
+	}
+	
+	public SnackBar setAction(String text, View.OnClickListener onClick)
+	{
+		snackBar = new SnackBar(getContext());
+
+		setColorBackground(Color.parseColor("#FF323232"));
+		setMessageButton(text, snackBar);
+		setMessageButtonColor(Preferences.getAttributeColor(getContext(), android.R.attr.colorAccent));
+		setButtonListener(onClick);
+
+		return snackBar;
+	}
+	
+	public SnackBar setActionColor(@StringRes int resString, @ColorRes int resColor, View.OnClickListener onClick)
+	{
+		snackBar = new SnackBar(getContext());
+
+		setColorBackground(Color.parseColor("#FF323232"));
+		setMessageButton(getContext(), resString, snackBar);
+		setMessageButtonColor(getContext(), resColor);
+		setButtonListener(onClick);
+
+		return snackBar;
+	}
+
+	public SnackBar setActionColor(String text, int color, View.OnClickListener onClick)
+	{
+		snackBar = new SnackBar(getContext());
+
+		setColorBackground(Color.parseColor("#FF323232"));
+		setMessageButton(text, snackBar);
+		setMessageButtonColor(color);
+		setButtonListener(onClick);
+
+		return snackBar;
+	}
+	
+	private void showAnimation(MarginLayoutParams params, ViewGroup parent)
 	{
 		parent.removeView(this);
 		if (Preferences.isLollipop())
@@ -264,10 +411,10 @@ public class SnackBar extends SnackBarLayout
 		}
 		parent.addView(this, params);
 		bringToFront();
-		enterAnimation(activity);
+		enterAnimation();
 	}
 	
-	private void showAnimation(Activity activity, MarginLayoutParams params, ViewGroup parent, long duration)
+	private void showAnimation(MarginLayoutParams params, ViewGroup parent, long duration)
 	{
 		parent.removeView(this);
 		if (Preferences.isLollipop())
@@ -284,12 +431,12 @@ public class SnackBar extends SnackBarLayout
 		}
 		parent.addView(this, params);
 		bringToFront();
-		enterAnimation(activity, duration);
+		enterAnimation(duration);
 	}
 	
-	private void enterAnimation(Context context)
+	private void enterAnimation()
 	{
-		Animation slideEnter = AnimationUtils.loadAnimation(context, AnimUtils.getAnimationEnter(SnackBarTypePosition.BOTTOM));
+		Animation slideEnter = AnimationUtils.loadAnimation(getContext(), AnimUtils.getAnimationEnter(SnackBarTypePosition.BOTTOM));
 		slideEnter.setAnimationListener(new AnimListener()
 		{
 			@Override
@@ -308,9 +455,9 @@ public class SnackBar extends SnackBarLayout
 		startAnimation(slideEnter);
 	}
 	
-	private void enterAnimation(Context context, final long duration)
+	private void enterAnimation(final long duration)
 	{
-		Animation slideEnter = AnimationUtils.loadAnimation(context, AnimUtils.getAnimationEnter(SnackBarTypePosition.BOTTOM));
+		Animation slideEnter = AnimationUtils.loadAnimation(getContext(), AnimUtils.getAnimationEnter(SnackBarTypePosition.BOTTOM));
 		slideEnter.setAnimationListener(new AnimListener()
 		{
 			@Override

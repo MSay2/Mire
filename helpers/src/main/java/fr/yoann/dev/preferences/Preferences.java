@@ -258,19 +258,19 @@ public class Preferences
 	
 	// set SnackBar theme
 	// LIGHT
-	public static void snackBarLight(Activity activity, int message, int messageButton, View.OnClickListener onClick, long duration)
+	/*public static void snackBarLight(Activity activity, int message, int messageButton, View.OnClickListener onClick)
 	{
 		SnackBar.with(activity)
 		    .setColorBackground(Color.parseColor("#FFFFFFFF"))
 		    .setMessage(message)
 		    .setMessageButton(messageButton)
 		    .setMessageColorSrc(R.color.text_color_dark)
-		    .setMessageButtonColorSrc(R.color.button_text_light)
+		    .setMessageButtonColor(R.color.button_text_light)
 		    .setButtonListener(onClick)
 		//  .show(activity, duration)
 		//  .show(activity, SnackBar.LENGTH_LONG)
 		//  .show(activity, SnackBar.LENGTH_SHORT)
-		    .show(activity); // LENGTH_SHORT is by default
+		    .show(); // LENGTH_SHORT is by default
 	}
 	
 	// DARK
@@ -281,12 +281,19 @@ public class Preferences
 		    .setMessage(message)
 		    .setMessageButton(messageButton)
 		    .setMessageColorSrc(R.color.text_color_light)
-		    .setMessageButtonColorSrc(R.color.button_text_dark)
+		    .setMessageButtonColor(R.color.button_text_dark)
 		    .setButtonListener(onClick)
-		//  .show(activity, duration)
+		    .show(activity, duration);
 		//  .show(activity, SnackBar.LENGTH_LONG)
 		//  .show(activity, SnackBar.LENGTH_SHORT)
-		    .show(activity); // LENGTH_SHORT is by default
-	}
+		//  .show(activity); // LENGTH_SHORT is by default
+	}*/
 	// end set SnackBar theme
+	
+	// set dimension dp
+	public static int setDimensionPixels(int dp, float densityMectrics)
+	{
+		return (int)(dp * densityMectrics + 0.5f);
+	}
+	// end set dimensiion dp
 }

@@ -9,7 +9,7 @@ import android.annotation.TargetApi;
 
 /*
  This class is for a {@ImageView} with 16:9
-*/
+ */
 
 public class SeizeNeufImageView extends ImageView
 {
