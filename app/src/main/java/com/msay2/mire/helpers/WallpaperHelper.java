@@ -3,6 +3,8 @@ package com.msay2.mire.helpers;
 import android.app.*;
 import android.os.*;
 
+import fr.yoann.dev.preferences.widget.SnackBar;
+
 import android.app.WallpaperManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -20,7 +22,6 @@ import android.os.Environment;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -35,6 +36,7 @@ import com.msay2.mire.R;
 import com.msay2.mire.utils.ImageConfig;
 import com.msay2.mire.utils.Tags;
 import com.msay2.mire.preferences.Preferences;
+import com.msay2.mire.ActivityContact;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -82,7 +84,7 @@ public class WallpaperHelper
         }
     }
 
-    public static void downloadWallpaper(final @NonNull Context context, final @ColorInt int color, final String link, final String name, final String auteur)
+    public static void downloadWallpaper(final @NonNull Context context, final String link, final String name, final String auteur)
 	{
         File cache = ImageLoader.getInstance().getDiskCache().get(link);
         if (cache != null)
@@ -90,12 +92,12 @@ public class WallpaperHelper
             File target = new File(getDefaultWallpapersDirectory(context).toString() + File.separator + name + " " + "(" + auteur + ")" + FileHelper.IMAGE_EXTENSION);
             if (target.exists()) 
 			{
-                wallpaperSaved(context, color, target);
+                wallpaperSaved(context, target);
                 return;
             }
             if (FileHelper.copyFile(cache, target))
 			{
-                wallpaperSaved(context, color, target);
+                wallpaperSaved(context, target);
 				context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(target.toString()))));
                 
 				return;
@@ -245,8 +247,7 @@ public class WallpaperHelper
 					}
                     context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(file.toString()))));
 
-                    wallpaperSaved(context, color, file);
-					Toast.makeText(context, context.getResources().getString(R.string.toast_apply_wallpaper_succed), Toast.LENGTH_LONG).show();
+                    wallpaperSaved(context, file);
                 } 
 				else
 				{
@@ -256,9 +257,31 @@ public class WallpaperHelper
         }.execute();
     }
 
-    private static void wallpaperSaved(@NonNull Context context, @ColorInt int color, @NonNull File file) 
+    private static void wallpaperSaved(@NonNull Context context, @NonNull File file) 
 	{
-        View rootView = ((AppCompatActivity)context).getWindow().getDecorView().findViewById(R.id.title);
+		SnackBar.makeText(context, file.toString()).setAction(R.string.snackbar_button_text_open, new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				try 
+				{
+					Uri uri = FileHelper.getUriFromFile(context, context.getPackageName(), file);
+					if (uri == null)
+					{
+						return;
+					}
+					context.startActivity(new Intent().setAction(Intent.ACTION_VIEW).setDataAndType(uri, "image/*").setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION));
+				} 
+				catch (ActivityNotFoundException e)
+				{
+					Toast.makeText(context, context.getResources().getString(R.string.toast_no_wallpaper_app), Toast.LENGTH_LONG).show();
+				}
+			}
+		}).show(6000);
+		
+		
+        /*View rootView = ((AppCompatActivity)context).getWindow().getDecorView().findViewById(R.id.title);
         if (rootView != null)
 		{
             Snackbar snackbar = Snackbar.make(rootView, file.toString(), 6000)
@@ -289,8 +312,7 @@ public class WallpaperHelper
 			}
             snackbar.show();
             return;
-        }
-        Toast.makeText(context, file.toString(), Toast.LENGTH_LONG).show();
+        }*/
     }
 	
 	public static AsyncTask<String, Void, Bitmap> applyWallpaper(final Context context, final String url)
@@ -357,7 +379,7 @@ public class WallpaperHelper
 					wallpaperManager.setBitmap(result);
 					dialog.dismiss();
 					
-					Toast.makeText(context, context.getResources().getString(R.string.toast_apply_wallpaper_succed), Toast.LENGTH_LONG).show();
+					wallpaperApplyed(context);
 				}
 				catch (IOException ex) 
 				{
@@ -366,5 +388,10 @@ public class WallpaperHelper
 				}
 			}
 		}.execute();
+	}
+	
+	private static void wallpaperApplyed(@NonNull Context context)
+	{
+		Toast.makeText(context, R.string.snackbar_apply_wallpaper_succed, Toast.LENGTH_LONG).show();
 	}
 }

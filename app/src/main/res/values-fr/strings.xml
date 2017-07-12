@@ -24,7 +24,6 @@
 	<string name="toast_save_wallpaper_failed">Échoué</string>
 	<string name="toast_no_wallpaper_app">"Aucune application de Galerie d'images est installée !"</string>
 	<string name="toast_apply_wallpaper">"Application en cours…"</string>
-	<string name="toast_apply_wallpaper_succed">"Appliquée avec succès !"</string>
 	<string name="toast_apply_wallpaper_failed">"Impossible de définir l'image comme fond d'écran !"</string>
 	<string name="toast_apply_wallpaper_canceled">"Opération échoué !"</string>
 	<string name="toast_apply_wallpaper_error_loading">"Erreur, impossible de charger les fonds d'écrans"</string>
@@ -55,6 +54,8 @@
 	
 	<string name="snackbar_content_text_app">"Appuyez de nouveau pour Quitter"</string>
 	<string name="snackbar_button_text_app">"Annuler"</string>
+	<string name="snackbar_button_text_open">"Ouvrir"</string>
+	<string name="snackbar_apply_wallpaper_succed">"Appliquée avec succès !"</string>
 	
 	<string name="request_permissions_title">"Important"</string>
 	<string name="request_permissions_prompt">"Mire à besoin de votre permission pour modifier votre mémoire interne de votre appareil, Voulez-vous donner à Mire les permissions requises pour fonctionner correctement ? \n\nCes permissions vous permettrons de pouvoir télécharger les fonds d'écrans et mettre à jour Mire"</string>

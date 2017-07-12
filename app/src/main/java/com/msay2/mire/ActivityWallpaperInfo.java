@@ -113,7 +113,7 @@ public class ActivityWallpaperInfo extends AppCompatActivity implements View.OnC
 		}
 		else if (id == R.id.id_save)
 		{
-			WallpaperHelper.downloadWallpaper(ActivityWallpaperInfo.this, color, image, title, text);
+			WallpaperHelper.downloadWallpaper(ActivityWallpaperInfo.this, image, title, text);
 		}
 		else if (id == R.id.id_parent_window)
 		{

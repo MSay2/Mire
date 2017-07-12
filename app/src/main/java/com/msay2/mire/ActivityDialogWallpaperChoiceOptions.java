@@ -110,7 +110,7 @@ public class ActivityDialogWallpaperChoiceOptions extends AppCompatActivity impl
 		}
 		else if (id == ids[3])
 		{
-			WallpaperHelper.downloadWallpaper(ActivityDialogWallpaperChoiceOptions.this, mColor, image, title, text);
+			WallpaperHelper.downloadWallpaper(ActivityDialogWallpaperChoiceOptions.this, image, title, text);
 		}
 	}
 

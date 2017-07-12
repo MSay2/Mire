@@ -5,9 +5,7 @@ import fr.yoann.dev.preferences.Preferences;
 import fr.yoann.dev.preferences.utils.AnimUtils;
 import fr.yoann.dev.preferences.listener.AnimListener;
 import fr.yoann.dev.preferences.enum.SnackBarTypePosition;
-import fr.yoann.dev.preferences.enum.SnackBarTypeSize;
 import fr.yoann.dev.preferences.layout.SnackBarLayout;
-import fr.yoann.dev.preferences.widget.ForegroundTextView;
 
 import android.app.Activity;
 import android.os.Build;
@@ -25,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.LinearLayout;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Button;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -36,11 +35,10 @@ import android.support.annotation.AnimRes;
 public class SnackBar extends SnackBarLayout
 {
 	private Activity act;
-	private SnackBarTypeSize typeOfSnackBar = SnackBarTypeSize.SIZE_LINE;
-	private SnackBarTypeSize typeOfElevation = SnackBarTypeSize.SIZE_ELEVATION_NORMAL;
+	private View content;
 	
 	private static TextView snackBarText;
-	private static ForegroundTextView snackBarButton;
+	private static Button snackBarButton;
 	private static CharSequence mText;
 	private static CharSequence mButtonText;
 	private static int mColor;
@@ -186,15 +184,15 @@ public class SnackBar extends SnackBarLayout
 		Resources res = getResources();
 		final float density = res.getDisplayMetrics().density;
 		
-		View content = layout.findViewById(R.id.ms__dismiss);
+		content = layout.findViewById(R.id.ms__dismiss);
 
 		MarginLayoutParams params;
 
-		layout.setMinimumHeight(setDimensionPixels(typeOfSnackBar.getMinHeight(), density));
+		layout.setMinimumHeight(setDimensionPixels(48, density));
 		layout.setBackgroundColor(mColor);
 		if (Preferences.isLollipop())
 		{
-			layout.setElevation(setDimensionPixels(typeOfElevation.getSizeElevation(), density));
+			layout.setElevation(setDimensionPixels(6, density));
 		}
 
 		params = createStateMarginLayout(parent, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT, SnackBarTypePosition.BOTTOM);
@@ -209,12 +207,16 @@ public class SnackBar extends SnackBarLayout
 				@Override
 				public void run()
 				{
-					Layout layouts = snackBarText.getLayout();  
-					final boolean isMultiLine = layouts.getLineCount() > 1;
-
-					if (isMultiLine)
+					final Layout layouts = snackBarText.getLayout();  
+					final boolean is2Lines = layouts.getLineCount() == 2;
+					final boolean is3Lines = layouts.getLineCount() == 3;
+					if (is2Lines)
 					{
 						layout.setMaxHeight(setDimensionPixels(64, density));
+					}
+					else if (is3Lines)
+					{
+						layout.setMaxHeight(setDimensionPixels(80, density));
 					}
 					else
 					{
@@ -228,13 +230,12 @@ public class SnackBar extends SnackBarLayout
 			snackBarText.setText("Hello !");
 		}
 
-		snackBarButton = (ForegroundTextView)content.findViewById(R.id.ms__button);
+		snackBarButton = (Button)content.findViewById(R.id.ms__button);
 		if (!TextUtils.isEmpty(mButtonText))
 		{
 			snackBarButton.setText(mButtonText);
 			snackBarButton.setOnClickListener(mOnClick);
 			snackBarButton.setTextColor(mTextColorButton);
-			snackBarButton.setBackground(res.getDrawable(R.drawable.button_action));
 		}
 		else
 		{
@@ -295,7 +296,7 @@ public class SnackBar extends SnackBarLayout
 		setColorBackground(Color.parseColor("#FF323232"));
 		setMessage(context, resString, snackBar);
 		setMessageColor(context.getResources().getColor(R.color.white));
-
+		
 		return snackBar;
 	}
 	

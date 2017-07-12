@@ -114,6 +114,11 @@ public class ActivityContact extends AppCompatActivity implements View.OnClickLi
 				{
 					AnimUtils._alphaAnimationEnd(ActivityContact.this, balise_fonction);
 				}
+				
+				if (dismiss_more.getVisibility() == View.VISIBLE)
+				{
+					AnimUtils._alphaAnimationEnd(ActivityContact.this, dismiss_more);
+				}
 			}
 		}
 

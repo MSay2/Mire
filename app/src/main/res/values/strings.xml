@@ -28,7 +28,6 @@
 	<string name="toast_save_wallpaper_failed">Failed</string>
 	<string name="toast_no_wallpaper_app">No Gallery app is installed</string>
 	<string name="toast_apply_wallpaper">"Application in progress…"</string>
-	<string name="toast_apply_wallpaper_succed">"Successfully applied !"</string>
 	<string name="toast_apply_wallpaper_failed">"Can not set image as wallpaper!"</string>
 	<string name="toast_apply_wallpaper_canceled">"Operation failed!"</string>
 	<string name="toast_apply_wallpaper_error_loading">"Error, impossible to the load wallpapers"</string>
@@ -59,7 +58,9 @@
 
 	<string name="snackbar_content_text_app">"Press again to Exit"</string>
 	<string name="snackbar_button_text_app">"Cancel"</string>
-
+	<string name="snackbar_button_text_open">"Open"</string>
+	<string name="snackbar_apply_wallpaper_succed">"Appliquée avec succès !"</string>
+	
 	<string name="request_permissions_title">"Important"</string>
 	<string name="request_permissions_prompt">"Mire needs your permission to modify your internal memory of your device, Do you want to give Mire the permissions required to function properly ? \n\nThese permissions will allow you to be able to download the wallpapers and update Mire "</string>
 	<string name="reshow_request_permissions_title">"Important"</string>
