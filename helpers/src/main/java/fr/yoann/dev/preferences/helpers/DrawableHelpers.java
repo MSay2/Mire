@@ -23,6 +23,16 @@ public class DrawableHelpers
 	}
 	
 	@Nullable
+	public static int getTintedDrawableInt(@NonNull Context context, @DrawableRes int res, @ColorInt int color)
+	{
+		Drawable drawable = AppCompatDrawableManager.get().getDrawable(context, res);
+		drawable.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+		drawable.mutate();
+
+		return res;
+	}
+	
+	@Nullable
 	public static Drawable getDrawable(@NonNull Context context, @DrawableRes int res)
 	{
 		Drawable drawable = AppCompatDrawableManager.get().getDrawable(context, res);

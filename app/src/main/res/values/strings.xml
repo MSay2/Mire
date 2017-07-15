@@ -3,7 +3,7 @@
 
     <string name="app_name">Mire</string>
     <string name="hello_world">Hello world!</string>
-	<string name="dev_name">Meclot Yoann</string>
+	<string name="dev_name">Meclot Yoann (MSay2)</string>
 	
 	<string name="fragment_name_home">"Menu"</string>
 	<string name="fragment_name_wallpaper">"Wallpapers"</string>

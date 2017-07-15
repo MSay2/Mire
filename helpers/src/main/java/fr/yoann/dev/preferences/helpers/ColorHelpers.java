@@ -63,4 +63,14 @@ public class ColorHelpers
 	{
         return modifyAlpha(color, (int)(255f * alpha));
     }
+	
+	/*
+	 This work on {@SlidingUpPanelLayout} library 
+	*/
+	public static float requestVariationElevation(Context context, float slideOffset)
+	{
+		float f2 = context.getResources().getDisplayMetrics().density;
+	
+		return ((0.6f * slideOffset) + 2.0f) * f2;
+	}
 }

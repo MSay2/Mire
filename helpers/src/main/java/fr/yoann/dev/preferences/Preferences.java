@@ -18,23 +18,30 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ActivityOptionsCompat;
 
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
+
 import java.io.File;
 
 import android.net.Uri;
 import android.text.Spanned;
 import android.content.Context;
 import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.view.WindowManager;
 import android.view.Window;
 import android.view.View;
+import android.view.LayoutInflater;
 import android.widget.Toast;
+import android.widget.TextView;
 import android.graphics.Typeface;
 import android.graphics.Color;
 
 public class Preferences
 {
-	public FragmentManager fragmentManager;
+	private static FragmentManager fragmentManager;
+	private static AlertDialog dialog;
 	
 	// set Preferences helppers
 	public static PreferencesHelpers getPreferences(@NonNull Context context) 
@@ -127,8 +134,11 @@ public class Preferences
 	// end set intent basic
 	
 	// set FragmentTransaction
-	public void setFragmentTransaction(int id, android.support.v4.app.Fragment fr)
+	public static void setFragmentTransaction(AppCompatActivity activity, int id, android.support.v4.app.Fragment fr)
 	{
+		
+		fragmentManager = activity.getSupportFragmentManager();
+		
 		FragmentTransaction requestFragment = fragmentManager.beginTransaction();
 		requestFragment.replace(id, fr);
 		requestFragment.commit();
@@ -256,44 +266,53 @@ public class Preferences
 	}
 	// end set Typeface - create typface from assets
 	
-	// set SnackBar theme
-	// LIGHT
-	/*public static void snackBarLight(Activity activity, int message, int messageButton, View.OnClickListener onClick)
-	{
-		SnackBar.with(activity)
-		    .setColorBackground(Color.parseColor("#FFFFFFFF"))
-		    .setMessage(message)
-		    .setMessageButton(messageButton)
-		    .setMessageColorSrc(R.color.text_color_dark)
-		    .setMessageButtonColor(R.color.button_text_light)
-		    .setButtonListener(onClick)
-		//  .show(activity, duration)
-		//  .show(activity, SnackBar.LENGTH_LONG)
-		//  .show(activity, SnackBar.LENGTH_SHORT)
-		    .show(); // LENGTH_SHORT is by default
-	}
+	/*
+	 set dimension de
 	
-	// DARK
-	public static void snackBarDark(Activity activity, int message, int messageButton, View.OnClickListener onClick, long duration)
-	{
-		SnackBar.with(activity)
-		    .setColorBackground(Color.parseColor("#FF323232"))
-		    .setMessage(message)
-		    .setMessageButton(messageButton)
-		    .setMessageColorSrc(R.color.text_color_light)
-		    .setMessageButtonColor(R.color.button_text_dark)
-		    .setButtonListener(onClick)
-		    .show(activity, duration);
-		//  .show(activity, SnackBar.LENGTH_LONG)
-		//  .show(activity, SnackBar.LENGTH_SHORT)
-		//  .show(activity); // LENGTH_SHORT is by default
-	}*/
-	// end set SnackBar theme
-	
-	// set dimension dp
+	 Enter your desired numbers in the method {@Int dp}
+	*/
 	public static int setDimensionPixels(int dp, float densityMectrics)
 	{
 		return (int)(dp * densityMectrics + 0.5f);
 	}
-	// end set dimensiion dp
+	// end set dimension dp
+	
+	// this method is for me
+	public static void getDialog(Context context, String title, String content_text, String positiveText, DialogInterface.OnClickListener positiveClick)
+	{
+		View viewDialog = ((Activity)context).getLayoutInflater().inflate(R.layout.layout_dialog, null);
+
+		TextView _title = (TextView)viewDialog.findViewById(R.id.ms_title);
+		TextView _content  = (TextView)viewDialog.findViewById(R.id.ms_content_text);
+
+		_title.setText(title);
+		_content.setText(content_text);
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(context)
+		    .setView(viewDialog)
+		    .setPositiveButton(positiveText, positiveClick);
+
+		dialog = builder.create();
+		dialog.show();
+	}
+	
+	public static void getDialog(Context context, String title, String content_text, String positiveText, String negativeText, DialogInterface.OnClickListener positiveClick, DialogInterface.OnClickListener negativeClick)
+	{
+		View viewDialog = ((Activity)context).getLayoutInflater().inflate(R.layout.layout_dialog, null);
+		
+		TextView _title = (TextView)viewDialog.findViewById(R.id.ms_title);
+		TextView _content  = (TextView)viewDialog.findViewById(R.id.ms_content_text);
+		
+		_title.setText(title);
+		_content.setText(content_text);
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(context)
+		    .setView(viewDialog)
+		    .setPositiveButton(positiveText, positiveClick)
+		    .setNegativeButton(negativeText, negativeClick);
+			
+		dialog = builder.create();
+		dialog.show();
+	}
+	// end this method for me
 }

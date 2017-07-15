@@ -117,15 +117,6 @@ public class AnimUtils
         fab.animate().setDuration(200).scaleX(0).scaleY(0).alpha(0).setInterpolator(new LinearOutSlowInInterpolator());
     }
 	
-	public static void _hideScale(@Nullable Context context, @Nullable View view, @Nullable Animation.AnimationListener listener)
-	{
-		Animation scale = AnimationUtils.loadAnimation(context, R.anim.scale_out);
-		scale.setAnimationListener(listener);
-		
-		view.startAnimation(scale);
-		view.setVisibility(View.GONE);
-	}
-	
 	@AnimRes
 	public static int getAnimationEnter(SnackBarTypePosition snackbarPosition)
 	{

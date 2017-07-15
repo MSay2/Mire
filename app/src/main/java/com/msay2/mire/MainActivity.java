@@ -456,7 +456,7 @@ public class MainActivity extends AppCompatActivity
 		dialog.show();
 	}
 	
-	//this method is for happy :D
+	//this method is for the fun :D
 	public String getStringSrc(int id)
 	{
 		String srcString = getResources().getString(id);

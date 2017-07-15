@@ -8,6 +8,9 @@ import android.support.v7.widget.Toolbar;
 
 import fr.yoann.dev.preferences.Preferences;
 import fr.yoann.dev.preferences.utils.AnimUtils;
+import fr.yoann.dev.preferences.widget.CircularImageView;
+
+import com.bumptech.glide.Glide;
 
 import android.text.TextWatcher;
 import android.text.Editable;
@@ -29,6 +32,7 @@ import android.widget.TextView;
 public class ActivityContact extends AppCompatActivity implements View.OnClickListener
 {
 	private Toolbar toolbar;
+	private CircularImageView avatar;
 	private EditText edit;
 	private ImageView more;
 	private LinearLayout more_fonction, balise_fonction;
@@ -46,6 +50,7 @@ public class ActivityContact extends AppCompatActivity implements View.OnClickLi
 		
 		root = (RelativeLayout)findViewById(R.id.id_root);
 		toolbar = (Toolbar)findViewById(R.id.ma_toolbar);
+		avatar = (CircularImageView)findViewById(R.id.id_avatar);
 		edit = (EditText)findViewById(R.id.id_recipient);
 		more = (ImageView)findViewById(R.id.id_more);
 		more_fonction = (LinearLayout)findViewById(R.id.id_more_fonction);
@@ -60,6 +65,11 @@ public class ActivityContact extends AppCompatActivity implements View.OnClickLi
 
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setDisplayShowTitleEnabled(false);
+		
+		Glide.with(this)
+			 .load("https://avatars1.githubusercontent.com/u/19941384?v=3&s=400")
+		     .into(avatar);
+		
 		toolbar.setNavigationIcon(R.drawable.ic_action_close_semi_black_24dp);
 		toolbar.setNavigationOnClickListener(new View.OnClickListener()
 		{

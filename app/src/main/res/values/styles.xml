@@ -46,6 +46,8 @@
 	<style name="MSay2.Theme.Translucent.Activity.WallpaperTransition">
 		<item name="android:windowEnterTransition">@transition/wallpaper_info_enter</item>
 		<item name="android:windowReturnTransition">@transition/wallpeper_info_return</item>
+		<item name="android:windowAnimationStyle">@null</item>
+		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
 	</style>
 	
 	<style name="MSay2.Theme.Translucent.Activity.ContactTransition">
