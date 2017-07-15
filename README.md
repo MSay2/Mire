@@ -18,7 +18,7 @@
 <img src="screenshots/mire_03.png" width="25%">
 <img src="screenshots/mire_04.png" width="25%">
 <img src="screenshots/mire_05.png" width="25%">
-<img src="screenshots/snackbar_two_lines" width="25%">
+<img src="screenshots/snackbar_two_lines.png" width="25%">
 
 
 ### Clone Git Repository
