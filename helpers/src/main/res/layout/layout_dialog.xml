@@ -12,6 +12,7 @@
 		android:text="Text"
 		android:textSize="20sp"
 		android:textColor="@color/black"
+		android:fontFamily="sans-serif-medium"
 		android:paddingRight="24dp"
 		android:paddingLeft="24dp"
 		android:paddingTop="24dp"/>
