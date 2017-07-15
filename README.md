@@ -1,6 +1,6 @@
 # Mire
 
- <img src="screenshots/mire_01.png" width="300" align="right" hspace="20">
+<img src="screenshots/mire_01.png" width="300" align="right" hspace="20">
 
 ### FR-US
 * Ceci est le projet de Mire
@@ -18,6 +18,7 @@
 <img src="screenshots/mire_03.png" width="25%">
 <img src="screenshots/mire_04.png" width="25%">
 <img src="screenshots/mire_05.png" width="25%">
+<img src="screenshots/snackbar_two_lines" width="25%">
 
 
 ### Clone Git Repository
