@@ -13,7 +13,7 @@
 	-->
 
 	<string-array name="changelog">
-		<item>Améliorations apportées</item>
+		<item>Ajout de la fonction "<b>AppShortcut</b>" pour Android M et Android N</item>
 	</string-array>
 
 </resources>

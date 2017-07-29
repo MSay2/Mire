@@ -94,4 +94,7 @@
 	<string name="description_lib_sergeytarasevich">"Une bibliothèque puissante et flexible pour le chargement de mise en cache et d'affichage d'images sur Android"</string>
 	<string name="description_lib_sufficientlysecure">"Une bibliothèques pour TextView, afficher du contenu HTML"</string>
 	
+	<string name="app_shortcut_label_wallpaper">@string/fragment_name_wallpaper</string>
+	<string name="app_shortcut_label_settings">@string/fragment_name_settings</string>
+	
 </resources>

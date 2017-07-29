@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<shortcut 
+		android:icon="@drawable/ic_shortcut_wallpaper"
+		android:enabled="true">
+
+        <intent
+			android:action="com.msay2.mire.FRAGMENT_WALLPAPER"
+			android:targetPackage="com.msay2.mire" 
+			android:targetClass="com.msay2.mire.MainActivity"/>
+
+		<categories 
+			android:name="android.shortcut.conversation"/>
+    </shortcut>
+
+	<shortcut 
+		android:icon="@drawable/ic_shortcut_settings"
+		android:enabled="true">
+
+        <intent
+			android:action="com.msay2.mire.FRAGMENT_SETTINGS"
+			android:targetPackage="com.msay2.mire" 
+			android:targetClass="com.msay2.mire.MainActivity"/>
+
+		<categories 
+			android:name="android.shortcut.conversation"/>
+    </shortcut>
+
+</shortcuts>

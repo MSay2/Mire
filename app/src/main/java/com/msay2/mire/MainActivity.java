@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity
 	public static AlertDialog dialog;
 	
 	public static final int REQUEST_WRITE_STORAGE = 128;
+	public static final String SHORTCUT_WALLPAPER = "com.msay2.mire.FRAGMENT_WALLPAPER";
+	public static final String SHORTCUT_SETTINGS = "com.msay2.mire.FRAGMENT_SETTINGS";
 	
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -59,8 +61,24 @@ public class MainActivity extends AppCompatActivity
 		Preferences.makeAppFullscreen(this, Color.TRANSPARENT);
 		if (savedInstanceState == null) 
 		{
-            currentFragment = new FragmentHome();
-            getFragmentManager().beginTransaction().add(R.id.fragment_container, currentFragment).commit();
+			if (equalsAction(SHORTCUT_WALLPAPER))
+			{
+				currentFragment = new FragmentWallpaper();
+				getFragmentManager().beginTransaction().add(R.id.fragment_container, currentFragment).commit();
+				setupMenu(1);
+			}
+			else if (equalsAction(SHORTCUT_SETTINGS))
+			{
+				currentFragment = new FragmentSettings();
+				getFragmentManager().beginTransaction().add(R.id.fragment_container, currentFragment).commit();
+				setupMenu(2);
+			}
+			else
+			{
+				currentFragment = new FragmentHome();
+				getFragmentManager().beginTransaction().add(R.id.fragment_container, currentFragment).commit();
+				setupMenu(0);
+			}
         }
 		
 		Boolean setup_intro = getSharedPreferences("RE_INTRO", Context.MODE_PRIVATE).getBoolean("re_introduction", true);
@@ -77,7 +95,6 @@ public class MainActivity extends AppCompatActivity
 			DialogFragmentChangelog.showChangelog(fm);
 		}
 		
-		setupMenu();
 		SetupSnackBarHelper.setupSnackBar(this, getStringSrc(R.string.snackbar_content_text_app), getStringSrc(R.string.snackbar_button_text_app), snackbar_clicklistener);
 	}
 	
@@ -154,7 +171,7 @@ public class MainActivity extends AppCompatActivity
         translationY.start();
 	}
 	
-	private void setupMenu() 
+	private void setupMenu(int position) 
 	{
         menu = (ViewGroup)findViewById(R.id.menu_container);
 
@@ -163,7 +180,7 @@ public class MainActivity extends AppCompatActivity
 		addMenuItem(menu, getStringSrc(R.string.fragment_name_home), R.drawable.ic_splash, colorAccent, R.drawable.menu_btn, 0);
         addMenuItem(menu, getStringSrc(R.string.fragment_name_wallpaper), R.drawable.ic_splash, colorAccent, R.drawable.menu_btn, 1);
 		addMenuItem(menu, getStringSrc(R.string.fragment_name_settings), R.drawable.ic_splash, colorAccent, R.drawable.menu_btn, 2);
-        selectMenuItem(0, colorAccent);
+        selectMenuItem(position, colorAccent);
         menu.setTranslationY(20000);
     }
 	
@@ -247,9 +264,13 @@ public class MainActivity extends AppCompatActivity
 		{
             View menuItem = menu.getChildAt(i);
             if (i == menuIndex)
-                select(menuItem, color);
+			{
+				select(menuItem, color);
+			}
             else
-                unSelect(menuItem);
+			{
+				unSelect(menuItem);
+			}
         }
         curretMenuIndex = menuIndex;
     }
@@ -462,5 +483,10 @@ public class MainActivity extends AppCompatActivity
 		String srcString = getResources().getString(id);
 		
 		return srcString;
+	}
+	
+	private boolean equalsAction(String string)
+	{
+		return string.equals(getIntent().getAction());
 	}
 }
