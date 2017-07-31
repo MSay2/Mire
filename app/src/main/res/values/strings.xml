@@ -26,7 +26,7 @@
 	<string name="fragment_about_update_title">"Mire v%1$s"</string>
 	<string name="fragment_about_update_prompt">"Check if an update is available"</string>
 
-	<string name="fragment_settings_data">"Données"</string>
+	<string name="fragment_settings_data">"Data"</string>
 	<string name="fragment_settings_title_data">"Clear the cache"</string>
 	<string name="fragment_settings_title_data_prompt">"Press for clear the cache"</string>
 	<string name="fragment_settings_cache_size">"Size : "</string>

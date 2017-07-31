@@ -12,7 +12,7 @@
 	-->
 
 	<string-array name="changelog">
-		<item>Add of the fonction "<b>AppShortcut</b>" for Android M and Android N</item>
+		<item><![CDATA[Added the "<b>About</b>" section and modify the "<b>Settings</b>" section]]></item>
 	</string-array>
 
 </resources>

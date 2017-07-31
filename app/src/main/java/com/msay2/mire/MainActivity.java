@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity
 			}
 			else if (equalsAction(SHORTCUT_SETTINGS))
 			{
-				currentFragment = new FragmentAbout();
+				currentFragment = new FragmentSettings();
 				getFragmentManager().beginTransaction().add(R.id.fragment_container, currentFragment).commit();
-				setupMenu(2);
+				setupMenu(3);
 			}
 			else
 			{
