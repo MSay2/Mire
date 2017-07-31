@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
 			}
 			else if (equalsAction(SHORTCUT_SETTINGS))
 			{
-				currentFragment = new FragmentSettings();
+				currentFragment = new FragmentAbout();
 				getFragmentManager().beginTransaction().add(R.id.fragment_container, currentFragment).commit();
 				setupMenu(2);
 			}
@@ -175,12 +175,16 @@ public class MainActivity extends AppCompatActivity
 	{
         menu = (ViewGroup)findViewById(R.id.menu_container);
 
-		int colorAccent = getResources().getColor(R.color.accent);
-
-		addMenuItem(menu, getStringSrc(R.string.fragment_name_home), R.drawable.ic_splash, colorAccent, R.drawable.menu_btn, 0);
-        addMenuItem(menu, getStringSrc(R.string.fragment_name_wallpaper), R.drawable.ic_splash, colorAccent, R.drawable.menu_btn, 1);
-		addMenuItem(menu, getStringSrc(R.string.fragment_name_settings), R.drawable.ic_splash, colorAccent, R.drawable.menu_btn, 2);
-        selectMenuItem(position, colorAccent);
+		int splash = R.drawable.ic_splash;
+		int colorAccent = Preferences.getAttributeColor(this, R.attr.colorAccent);
+		int button_menu = R.drawable.menu_btn;
+		
+		addMenuItem(menu, getStringSrc(R.string.fragment_name_home), splash, colorAccent, button_menu, 0);
+        addMenuItem(menu, getStringSrc(R.string.fragment_name_wallpaper), splash, colorAccent, button_menu, 1);
+		addMenuItem(menu, getStringSrc(R.string.fragment_name_about), splash, colorAccent, button_menu, 2);
+		addMenuItem(menu, getStringSrc(R.string.fragment_name_settings), splash, colorAccent, button_menu, 3);
+		
+		selectMenuItem(position, colorAccent);
         menu.setTranslationY(20000);
     }
 	
@@ -245,15 +249,24 @@ public class MainActivity extends AppCompatActivity
 						setStateWiFi(menuIndex, color);
 					}
                 }
-				else if (menuIndex == 2 && !(currentFragment instanceof FragmentSettings))
+				else if (menuIndex == 2 && !(currentFragment instanceof FragmentAbout))
 				{
                     ((MenuAnimation)currentFragment).exitFromMenu();
-                    FragmentSettings fragmentSettings = new FragmentSettings();
-                    fragmentSettings.setIntroAnimate(true);
-                    goToFragment(fragmentSettings);
+                    FragmentAbout fragmentAbout = new FragmentAbout();
+                    fragmentAbout.setIntroAnimate(true);
+                    goToFragment(fragmentAbout);
                     hideMenu();
                     selectMenuItem(menuIndex, color);
                 }
+				else if (menuIndex == 3 && !(currentFragment instanceof FragmentSettings))
+				{
+					((MenuAnimation)currentFragment).exitFromMenu();
+					FragmentSettings fragmentSettings = new FragmentSettings();
+					fragmentSettings.setIntroAnimate(true);
+					goToFragment(fragmentSettings);
+					hideMenu();
+					selectMenuItem(menuIndex, color);
+				}
             }
         };
     }

@@ -19,11 +19,12 @@ import no.agens.depth.lib.tween.interpolators.QuintOut;
 
 import com.msay2.mire.R;
 
-public class TransitionHelperSettings
+public class TransitionHelperAbout
 {
 	public static final float TARGET_SCALE = 0.5f;
     public static final float TARGET_ROTATION = -50f;
     public static final float TARGET_ROTATION_X = 60f;
+	public static final float FAB_ELEVATION = 3;
     public static final int MOVE_Y_STEP = 15;
     public static final int DURATION = 1100;
     public static final QuintOut VALUEinterpolator = new QuintOut();
@@ -32,10 +33,10 @@ public class TransitionHelperSettings
 
     public static void startIntroAnim(View root, AnimatorListenerAdapter introEndListener) 
 	{
-        introAnimate((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP * 2, 20f, 30, 170);
+        introAnimate((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP, 20f, 30, 170);
 		introAnimate((DepthLayout)root.findViewById(R.id.layout_container), 0, 30f, 15, 180);
-		introAnimate((DepthLayout)root.findViewById(R.id.second_layout_container), MOVE_Y_STEP, 20f, 30, 170);
-		
+		introAnimate((DepthLayout)root.findViewById(R.id.container_text), MOVE_Y_STEP, 20f, 60, 200);
+
 		//introAnimate((DepthLayout) root.findViewById(R.id.frame_fab), MOVE_Y_STEP * 2, 20f, 75, 210);
 		// introAnimate((DepthLayout) root.findViewById(R.id.root_dl), 0, 30f, 15, 180);
         // introAnimate((DepthLayout) root.findViewById(R.id.appbar), MOVE_Y_STEP, 20f, 30, 170);
@@ -102,10 +103,10 @@ public class TransitionHelperSettings
 
     public static void startExitAnim(View root)
 	{
-        exitAnimate((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP * 2, 20f, 30, 170, true);
+        exitAnimate((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP, 20f, 30, 170, true);
         exitAnimate((DepthLayout)root.findViewById(R.id.layout_container), 0, 30f, 15, 190, true);
-		exitAnimate((DepthLayout)root.findViewById(R.id.second_layout_container), MOVE_Y_STEP, 20f, 30, 170, true);
-		
+		exitAnimate((DepthLayout)root.findViewById(R.id.container_text), MOVE_Y_STEP, 20f, 60, 230, true);
+
 		//exitAnimate((DepthLayout) root.findViewById(R.id.frame_fab), MOVE_Y_STEP * 2, 20f, 75, 250, true);
 		//hideStatusBar(root);
 		// exitAnimate((DepthLayout) root.findViewById(R.id.root_dl), 0, 30f, 15, 190, true);
@@ -113,6 +114,13 @@ public class TransitionHelperSettings
         //exitAnimate((DepthLayout) root.findViewById(R.id.fab_container), MOVE_Y_STEP * 2f, 20f, 45, 210, true);
         // exitAnimate((DepthLayout) root.findViewById(R.id.dl2), MOVE_Y_STEP, 20f, 60, 230, true);
         // exitAnimate((DepthLayout) root.findViewById(R.id.dl3), MOVE_Y_STEP * 2, 20f, 75, 250, true);
+    }
+
+    private static void hideStatusBar(View root) 
+	{
+//        View decorView = ((Activity) root.getContext()).getWindow().getDecorView();
+//        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+//        decorView.setSystemUiVisibility(uiOptions);
     }
 
     static ValueAnimator exitAnimate(final DepthLayout target, final float moveY, final float customElevation, long delay, int subtractDelay, boolean continueOffscreen)
@@ -187,9 +195,9 @@ public class TransitionHelperSettings
 
     public static void animateToMenuState(View root, AnimatorListenerAdapter onMenuAnimFinished) 
 	{
-        exitAnimate((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP * 2, 20f, 30, 170, false);
+        exitAnimate((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP, 20f, 30, 170, false);
 		exitAnimate((DepthLayout)root.findViewById(R.id.layout_container), 0, 30f, 15, 190, false);
-		exitAnimate((DepthLayout)root.findViewById(R.id.second_layout_container), MOVE_Y_STEP, 20f, 30, 170, false);
+		exitAnimate((DepthLayout)root.findViewById(R.id.container_text), MOVE_Y_STEP, 20f, 60, 230, false);
 
 		//exitAnimate((DepthLayout) root.findViewById(R.id.frame_fab), MOVE_Y_STEP * 2, 20f, 75, 250, false);
 		// exitAnimate((DepthLayout) root.findViewById(R.id.root_dl), 0, 30f, 15, 190, false);
@@ -213,10 +221,10 @@ public class TransitionHelperSettings
 
     public static void animateMenuOut(View root)
 	{
-        continueOutToRight((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP * 2, 0);
+        continueOutToRight((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP, 0);
 		continueOutToRight((DepthLayout)root.findViewById(R.id.layout_container), 0, 20);
-		continueOutToRight((DepthLayout)root.findViewById(R.id.second_layout_container), MOVE_Y_STEP, 0);
-		
+		continueOutToRight((DepthLayout)root.findViewById(R.id.container_text), MOVE_Y_STEP, 60);
+
 		//continueOutToRight((DepthLayout) root.findViewById(R.id.frame_fab), MOVE_Y_STEP * 2, 80);
 		// continueOutToRight((DepthLayout) root.findViewById(R.id.root_dl), 0, 20);
         // continueOutToRight((DepthLayout) root.findViewById(R.id.appbar), MOVE_Y_STEP, 0);
@@ -229,8 +237,8 @@ public class TransitionHelperSettings
 	{
         revertFromMenu((DepthLayout)root.findViewById(R.id.ma_appBar), 20f, 0, 0);
 		revertFromMenu((DepthLayout)root.findViewById(R.id.layout_container), 30f, 10, 0);
-		revertFromMenu((DepthLayout)root.findViewById(R.id.second_layout_container), 20f, 0, 0);
-		
+		revertFromMenu((DepthLayout)root.findViewById(R.id.container_text), 20f, 30, 0);
+
 		//revertFromMenu((DepthLayout) root.findViewById(R.id.frame_fab), 20f, 0, 0);
 		// revertFromMenu((DepthLayout) root.findViewById(R.id.root_dl), 30f, 10, 0);
         // revertFromMenu((DepthLayout) root.findViewById(R.id.appbar), 20f, 0, 0);
@@ -242,7 +250,6 @@ public class TransitionHelperSettings
         translationY.setInterpolator(new QuintInOut());
         translationY.start();
     }
-
 
     static ObjectAnimator revertFromMenu(final DepthLayout target, final float customElevation, int subtractDelay, float targetElevation) 
 	{

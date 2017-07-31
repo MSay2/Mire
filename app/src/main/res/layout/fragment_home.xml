@@ -9,7 +9,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		app:custom_elevation="1dp"
-		android:background="#FAFAFA"
+		android:background="#E8E8E8"
 		android:layerType="hardware"
 		android:id="@+id/layout_container">
 

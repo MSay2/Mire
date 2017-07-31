@@ -2,7 +2,8 @@
 <resources>
 	
 	<string name="fragment_name_home">"Menu"</string>
-	<string name="fragment_name_wallpaper">"Fonds d'écrans"</string>
+	<string name="fragment_name_wallpaper">"Fonds d'écran"</string>
+	<string name="fragment_name_about">"À Propos"</string>
 	<string name="fragment_name_settings">"Paramètres"</string>
 
 	<string name="fragment_home_text_home">"Une application où les fonds d'écrans au matériel de conception plat se retrouves, des couleurs clairs, un désigne simple, épuré et agréable à regarder"</string>
@@ -12,14 +13,19 @@
 	<string name="fragment_intro_text_c">par Meclot Yoann (MSay2)</string>
 	<string name="fragment_intro_text_c_title"><![CDATA[<u>Open-Source</u>]]></string>
 	
-	<string name="fragment_settings_contact_title">"Contacter le Support"</string>
-	<string name="fragment_settings_contact_prompt">"Contactez le support pour des rapports de bogues"</string>
-	<string name="fragment_settings_lib_title">"Librairies implémentées"</string>
-	<string name="fragment_settings_lib_prompt">"Appuyez pour consulter les librairies implémentées"</string>
-	<string name="fragment_settings_intro_title">"Introduction"</string>
-	<string name="fragment_settings_intro_prompt">"Appuyez pour revoir l'introduction"</string>
-	<string name="fragment_settings_update_title">"Mire v%1$s"</string>
-	<string name="fragment_settings_update_prompt">"Verifier si une mise à jour est disponible"</string>
+	<string name="fragment_about_contact_title">"Contacter le Support"</string>
+	<string name="fragment_about_contact_prompt">"Contactez le support pour des rapports de bogues"</string>
+	<string name="fragment_about_lib_title">"Librairies implémentées"</string>
+	<string name="fragment_about_lib_prompt">"Appuyez pour consulter les librairies implémentées"</string>
+	<string name="fragment_about_intro_title">"Introduction"</string>
+	<string name="fragment_about_intro_prompt">"Appuyez pour revoir l'introduction"</string>
+	<string name="fragment_about_update_title">"Mire v%1$s"</string>
+	<string name="fragment_about_update_prompt">"Verifier si une mise à jour est disponible"</string>
+	
+	<string name="fragment_settings_data">"Données"</string>
+	<string name="fragment_settings_title_data">"Effacer le cache"</string>
+	<string name="fragment_settings_title_data_prompt">"Appuyez pour effacer le cache"</string>
+	<string name="fragment_settings_cache_size">"Taille : "</string>
 	
 	<string name="toast_save_wallpaper_failed">Échoué</string>
 	<string name="toast_no_wallpaper_app">"Aucune application de Galerie d'images est installée !"</string>

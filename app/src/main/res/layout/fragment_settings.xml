@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <no.agens.depth.lib.DepthRendrer
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,21 +8,93 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		app:custom_elevation="1dp"
+		android:background="#E8E8E8"
+		android:layerType="hardware"
+		android:id="@+id/layout_container"/>
+		
+	<no.agens.depth.lib.DepthLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
 		android:background="#FAFAFA"
 		android:layerType="hardware"
-		android:id="@+id/layout_container">
-
+		android:id="@+id/second_layout_container"
+		android:layout_marginTop="80dp"
+		android:paddingBottom="16dp">
+		
 		<LinearLayout
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:paddingTop="80dp"
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
 			android:orientation="vertical">
 
-			<ImageView
-				android:layout_height="180dp"
+			<TextView
+				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
-				android:src="@drawable/header_s"
-				android:scaleType="centerCrop"/>
+				android:text="@string/fragment_settings_data"
+				android:textSize="14sp"
+				android:textColor="?attr/colorAccent"
+				android:padding="16dp"
+				android:fontFamily="sans-serif-medium"/>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical">
+
+				<LinearLayout
+					android:id="@+id/id_clear_cache"
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:orientation="horizontal"
+					android:paddingTop="16dp"
+					android:paddingBottom="16dp"
+					android:gravity="center_vertical"
+					android:background="?attr/selectableItemBackground">
+
+					<ImageView
+						android:layout_height="24dp"
+						android:layout_width="24dp"
+						android:src="@drawable/ic_data_usage_semi_black_24dp"
+						android:layout_marginLeft="16dp"
+						android:layout_marginRight="16dp"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
+						android:orientation="vertical"
+						android:layout_marginRight="16dp"
+						android:layout_marginLeft="16dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/fragment_settings_title_data"
+							android:textSize="14sp"
+							android:textColor="@color/semi_black"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="@string/fragment_settings_title_data_prompt"
+							android:textSize="14sp"
+							android:textColor="#54000000"
+							android:layout_marginTop="4dp"/>
+
+						<TextView
+							android:id="@+id/id_text_cache_size"
+							android:layout_height="wrap_content"
+							android:layout_width="match_parent"
+							android:text="Text"
+							android:layout_marginTop="8dp"
+							android:gravity="left"
+							android:textSize="12sp"
+							android:textColor="?attr/colorAccent"
+							android:fontFamily="sans-serif-medium"/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+			</LinearLayout>
 
 		</LinearLayout>
 
@@ -33,15 +104,15 @@
 		android:id="@+id/ma_appBar"
 		android:layout_width="match_parent"
 		android:layout_height="80dp"
-		android:background="?attr/colorPrimary"
+		android:background="?android:attr/colorPrimary"
 		android:layerType="hardware"
-		app:edge_color="?attr/colorPrimaryDark">
+		app:edge_color="?android:attr/colorPrimaryDark">
 
 		<ImageView
 			android:id="@+id/staturbar_bg"
 			android:layout_width="match_parent"
 			android:layout_height="24dp"
-			android:background="?attr/colorPrimaryDark"/>
+			android:background="?android:attr/colorPrimaryDark"/>
 
 		<ImageView
 			android:id="@+id/menu"
@@ -68,210 +139,6 @@
 
 	</no.agens.depth.lib.DepthLayout>
 
-	<no.agens.depth.lib.DepthLayout
-		android:id="@+id/container_text"
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:background="#FAFAFA"
-		android:layout_marginTop="260dp"
-		android:layerType="hardware"
-		app:custom_elevation="1dp">
-
-		<ScrollView
-			android:layout_height="fill_parent"
-			android:layout_width="fill_parent"
-			android:fillViewport="true">
-
-			<LinearLayout
-				android:layout_height="match_parent"
-				android:layout_width="match_parent"
-				android:orientation="vertical">
-
-				<TextView
-					android:layout_height="wrap_content"
-					android:layout_width="match_parent"
-					android:text="À Propos"
-					android:textSize="16sp"
-					android:textColor="?android:attr/colorAccent"
-					android:fontFamily="sans-serif-medium"
-					android:padding="16dp"/>
-
-				<View
-					android:layout_height="1dp"
-					android:layout_width="match_parent"
-					android:background="#12000000"/>
-
-				<LinearLayout
-					android:id="@+id/id_contact"
-					android:layout_height="wrap_content"
-					android:layout_width="fill_parent"
-					android:orientation="horizontal"
-					android:background="?android:attr/selectableItemBackground"
-					android:paddingTop="16dp"
-					android:paddingBottom="16dp"
-					android:gravity="center_vertical">
-
-					<ImageView
-						android:layout_height="24dp"
-						android:layout_width="24dp"
-						android:src="@drawable/ic_bug_report_semi_black_24dp"
-						android:layout_marginLeft="16dp"
-						android:layout_marginRight="32dp"/>
-
-					<LinearLayout
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:orientation="vertical"
-						android:paddingRight="16dp">
-
-						<TextView
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:text="@string/fragment_settings_contact_title"
-							android:textSize="14sp"
-							android:textColor="@color/semi_black"/>
-
-						<TextView
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:text="@string/fragment_settings_contact_prompt"
-							android:textSize="14sp"
-							android:textColor="#54000000"/>
-
-					</LinearLayout>
-
-				</LinearLayout>
-
-				<LinearLayout
-					android:id="@+id/id_lib"
-					android:layout_height="wrap_content"
-					android:layout_width="fill_parent"
-					android:orientation="horizontal"
-					android:background="?android:attr/selectableItemBackground"
-					android:paddingTop="16dp"
-					android:paddingBottom="16dp"
-					android:gravity="center_vertical">
-
-					<ImageView
-						android:layout_height="24dp"
-						android:layout_width="24dp"
-						android:src="@drawable/ic_library_semi_black_24dp"
-						android:layout_marginLeft="16dp"
-						android:layout_marginRight="32dp"/>
-
-					<LinearLayout
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:orientation="vertical"
-						android:paddingRight="16dp">
-
-						<TextView
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:text="@string/fragment_settings_lib_title"
-							android:textSize="14sp"
-							android:textColor="@color/semi_black"/>
-
-						<TextView
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:text="@string/fragment_settings_lib_prompt"
-							android:textSize="14sp"
-							android:textColor="#54000000"/>
-
-					</LinearLayout>
-
-				</LinearLayout>
-
-				<LinearLayout
-					android:id="@+id/id_intro"
-					android:layout_height="wrap_content"
-					android:layout_width="fill_parent"
-					android:orientation="horizontal"
-					android:background="?android:attr/selectableItemBackground"
-					android:paddingTop="16dp"
-					android:paddingBottom="16dp"
-					android:gravity="center_vertical">
-
-					<ImageView
-						android:layout_height="24dp"
-						android:layout_width="24dp"
-						android:src="@drawable/ic_assignment_turned_in_semi_black_24dp"
-						android:layout_marginLeft="16dp"
-						android:layout_marginRight="32dp"/>
-
-					<LinearLayout
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:orientation="vertical"
-						android:paddingRight="16dp">
-
-						<TextView
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:text="@string/fragment_settings_intro_title"
-							android:textSize="14sp"
-							android:textColor="@color/semi_black"/>
-
-						<TextView
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:text="@string/fragment_settings_intro_prompt"
-							android:textSize="14sp"
-							android:textColor="#54000000"/>
-
-					</LinearLayout>
-
-				</LinearLayout>
-
-				<LinearLayout
-					android:id="@+id/id_update"
-					android:layout_height="wrap_content"
-					android:layout_width="fill_parent"
-					android:orientation="horizontal"
-					android:background="?android:attr/selectableItemBackground"
-					android:paddingTop="16dp"
-					android:paddingBottom="16dp"
-					android:gravity="center_vertical">
-
-					<ImageView
-						android:layout_height="24dp"
-						android:layout_width="24dp"
-						android:src="@drawable/ic_system_update"
-						android:layout_marginLeft="16dp"
-						android:layout_marginRight="32dp"/>
-
-					<LinearLayout
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
-						android:orientation="vertical"
-						android:paddingRight="16dp">
-
-						<TextView
-							android:id="@+id/id_update_title"
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:text="@string/fragment_settings_update_title"
-							android:textSize="14sp"
-							android:textColor="@color/semi_black"/>
-
-						<TextView
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:text="@string/fragment_settings_update_prompt"
-							android:textSize="14sp"
-							android:textColor="#54000000"/>
-
-					</LinearLayout>
-
-				</LinearLayout>
-
-			</LinearLayout>
-
-		</ScrollView>
-
-	</no.agens.depth.lib.DepthLayout>
-	
 	<ImageView
 		android:id="@+id/actionbar_shadow"
 		android:layout_below="@+id/ma_appBar"
@@ -280,4 +147,3 @@
 		android:background="@drawable/actionbar_shadow"/>
 
 </no.agens.depth.lib.DepthRendrer>
-
