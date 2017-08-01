@@ -15,16 +15,16 @@
 	<no.agens.depth.lib.DepthLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="#FAFAFA"
 		android:layerType="hardware"
 		android:id="@+id/second_layout_container"
-		android:layout_marginTop="80dp"
-		android:paddingBottom="16dp">
+		android:layout_marginTop="80dp">
 		
 		<LinearLayout
 			android:layout_height="wrap_content"
 			android:layout_width="match_parent"
-			android:orientation="vertical">
+			android:orientation="vertical"
+			android:paddingBottom="8dp"
+			android:background="#FAFAFA">
 
 			<TextView
 				android:layout_height="wrap_content"
@@ -32,7 +32,9 @@
 				android:text="@string/fragment_settings_data"
 				android:textSize="14sp"
 				android:textColor="?attr/colorAccent"
-				android:padding="16dp"
+				android:paddingLeft="16dp"
+				android:paddingRight="16dp"
+				android:paddingTop="16dp"
 				android:fontFamily="sans-serif-medium"/>
 
 			<LinearLayout
@@ -93,6 +95,76 @@
 					</LinearLayout>
 
 				</LinearLayout>
+
+			</LinearLayout>
+			
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:text="@string/app_name"
+				android:textSize="14sp"
+				android:textColor="?attr/colorAccent"
+				android:paddingLeft="16dp"
+				android:paddingRight="16dp"
+				android:paddingTop="16dp"
+				android:fontFamily="sans-serif-medium"/>
+			
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical">
+
+				<RelativeLayout
+					android:id="@+id/id_auto_update"
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:paddingRight="16dp"
+					android:paddingLeft="16dp"
+					android:paddingTop="16dp"
+					android:paddingBottom="16dp"
+					android:background="?attr/selectableItemBackground">
+
+					<ImageView
+						android:id="@+id/id_image_auto_update"
+						android:src="@drawable/ic_system_auto_update"
+						android:layout_height="24dp"
+						android:layout_width="24dp"
+						android:layout_marginRight="16dp"
+						android:layout_centerVertical="true"/>
+
+					<LinearLayout
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:orientation="vertical"
+						android:layout_toRightOf="@+id/id_image_auto_update"
+						android:layout_centerVertical="true"
+						android:layout_marginLeft="16dp"
+						android:layout_marginRight="56dp">
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="wrap_content"
+							android:text="@string/fragment_settings_auto_update"
+							android:textSize="14sp"
+							android:textColor="@color/semi_black"/>
+
+						<TextView
+							android:layout_height="wrap_content"
+							android:layout_width="wrap_content"
+							android:text="@string/fragment_settings_auto_update_prompt"
+							android:textSize="14sp"
+							android:textColor="#54000000"/>
+
+					</LinearLayout>
+
+					<Switch
+						android:id="@+id/id_switch_auto_update"
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:layout_alignParentRight="true"
+						android:layout_centerVertical="true"/>
+
+				</RelativeLayout>
 
 			</LinearLayout>
 

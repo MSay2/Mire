@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.msay2.mire.interfaces.MenuAnimation;
 import com.msay2.mire.helpers.TransitionHelper;
 import com.msay2.mire.helpers.SetupSnackBarHelper;
+import com.msay2.mire.item_data.ItemDataUpdate;
 
 import fr.yoann.dev.preferences.Preferences;
 
@@ -19,6 +20,23 @@ import no.agens.depth.lib.tween.interpolators.QuintOut;
 
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.HttpURLConnection;
+import java.io.File;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
@@ -37,6 +55,8 @@ import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.widget.Button;
+import android.util.Log;
+import android.net.Uri;
 
 public class MainActivity extends AppCompatActivity 
 {
@@ -44,6 +64,11 @@ public class MainActivity extends AppCompatActivity
 	private Boolean isConnected = false;
 	private ViewGroup menu;
 	private FragmentManager fm;
+	private AsyncTask<String, Void, Integer> getUpdate;
+	private List<ItemDataUpdate> item_update;
+	private ItemDataUpdate item;
+	private ProgressDialog progressDialog;
+	private String storage = Preferences.getExternalStorage();
 	
 	public boolean isMenuVisible = false;
 	
@@ -52,6 +77,7 @@ public class MainActivity extends AppCompatActivity
 	public static final int REQUEST_WRITE_STORAGE = 128;
 	public static final String SHORTCUT_WALLPAPER = "com.msay2.mire.FRAGMENT_WALLPAPER";
 	public static final String SHORTCUT_SETTINGS = "com.msay2.mire.FRAGMENT_SETTINGS";
+	public static final String TAG = MainActivity.class.getSimpleName();
 	
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -94,7 +120,7 @@ public class MainActivity extends AppCompatActivity
 		{
 			DialogFragmentChangelog.showChangelog(fm);
 		}
-		
+		setAutoUpdate();
 		SetupSnackBarHelper.setupSnackBar(this, getStringSrc(R.string.snackbar_content_text_app), getStringSrc(R.string.snackbar_button_text_app), snackbar_clicklistener);
 	}
 	
@@ -501,5 +527,254 @@ public class MainActivity extends AppCompatActivity
 	private boolean equalsAction(String string)
 	{
 		return string.equals(getIntent().getAction());
+	}
+	
+	private void setAutoUpdate()
+	{
+		if (com.msay2.mire.preferences.Preferences.getPreferences(this).getAutoUpdate())
+		{
+			isConnected = Preferences.getPreferences(this).checkWiFi();
+			if (isConnected)
+			{
+				obtainsWiFiYes(true);
+			}
+			else
+			{
+				obtainsWiFiNo(false);
+			}
+		}
+		else if (com.msay2.mire.preferences.Preferences.getPreferences(this).getNoAutoUpdate())
+		{ }
+	}
+	
+	private void obtainsWiFiYes(Boolean status)
+	{
+		File newFolder = new File(storage + FragmentAbout.folder_mire);
+		newFolder.mkdir();
+
+		setNewApkDirectory();
+	}
+
+	private void setNewApkDirectory()
+	{
+		File newFolder = new File(storage + FragmentAbout.folder_mire + FragmentAbout.folder_update);
+		newFolder.mkdir();
+		if (newFolder != null)
+		{
+			getVersion();
+		}
+	}
+	
+	private void obtainsWiFiNo(Boolean status)
+	{ }
+	
+	private void getVersion()
+	{
+		getUpdate = new AsyncTask<String, Void, Integer>()
+		{
+			@Override
+			protected void onPreExecute() 
+			{
+				// Ignored this method -> onPreExecute()
+			}
+
+			@Override
+			protected Integer doInBackground(String... params)
+			{
+				Integer result = 0;
+				HttpURLConnection urlConnection;
+				try
+				{
+					URL url = new URL(getResources().getString(R.string.link_update_json_file));
+					urlConnection = (HttpURLConnection) url.openConnection();
+
+					int statusCode = urlConnection.getResponseCode();
+					if (statusCode == 200)
+					{
+						BufferedReader r = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+						StringBuilder response = new StringBuilder();
+						String line;
+
+						while ((line = r.readLine()) != null)
+						{
+							response.append(line);
+						}
+						try
+						{
+							JSONObject obj = new JSONObject(response.toString());
+							item = new ItemDataUpdate();
+							item.setVersionName(obj.optString("versionName"));
+							item.setVersionCode(obj.optString("versionCode"));
+							item.setUrl(obj.optString("url"));
+							JSONArray posts = obj.optJSONArray("release");
+							item_update = new ArrayList<>();
+							if (posts != null)
+							{
+								StringBuilder builder = new StringBuilder();
+
+								for (int i = 0; i < posts.length(); ++i) 
+								{
+									builder.append(posts.getString(i).trim());
+									if (i != posts.length() - 1)
+									{
+										builder.append(System.getProperty("line.separator"));
+									}
+								}
+								item.setRelease(String.format(getResources().getString(R.string.updater_available_description), item.getVersionName().toString()) + "\n" + builder.toString());
+							}
+							item_update.add(item);
+						}
+						catch (JSONException e)
+						{
+							e.printStackTrace();
+						}
+						result = 1;
+					}
+					else 
+					{
+						result = 0;
+					}
+				} 
+				catch (Exception e)
+				{
+					Log.d(TAG, e.getLocalizedMessage());
+				}
+				return result;
+			}
+
+			@Override
+			protected void onPostExecute(Integer result)
+			{
+				if (result == 1) 
+				{
+					int version = com.msay2.mire.preferences.Preferences.VERSION_CODE;
+					int versionPrimary = 0;
+					String text = item.getVersionCode().toString();
+					String url = item.getUrl().toString();
+					String release = item.getRelease().toString();
+
+					versionPrimary = Integer.parseInt(text);
+
+					if (version < versionPrimary)
+					{
+						dialogYesUpdate(url, release);
+					}
+					else
+					{ }
+				} 
+				else 
+				{
+					fr.yoann.dev.preferences.widget.SnackBar.makeText(MainActivity.this, getStringSrc(R.string.toast_wallpaper_error)).show(fr.yoann.dev.preferences.widget.SnackBar.LENGTH_LONG);
+				}
+			}
+
+		}.execute();
+	}
+	
+	private void dialogYesUpdate(String url, String content)
+	{
+		String title = getResources().getString(R.string.updater_not_available_title);
+		String btn_download = getResources().getString(R.string.updater_btn_download);
+		String btn_back = getResources().getString(R.string.updater_btn_back);
+		
+		fr.yoann.dev.preferences.Preferences.getDialog(this, title, content, btn_download, btn_back, downloading(url), back);
+	}
+	
+	public DialogInterface.OnClickListener downloading(final String url)
+	{
+		return new DialogInterface.OnClickListener()
+		{
+			@Override
+			public void onClick(DialogInterface dialog, int position)
+			{
+				fr.yoann.dev.preferences.Preferences.LISTENER_CLICK();
+				new DownloadAsyntask().execute(url);
+			}
+		};
+	};
+	
+	public DialogInterface.OnClickListener back = new DialogInterface.OnClickListener()
+	{
+		@Override
+		public void onClick(DialogInterface dialog, int position)
+		{
+			fr.yoann.dev.preferences.Preferences.LISTENER_CLICK();
+		}
+	};
+	
+	private ProgressDialog showDialog()
+	{
+		progressDialog = new ProgressDialog(this);
+		progressDialog.setMessage(getResources().getString(R.string.updater_downloading));
+		progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		progressDialog.setCancelable(false);
+		progressDialog.show();
+
+		return progressDialog;
+	}
+	
+	class DownloadAsyntask extends AsyncTask<String, String, String>
+	{
+		@Override
+		protected void onPreExecute() 
+		{
+			super.onPreExecute();
+
+			showDialog();
+		}
+
+		@Override
+		protected String doInBackground(String... aurl)
+		{
+			int count;
+			try
+			{
+				URL url = new URL(aurl[0]);
+				URLConnection conexion = url.openConnection();
+				conexion.connect();
+
+				int lenghtOfFile = conexion.getContentLength();
+				Log.d("ANDRO_ASYNC", "Lenght of file: " + lenghtOfFile);
+
+				InputStream input = new BufferedInputStream(url.openStream());
+				OutputStream output = new FileOutputStream("/sdcard" + FragmentAbout.folder_mire + FragmentAbout.folder_update + "/mire.apk");
+
+				byte data[] = new byte[1024];
+
+				long total = 0;
+
+				while ((count = input.read(data)) != -1) 
+				{
+					total += count;
+					publishProgress("" + (int)((total*100) / lenghtOfFile));
+					output.write(data, 0, count);
+				}
+				output.flush();
+				output.close();
+				input.close();
+			} 
+			catch (Exception e)
+			{ }
+
+			return null;
+		}
+
+		protected void onProgressUpdate(String... progress) 
+		{
+			Log.d("ANDRO_ASYNC", progress[0]);
+			progressDialog.setProgress(Integer.parseInt(progress[0]));
+		}
+
+		@Override
+		protected void onPostExecute(String unused) 
+		{
+			progressDialog.dismiss();
+
+			Intent intent = new Intent(Intent.ACTION_VIEW);
+			File file = new File("/mnt/sdcard" + FragmentAbout.folder_mire + FragmentAbout.folder_update + "/mire.apk");
+
+			intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+			startActivity(intent);
+		}
 	}
 }

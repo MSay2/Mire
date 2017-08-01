@@ -30,6 +30,8 @@
 	<string name="fragment_settings_title_data">"Clear the cache"</string>
 	<string name="fragment_settings_title_data_prompt">"Press for clear the cache"</string>
 	<string name="fragment_settings_cache_size">"Size : "</string>
+	<string name="fragment_settings_auto_update">"Automatic Update"</string>
+	<string name="fragment_settings_auto_update_prompt">"Allow Mire to search for an update automatically after being opened"</string>
 	
 	<string name="toast_save_wallpaper_failed">Failed</string>
 	<string name="toast_no_wallpaper_app">No Gallery app is installed</string>

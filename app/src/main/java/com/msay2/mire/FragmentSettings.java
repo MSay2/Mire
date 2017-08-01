@@ -3,10 +3,12 @@ package com.msay2.mire;
 import android.os.*;
 import android.app.*;
 
+import com.msay2.mire.preferences.Preferences;
 import com.msay2.mire.interfaces.MenuAnimation;
 import com.msay2.mire.helpers.TransitionHelperSettings;
 
 import no.agens.depth.lib.MaterialMenuDrawable;
+import no.agens.depth.lib.DepthLayout;
 
 import java.io.File;
 import java.text.DecimalFormat;
@@ -22,7 +24,9 @@ import android.view.LayoutInflater;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Switch;
 
 public class FragmentSettings extends Fragment implements MenuAnimation
 {
@@ -31,7 +35,9 @@ public class FragmentSettings extends Fragment implements MenuAnimation
 	private ImageView menu;
 	private MaterialMenuDrawable menuIcon;
 	private LinearLayout clear_cache;
+	private RelativeLayout switch_auto_update;
 	private TextView text_cache_size;
+	private Switch switchUpdate;
 	private File fileCache;
 
 	public static final int TRANSFORM_DURATION = 900;
@@ -50,10 +56,15 @@ public class FragmentSettings extends Fragment implements MenuAnimation
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		root = inflater.inflate(R.layout.fragment_settings, null);
-
+		
+		DepthLayout second_layout = (DepthLayout)root.findViewById(R.id.second_layout_container);
+		second_layout.setCustomShadowElevation(0);
+		
 		introAnimate();
 		setupMenuButton();
 		setupCache();
+		setupSwitchAutoUpdate();
+		setAutoUpdate();
 
 		((MainActivity)getActivity()).setCurretMenuIndex(3);
 
@@ -141,6 +152,50 @@ public class FragmentSettings extends Fragment implements MenuAnimation
 		});
 	}
 	
+	private void setupSwitchAutoUpdate()
+	{
+		switch_auto_update = (RelativeLayout)root.findViewById(R.id.id_auto_update);
+		switchUpdate = (Switch)root.findViewById(R.id.id_switch_auto_update);
+		
+		switch_auto_update.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				if (Preferences.getPreferences(getActivity()).getNoAutoUpdate())
+				{
+					Preferences.getPreferences(getActivity()).enableAutoUpdate();
+					switchUpdate.setChecked(true);
+				}
+				else if (Preferences.getPreferences(getActivity()).getAutoUpdate())
+				{
+					Preferences.getPreferences(getActivity()).enableNoAutoUpdate();
+					switchUpdate.setChecked(false);
+				}
+				else
+				{
+					Preferences.getPreferences(getActivity()).enableAutoUpdate();
+					switchUpdate.setChecked(true);
+				}
+			}
+		});
+		switchUpdate.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				if (switchUpdate.isChecked())
+				{
+					Preferences.getPreferences(getActivity()).enableAutoUpdate();
+				}
+				else
+				{
+					Preferences.getPreferences(getActivity()).enableNoAutoUpdate();
+				}
+			}
+		});
+	}
+	
 	private void initCache()
 	{
 		fileCache = new File(getActivity().getCacheDir().toString());
@@ -187,6 +242,22 @@ public class FragmentSettings extends Fragment implements MenuAnimation
         }
         return 0;
     }
+	
+	private void setAutoUpdate()
+	{
+		if (Preferences.getPreferences(getActivity()).getNoAutoUpdate())
+		{
+			switchUpdate.setChecked(false);
+		}
+		else if (Preferences.getPreferences(getActivity()).getAutoUpdate())
+		{
+			switchUpdate.setChecked(true);
+		}
+		else
+		{
+			switchUpdate.setChecked(false);
+		}
+	}
 
 	@Override
 	public void animateTOMenu()

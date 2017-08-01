@@ -29,12 +29,12 @@ public class TransitionHelperSettings
     public static final QuintOut VALUEinterpolator = new QuintOut();
 
     public static final int FISRTDELAY = 300;
-
+	
     public static void startIntroAnim(View root, AnimatorListenerAdapter introEndListener) 
 	{
         introAnimate((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP * 2, 20f, 30, 170);
 		introAnimate((DepthLayout)root.findViewById(R.id.layout_container), 0, 30f, 15, 180);
-		introAnimate((DepthLayout)root.findViewById(R.id.second_layout_container), MOVE_Y_STEP, 20f, 30, 170);
+		introAnimate((DepthLayout)root.findViewById(R.id.second_layout_container), MOVE_Y_STEP, 20f, 60, 200);
 		
 		//introAnimate((DepthLayout) root.findViewById(R.id.frame_fab), MOVE_Y_STEP * 2, 20f, 75, 210);
 		// introAnimate((DepthLayout) root.findViewById(R.id.root_dl), 0, 30f, 15, 180);
@@ -104,7 +104,7 @@ public class TransitionHelperSettings
 	{
         exitAnimate((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP * 2, 20f, 30, 170, true);
         exitAnimate((DepthLayout)root.findViewById(R.id.layout_container), 0, 30f, 15, 190, true);
-		exitAnimate((DepthLayout)root.findViewById(R.id.second_layout_container), MOVE_Y_STEP, 20f, 30, 170, true);
+		exitAnimate((DepthLayout)root.findViewById(R.id.second_layout_container), MOVE_Y_STEP, 20f, 60, 230, true);
 		
 		//exitAnimate((DepthLayout) root.findViewById(R.id.frame_fab), MOVE_Y_STEP * 2, 20f, 75, 250, true);
 		//hideStatusBar(root);
@@ -215,7 +215,7 @@ public class TransitionHelperSettings
 	{
         continueOutToRight((DepthLayout)root.findViewById(R.id.ma_appBar), MOVE_Y_STEP * 2, 0);
 		continueOutToRight((DepthLayout)root.findViewById(R.id.layout_container), 0, 20);
-		continueOutToRight((DepthLayout)root.findViewById(R.id.second_layout_container), MOVE_Y_STEP, 0);
+		continueOutToRight((DepthLayout)root.findViewById(R.id.second_layout_container), MOVE_Y_STEP, 60);
 		
 		//continueOutToRight((DepthLayout) root.findViewById(R.id.frame_fab), MOVE_Y_STEP * 2, 80);
 		// continueOutToRight((DepthLayout) root.findViewById(R.id.root_dl), 0, 20);

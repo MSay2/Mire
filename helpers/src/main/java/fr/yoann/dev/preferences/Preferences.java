@@ -315,4 +315,9 @@ public class Preferences
 		dialog.show();
 	}
 	// end this method for me
+	
+	public static final void LISTENER_CLICK()
+	{
+		dialog.dismiss();
+	}
 }

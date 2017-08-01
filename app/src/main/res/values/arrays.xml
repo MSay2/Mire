@@ -12,7 +12,7 @@
 	-->
 
 	<string-array name="changelog">
-		<item><![CDATA[Added the "<b>About</b>" section and modify the "<b>Settings</b>" section]]></item>
+		<item><![CDATA[Added an Automatic Update functionality]]></item>
 	</string-array>
 
 </resources>

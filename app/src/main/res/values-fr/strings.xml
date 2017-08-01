@@ -26,6 +26,8 @@
 	<string name="fragment_settings_title_data">"Effacer le cache"</string>
 	<string name="fragment_settings_title_data_prompt">"Appuyez pour effacer le cache"</string>
 	<string name="fragment_settings_cache_size">"Taille : "</string>
+	<string name="fragment_settings_auto_update">"Mise à jour automatique"</string>
+	<string name="fragment_settings_auto_update_prompt">"Permettre à Mire de rechercher une mise à jour automatiquement après avoir était ouvert"</string>
 	
 	<string name="toast_save_wallpaper_failed">Échoué</string>
 	<string name="toast_no_wallpaper_app">"Aucune application de Galerie d'images est installée !"</string>
