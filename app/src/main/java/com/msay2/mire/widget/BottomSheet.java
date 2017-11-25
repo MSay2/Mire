@@ -1,5 +1,7 @@
 package com.msay2.mire.widget;
 
+import com.msay2.mire.R;
+
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
@@ -9,6 +11,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -46,6 +49,7 @@ public class BottomSheet extends FrameLayout
     private boolean isNestedScrolling = false;
     private boolean initialHeightChecked = false;
     private boolean hasInteractedWithSheet = false;
+	private boolean outsideCancelable = false;
 
     public BottomSheet(Context context)
 	{
@@ -62,9 +66,17 @@ public class BottomSheet extends FrameLayout
         super(context, attrs, defStyle);
        
 		final ViewConfiguration viewConfiguration = ViewConfiguration.get(context);
-      
+		final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BottomSheet);
+		
 		MIN_FLING_VELOCITY = viewConfiguration.getScaledMinimumFlingVelocity();
         MAX_FLING_VELOCITY = viewConfiguration.getScaledMaximumFlingVelocity();
+		
+		final boolean enableOutsideCancelable = typedArray.getBoolean(R.styleable.BottomSheet_outsideCancelable, outsideCancelable);
+
+		if (enableOutsideCancelable)
+		{
+			setOutsideCancelable();
+		}
     }
 
     public static abstract class Callbacks 
@@ -106,6 +118,18 @@ public class BottomSheet extends FrameLayout
 	{
         return sheet.getTop() == sheetExpandedTop;
     }
+	
+	private void setOutsideCancelable()
+	{
+		setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				dismiss();
+			}
+		});
+	}
 
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params)

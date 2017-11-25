@@ -3,4 +3,7 @@
 	<attr name="cardBackground" format="color|reference"/>
 	<attr name="lineHeightHint" format="dimension"/>
 	
+	<declare-styleable name="BottomSheet">
+		<attr name="outsideCancelable" format="boolean"/>
+	</declare-styleable>
 </resources>

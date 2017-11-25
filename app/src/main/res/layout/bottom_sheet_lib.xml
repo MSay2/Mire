@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.msay2.mire.widget.BottomSheet
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/id_root"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:orientation="vertical">
+	android:orientation="vertical"
+	app:outsideCancelable="true">
 
 	<LinearLayout
 		android:layout_height="wrap_content"
